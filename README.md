@@ -5,7 +5,7 @@ Aquest repositori conté les versions en desenvolupament dels Projectes Curricul
 Els fonts es troben en format Markdown, com a projectes amb mkdocs, i en un full de càlcul amb les taules, i permeten la seua exportació a PDF a través de Pandoc i Weasyprint, fent ús d'una adaptació de la plantilla [craigbass76
 pandoc-css-weasyprint-template](https://github.com/craigbass76/pandoc-css-weasyprint-template).
 
-Els diferents apartats del document són els indicats a la [Guía pràctica per al Docent del Projecte Curricular del Cicle Formatiu](https://ceice.gva.es/documents/388109149/390831792/PCCF_Guia_Practica_Docent_VAL.pdf/2d92fe72-8d77-af2a-d24f-88268618d53f?t=1741783859139) de la GVA.
+Els diferents apartats del document són els indicats a la [Guía pràctica per al Docent del Projecte Curricular del Cicle Formatiu](https://ceice.gva.es/documents/388109149/390831792/PCCF_Guia_Practica_Docent_VAL.pdf) de la GVA.
 
 ## Continguts de cada carpeta PCCF
 
