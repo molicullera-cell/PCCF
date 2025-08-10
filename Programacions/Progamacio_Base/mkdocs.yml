@@ -20,8 +20,7 @@ plugins:
 extra_css:
   - styles/taules.css
 
-nav:
-    - "Inici": 'index.md'
+nav:  # La pàgina d'index no s'inclou aci perquè no aparega l'índex dos vegades al PDF
     - "1. Dades identificactives i contextualització": '1.Identificacio.md'
     - "2. Relació entre les unitats de competència i mòduls del cicle formatiu": '2.relacio_uc.md'
     - "3. Contribució dels RA a les competències professionals": '3.contribucio_ra.md'
