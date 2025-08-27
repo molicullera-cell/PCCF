@@ -38,5 +38,5 @@ temp.*
 *.bak
 *.tmp
 
-# Altres directoris que només s’usen localment
+# Altres directoris que només s'usen localment
 pdf-images/
