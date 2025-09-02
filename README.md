@@ -160,7 +160,7 @@ subtitle: PCCF DAM
 ...
 titlepage-background: "templates/img/portada.png"
 page-background: "templates/img/fondo.png"
-header-left: Departament d'Informàtica. Curs 2024-2025
+header-left: Departament d'Informàtica. Curs 2025-2026
 footer-left: IES Jaume II el Just. PCCF
 ---
 ```
