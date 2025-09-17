@@ -1,4 +1,4 @@
-site_name: Programació Didàctica. Mòdul XX. # Canviar pel nom del mpodul
+site_name: Programació Didàctica. Mòdul Digitalització aplicada al sector productiu. # Canviar pel nom del mòdul
 
 theme: 
   name: material
@@ -14,7 +14,7 @@ markdown_extensions:
 plugins:
   - search
   - add_tables:
-      ods_path: 'SASP_DAW.ods' # Afegir aci el fitxer ods
+      ods_path: 'DASP_DAW.ods' # Afegir aci el fitxer ods
       xslt_path: 'ods2html.xslt'
 
 extra_css:

@@ -13,7 +13,7 @@ Característiques/requeriments:
     - La progrmació d'aula, que fa cada docent, conté la concreció de la programació didàctica per a cada grup.
  -->
 
-## Sostenibilitat aplicada al sector productiu. 2n curs CS Desenvolupament d'Aplicacions Web
+## Digitalització aplicada al sector productiu. 2n curs CS Desenvolupament d'Aplicacions Web
 
 * [1. Dades identificactives i contex-tualització](1.Identificacio.md)
 * [2. Relació entre les unitats de competència i mòduls del cicle formatiu](2.relacio_uc.md)
