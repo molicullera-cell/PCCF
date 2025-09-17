@@ -2,7 +2,7 @@ site_name: Projecte Curricular del Cicle Formatiu
 
 theme: 
   name: material
-  logo: img/logo.svg
+  logo: img/logocap.png
   palette:
     primary: 'deep purple'
 
@@ -14,7 +14,7 @@ markdown_extensions:
 plugins:
   - search
   - add_tables:
-      ods_path: 'PCCF_DAM.ods'
+      ods_path: 'PCCF_DAW.ods'
       xslt_path: 'ods2html.xslt'
 
 extra_css:
