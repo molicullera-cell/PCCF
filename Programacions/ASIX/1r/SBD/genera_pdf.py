@@ -8,7 +8,8 @@ def load_nav():
     """Llegeix el fitxer mkdocs.yml i retorna l'ordre dels fitxers markdown"""
     with open("mkdocs.yml", "r") as file:
         config = yaml.safe_load(file)
-    return config.get("nav", [])
+        ods_path = config['plugins'][1]['add_tables']['ods_path']
+    return ods_path, config.get("nav", [])
 
 def render_markdown_to_html(input_file, ods_path, xslt_path):
     """Genera HTML a partir de markdown amb les taules transformades"""
@@ -37,8 +38,8 @@ def generate_pdf_from_html(input_html, output_pdf):
 
 def generate_pdf(output_pdf="output.pdf", keep_html=False):
     # Llegeix la configuració de `mkdocs.yml` i agafa els fitxers Markdown
-    nav = load_nav()
-    ods_path = "PCCF_SMX.ods"  # O especifica on tens el fitxer ODS
+    ods_path, nav = load_nav()
+    #ods_path = "PCCF_DAM.ods"  # O especifica on tens el fitxer ODS
     xslt_path = "ods2html.xslt"  # O especifica el camí correcte al fitxer XSLT
 
     # Ruta al fitxer de front-matter
