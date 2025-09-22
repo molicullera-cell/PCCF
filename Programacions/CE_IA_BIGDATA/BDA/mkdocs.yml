@@ -1,4 +1,4 @@
-site_name: Programació Didàctica. Mòdul XX. # Canviar pel nom del mpodul
+site_name: Programació Didàctica. Mòdul Big Data Aplicat. # Canviar pel nom del mpodul
 
 theme: 
   name: material
@@ -14,14 +14,14 @@ markdown_extensions:
 plugins:
   - search
   - add_tables:
-      ods_path: 'PD_DAM.ods' # Afegir aci el fitxer ods
+      ods_path: 'PD_BDA.ods' # Afegir aci el fitxer ods
       xslt_path: 'ods2html.xslt'
 
 extra_css:
   - styles/taules.css
 
 nav:  # La pàgina d'index no s'inclou aci perquè no aparega l'índex dos vegades al PDF
-    - "1. Dades identificactives i contextualització": '1.Identificacio.md'
+    - "1. Dades identificatives i contextualització": '1.Identificacio.md'
     - "2. Relació entre les unitats de competència i mòduls del cicle formatiu": '2.relacio_uc.md'
     - "3. Contribució dels RA a les competències professionals": '3.contribucio_ra.md'
     - "4. Resultats d'Aprenentatge, Criteris d'Avaluació i Continguts": '4.RAs_CAs_Continguts.md'

@@ -15,7 +15,7 @@ Característiques/requeriments:
 
 ## Nom del mòdul. Curs.
 
-* [1. Dades identificactives i contex-tualització](1.Identificacio.md)
+* [1. Dades identificatives i contextualització](1.Identificacio.md)
 * [2. Relació entre les unitats de competència i mòduls del cicle formatiu](2.relacio_uc.md)
 * [3. Contribució dels RA a les competències professionals](3.contribucio_ra.md)
 * [4. Resultats d'Aprenentatge, Criteris d'Avaluació i Continguts](4.RAs_CAs_Continguts.md)
