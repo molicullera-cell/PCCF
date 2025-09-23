@@ -13,7 +13,7 @@ Característiques/requeriments:
     - La progrmació d'aula, que fa cada docent, conté la concreció de la programació didàctica per a cada grup.
  -->
 
-## Big Data Aplicat. Curs d'Especialització en IA i Big Data.
+## Sistemes d'Aprenentatge Automàtic. Curs d'Especialització en IA i Big Data.
 
 * [1. Dades identificatives i contextualització](1.Identificacio.md)
 * [2. Relació entre les unitats de competència i mòduls del cicle formatiu](2.relacio_uc.md)
