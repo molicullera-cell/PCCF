@@ -38,7 +38,7 @@ def generate_pdf_from_html(input_html, output_pdf):
 def generate_pdf(output_pdf="output.pdf", keep_html=False):
     # Llegeix la configuració de `mkdocs.yml` i agafa els fitxers Markdown
     nav = load_nav()
-    ods_path = "PCCF_DAM.ods"  # O especifica on tens el fitxer ODS
+    ods_path = "PCCF_SMX.ods"  # O especifica on tens el fitxer ODS
     xslt_path = "ods2html.xslt"  # O especifica el camí correcte al fitxer XSLT
 
     # Ruta al fitxer de front-matter
