@@ -2,23 +2,86 @@ site_name: Projecte Curricular del Cicle Formatiu
 
 theme: 
   name: material
-  logo: img/logo.svg
-  palette:
-    primary: 'deep purple'
+  logo: "assets/img/logos/logoJust.png"
+  favicon: "assets/img/logos/logo50.ico"
+  language: ca
+  features:
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - content.code.copy
+  palette: 
+    - scheme: default
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Mode oscur
+    - scheme: slate
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Mode clar
 
 markdown_extensions:
-  - def_list
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - attr_list
+  - md_in_html
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      linenums: true
+      anchor_linenums: true
+      auto_title: true
   - pymdownx.tasklist:
       custom_checkbox: true
+  - def_list
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 plugins:
   - search
+  - social:
+      cards_layout_options:
+        background_image: "assets/img/fondo.png"
+        background_color: "#0FF1CE8F"
+        text_color: "#000000"
+        button_color: "#000000"
+        button_text_color: "#FFFFFF"
+        button_text: "Més informació"
   - add_tables:
       ods_path: 'PCCF_FPB.ods'
       xslt_path: 'ods2html.xslt'
+extra:
+  logo: |
+    <div class="md-logo-container">
+      <a href="https://portal.edu.gva.es/iesjaumeeljust/" target="_blank" class="logo-just"></a>
+      <a href="https://ceice.gva.es/va/web/educacion" target="_blank" class="logo-gvanext"></a>
+    </div>
+  social:
+    - icon: material/email
+      link: mailto:jb.talensfelis@edu.gva.es
+      name: Contacte
+  generator: false
 
+copyright: |
+  <div class="custom-footer">
+    <div class="footer-logo footer-left"></div>
+    <span class="footer-text">© 2025 Llicència CC BY-NC-SA 4.0</span>
+    <div class="footer-logo footer-right"></div>
+  </div>
 extra_css:
   - styles/taules.css
+  - assets/stylesheets/extracsspdf.css
+  - assets/stylesheets/customs.css
+  - assets/stylesheets/extra.css
 
 nav:
     - "1. Identificació del cicle Formatiu": '1.Identificacio.md'

@@ -3,16 +3,27 @@ import subprocess
 import yaml
 import sys
 from add_tables.transformer import process_markdown
+from weasyprint import HTML
+
+def yaml_ignore(loader, node):
+    """Constructor segur per ignorar etiquetes !!python/name"""
+    return str(node.value)
+
+# Cobrir tant multi_constructor com el tag exacte
+yaml.SafeLoader.add_multi_constructor("!python/name:", lambda loader, suffix, node: yaml_ignore(loader, node))
+yaml.SafeLoader.add_constructor("tag:yaml.org,2002:python/name:material.extensions.emoji.twemoji", yaml_ignore)
+yaml.SafeLoader.add_constructor("tag:yaml.org,2002:python/name:material.extensions.emoji.to_svg", yaml_ignore)
+yaml.SafeLoader.add_constructor("tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format", yaml_ignore)
 
 def load_nav():
     """Llegeix el fitxer mkdocs.yml i retorna l'ordre dels fitxers markdown"""
-    with open("mkdocs.yml", "r") as file:
-        config = yaml.safe_load(file)
+    with open("mkdocs.yml", "r", encoding="utf-8") as file:
+        config = yaml.load(file, Loader=yaml.SafeLoader)
     return config.get("nav", [])
 
 def render_markdown_to_html(input_file, ods_path, xslt_path):
     """Genera HTML a partir de markdown amb les taules transformades"""
-    with open(input_file, "r") as f:
+    with open(input_file, "r", encoding="utf-8") as f:
         markdown_content = f.read()
 
     # Processa les marques amb el plugin
@@ -32,8 +43,7 @@ def convert_markdown_to_html(input_file, output_file):
 
 def generate_pdf_from_html(input_html, output_pdf):
     """Genera el PDF amb WeasyPrint a partir del HTML"""
-    cmd = ["python3", "-m", "weasyprint", input_html, output_pdf]
-    subprocess.run(cmd, check=True)
+    HTML(filename=input_html).write_pdf(output_pdf)
 
 def generate_pdf(output_pdf="output.pdf", keep_html=False):
     # Llegeix la configuració de `mkdocs.yml` i agafa els fitxers Markdown
@@ -50,7 +60,7 @@ def generate_pdf(output_pdf="output.pdf", keep_html=False):
     # Llegeix i afegeix front-matter només una vegada
     all_markdown_content = ""
     if os.path.exists(front_matter_file):
-        with open(front_matter_file, "r") as f:
+        with open(front_matter_file, "r", encoding="utf-8") as f:
             front_matter = f.read()
         all_markdown_content += front_matter  # Afegim el front-matter al principi
 
@@ -69,7 +79,7 @@ def generate_pdf(output_pdf="output.pdf", keep_html=False):
                 print(f"Saltant element no vàlid: {markdown_file}")
 
     # Guardem el Markdown concatenat amb el front-matter
-    with open(temp_markdown, "w") as f:
+    with open(temp_markdown, "w", encoding="utf-8") as f:
         f.write(all_markdown_content)
 
     # Generar el HTML des del Markdown amb taules processades
@@ -98,7 +108,7 @@ if __name__ == "__main__":
     output_pdf = "output.pdf"
     keep_html = "--keep-html" in sys.argv
 
-    if len(sys.argv) > 1:
+    if len(sys.argv) > 1 and not sys.argv[1].startswith("--"):
         # Si s'ha passat el nom del fitxer PDF per la línia de comandes
         output_pdf = sys.argv[1]
 
