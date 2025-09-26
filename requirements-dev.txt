@@ -1,0 +1,21 @@
+# Inclou totes les dependències bàsiques
+-r requirements.txt
+
+# Per generar PDF amb pandoc
+pypandoc>=1.13
+pandocfilters>=1.5
+
+# Per provar i validar codi
+pytest>=8.0
+pytest-cov>=5.0
+
+# Per comprovar l'estil del codi Python
+flake8>=7.0
+black>=24.0
+
+# Per gestionar build i packaging
+setuptools>=70.0
+wheel>=0.43
+
+# Altres útils
+requests>=2.32
