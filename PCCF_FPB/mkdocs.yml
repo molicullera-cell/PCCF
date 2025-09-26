@@ -83,6 +83,8 @@ extra_css:
   - assets/stylesheets/customs.css
   - assets/stylesheets/extra.css
 
+
+
 nav:
     - "1. Identificació del cicle Formatiu": '1.Identificacio.md'
     - "2. Marc normatiu per al desplegament del projecte curricular": '2.Marc_normatiu.md'
@@ -104,3 +106,12 @@ nav:
     - "18. Criteris per a l'organització del mòdul professional de projecte": '18.criteris_organitzacio_md_projecte.md'
     - "19. Altres aspectes que ha de contindre el PCCF": '19.alters_aspectes_pccf.md'
     - "20. Les programacions didàctiques dels mòduls i/o els projectes": '20.programacions_didactiques.md'
+    # - "Annexos":
+    #   - "Annex 1 · Entrevista": 'annexos/Annex1-Entrevista.md'
+    #   - "Annex 2 · Interessos": 'annexos/Annex2-Interessos.md'
+    #   - "Annex 3 · Seguiment PAT": 'annexos/Annex3-SeguimentPAT.md'
+    #   - "Annex 4 · Enquesta Alumnat": 'annexos/Annex4-EnquestaAlumnat.md'
+    #   - "Annex · Autoavaluació Docent": 'annexos/Annex-Autoavaluacio-Docent.md'
+    #   - "Annex · Enquesta Alumnat": 'annexos/Annex-Enquesta-Alumnat.md'
+    #   - "Annex · Planificació Activitat": 'annexos/Annex-Planificacio-Activitat.md'
+    #   - "Annex · Valoració Activitat": 'annexos/Annex-Valoracio-Activitat.md'

@@ -1,97 +1,88 @@
-
 ---
-title: "[Programació d'Aula IMX  \\newline FPB Informàtica d'Oficina]"
+title: "Proposta curricular de cicle formatiu  \\newline FPB Informàtica d'Oficina"
 subtitle: "FPB Informàtica i Comunicacions \\newline \\today"
 author: "JB Talens"
+
+# Eisvogel
 titlepage: true
 titlepage-rule-height: 0
 titlepage-text-color: "F08A2A"
 titlepage-background: "docs/img/portada-aula.png"
+page-background: "docs/img/fondo.png"
+
 geometry: "left=2cm,right=2cm,top=3cm,bottom=3cm"
 toc: true
+toc-depth: 3
 toc-own-page: true
 toc-title: "Índex"
 numbersections: true
-toc-depth: 3
 lang: ca
 listings: true
 
-page-background: "docs/img/fondo.png"
-header-left: \includegraphics[scale=0.5]{docs/img/logos/logoJust.png} \textcolor{morat}{| Programació d'Aula IMX}
-header-right: \includegraphics[scale=0.5]{docs/img/logos/GvaNext.png}
-footer-left:   \includegraphics[scale=0.3]{docs/img/logos/FonsVal.png}
-footer-center: \thepage/\pageref{LastPage}
-footer-right:  \includegraphics[scale=0.3]{docs/img/logos/miniPla.png}
+# Logos i peu de pàgina
+header-left: "\\includegraphics[scale=0.5]{docs/img/logos/logoJust.png} \\textcolor{morat}{| Programació d'Aula IMX}"
+header-right: "\\includegraphics[scale=0.5]{docs/img/logos/GvaNext.png}"
+footer-left: "\\includegraphics[scale=0.1]{docs/img/logos/FonsVal.png}"
+footer-center: "\\thepage/\\pageref{LastPage}"
+footer-right: "\\includegraphics[scale=0.3]{docs/img/logos/miniPla.png}"
 
-bibliography: "bibliografia.bib"
-csl: "apa.csl"
+# Bibliografia
+bibliography: bibliografia.bib
+csl: apa.csl
 biblatexoptions: [language=spanish,backend=biber]
 
 header-includes:
-  - \usepackage{fontspec}
-  - \usepackage{titling}
-  - \usepackage{lastpage}
-  - \usepackage{longtable}
-  - \usepackage{booktabs}
-  - \usepackage{xcolor,colortbl}
-  - \usepackage{geometry}
-  - \geometry{head=28pt}
-  - \usepackage{csquotes}
-  - \DeclareQuoteStyle{catalan}
-  - \usepackage{xltxtra}
-  - \usepackage{listings}
-  - \usepackage{awesomebox, tcolorbox, xcolor}
-  - "\definecolor{morat}{rgb}{0.396, 0.188, 0.592}"
-  - "\definecolor{groc}{rgb}{0.984, 0.612, 0.031}"
-  - "\definecolor{lightblue}{rgb}{0.68, 0.85, 0.9}"
-  - "\definecolor{ballblue}{rgb}{0.13, 0.67, 0.8}"
-  - "\definecolor{cerulean}{rgb}{0.0, 0.48, 0.65}"
-  - "\definecolor{almond}{rgb}{0.94, 0.87, 0.8}"
-  - "\definecolor{apricot}{rgb}{0.98, 0.81, 0.69}"
-  - "\definecolor{cream}{rgb}{1.0, 0.99, 0.82}"
-  - "\definecolor{coralred}{rgb}{1.0, 0.25, 0.25}"
-  - "\definecolor{headerblue}{RGB}{26,72,110}"
-  - "\definecolor{headergreen}{RGB}{3,75,33}"
-  - "\definecolor{headerpurple}{RGB}{102,58,143}"
-  - "\definecolor{rowgray}{RGB}{240,240,240}"
-  - "\definecolor{bordergray}{RGB}{200,200,200}"
-  - "\definecolor{cellgreen}{RGB}{226,239,218}"
-  - "\definecolor{cellblue}{RGB}{198,217,241}"
-  - \usepackage{sectsty}
-  - "\sectionfont{\color{morat}}"
-  - "\subsectionfont{\color{morat}}"
-  - "\subsubsectionfont{\color{morat}}"
-  - "\renewcommand{\arraystretch}{1.3}"
-  - "\setlength{\arrayrulewidth}{1pt}"
-  - "\arrayrulecolor{bordergray}"
-  - "\setlength{\tabcolsep}{8pt}"
-  - "\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}"
-  - "\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}"
-  - "\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}"
-  - "\AtBeginEnvironment{longtable}{\rowcolors{2}{rowgray}{white}}"
-  - "\AtBeginEnvironment{tabular}{\rowcolors{2}{rowgray}{white}}"
-  - "\newcommand{\tableheaderstyle}{\rowcolor{headerblue}\color{white}\bfseries}"
-  - "\newcommand{\sectionheaderstyle}{\rowcolor{headergreen}\color{white}\bfseries}"
-  - "\newcommand{\contentheaderstyle}{\rowcolor{headerpurple}\color{white}\bfseries}"
-  - "\newcommand{\saberfer}{\cellcolor{cellgreen}}"
-  - "\newcommand{\saberestar}{\cellcolor{cellblue}}"
+  - \input{latex-macros.tex}
 ---
 
-# Introducció. Justificació i contextualització
+
+---
+title: "Proposta curricular de cicle formatiu  \\newline FPB Informàtica d'Oficina"
+subtitle: "FPB Informàtica i Comunicacions \\newline \\today"
+author: "JB Talens"
+
+# Eisvogel
+titlepage: true
+titlepage-rule-height: 0
+titlepage-text-color: "F08A2A"
+titlepage-background: "docs/img/portada-aula.png"
+page-background: "docs/img/fondo.png"
+
+geometry: "left=2cm,right=2cm,top=3cm,bottom=3cm"
+toc: true
+toc-depth: 3
+toc-own-page: true
+toc-title: "Índex"
+numbersections: true
+lang: ca
+listings: true
+
+# Logos i peu de pàgina
+header-left: "\\includegraphics[scale=0.5]{docs/img/logos/logoJust.png} \\textcolor{morat}{| Programació d'Aula IMX}"
+header-right: "\\includegraphics[scale=0.5]{docs/img/logos/GvaNext.png}"
+footer-left: "\\includegraphics[scale=0.1]{docs/img/logos/FonsVal.png}"
+footer-center: "\\thepage/\\pageref{LastPage}"
+footer-right: "\\includegraphics[scale=0.3]{docs/img/logos/miniPla.png}"
+
+# Bibliografia
+bibliography: bibliografia.bib
+csl: apa.csl
+biblatexoptions: [language=spanish,backend=biber]
+
+header-includes:
+  - \input{latex-macros.tex}
+---
 
 
+El *Decret 114/2025, de 29 de juliol del Consell, pel qual s/'establixen els currículums dels cicles formatius de grau mitjà i de grau superior de Formació Professional*, estableix que cada centre docent desenvoluparà i completarà, en el marc de la seua autonomia, els curriculums de cada cicle formatiu que impartisca mitjançant l/'elaboració de projectes curriculars (PCCF), els quals suposaran el marc de referència per a la planificació, el desenvolupament i l/'avaluació del procés d/'ensenyament i aprenentatge del cicle.
 
-El *Decret 114/2025, de 29 de juliol del Consell, pel qual s\'establixen els currículums dels cicles formatius de grau mitjà i de grau superior de Formació Professional*, estableix que cada centre docent desenvoluparà i completarà, en el marc de la seua autonomia, els curriculums de cada cicle formatiu que impartisca mitjançant l\'elaboració de projectes curriculars (PCCF), els quals suposaran el marc de referència per a la planificació, el desenvolupament i l\'avaluació del procés d\'ensenyament i aprenentatge del cicle.
+El present document, en virtut d/'aquest Decret, desenvolupa i completa el currículum per al **CFGM de Sistemes Microinformàtics i Xarxes**, i l/'adapta a l/'entorn socioeconòmic i empresarial de l/'IES Jaume II el Just, a Tavernes de la Valldigna. Les programacions didàctiques de cada mòdul professional s/'elaboraran tenint en compte aquest projecte, assegurant la coherència perdagògica i metodològica en la impartició del cicle.
 
-El present document, en virtut d\'aquest Decret, desenvolupa i completa el currículum per al **CFGM de Sistemes Microinformàtics i Xarxes**, i l\'adapta a l\'entorn socioeconòmic i empresarial de l\'IES Jaume II el Just, a Tavernes de la Valldigna. Les programacions didàctiques de cada mòdul professional s\'elaboraran tenint en compte aquest projecte, assegurant la coherència perdagògica i metodològica en la impartició del cicle.
-
-1. Identificació del Cicle Formatiu
-===================================
+# 1. Identificació del Cicle Formatiu
 
 El primer requeriment d'un projecte curricular de cicle formatiu (PCCF) és la seua identificació clara. En aquest apartat es recullen les dades essencials que permeten reconéixer oficialment el cicle objecte de programació, així com la vinculació amb el centre educatiu i l'equip docent responsable de la seua implementació. Aquesta informació assegura la traçabilitat institucional del projecte i el seu encaix amb l'oferta educativa del centre i del sistema valencià de Formació Professional.
 
-Denominació oficial del títol
------------------------------
+## Denominació oficial del títol
 
 -   Denominació: Títol Professional Bàsic en Informàtica d'Oficina.
 -   Nivell: Formació Professional Bàsica.
@@ -100,10 +91,9 @@ Denominació oficial del títol
 -   Normativa estatal de referència: Reial decret 356/2014, de 16 de maig.
 -   Normativa autonòmica: adaptació curricular segons normativa de la Comunitat Valenciana.
 -   Referència internacional: CINE-3.5.4 (Classificació Internacional Normalitzada de l'Educació, UNESCO).
--   Marc Espanyol de Qualificacions per a l\'Educació i la Formació (MECU): Nivell 1.
+-   Marc Espanyol de Qualificacions per a l/'Educació i la Formació (MECU): Nivell 1.
 
-Centre educatiu
----------------
+## Centre educatiu
 
 -   Nom del centre: IES Jaume II el Just.
 -   Codi del centre: 46008340.
@@ -112,12 +102,11 @@ Centre educatiu
 -   Tipus de centre: Institut públic d'Educació Secundària, Batxillerat i FP.
 -   Modalitat d'ensenyament: presencial.
 
-Equip educatiu responsable
---------------------------
+## Equip educatiu responsable
 
 El projecte curricular és responsabilitat de l'equip docent del cicle, liderat pel Departament d'Informàtica i Comunicacions. Aquest equip incorpora professorat de mòduls específics i transversals, així com la figura de la tutoria i la coordinació de Formació Professional Bàsica. La direcció d'estudis de FP garanteix la integració del projecte en la programació general anual del centre.
 
-Per al curs 2025-2026, l\'organització docent del cicle incorpora les següents assignacions específiques:
+Per al curs 2025-2026, l/'organització docent del cicle incorpora les següents assignacions específiques:
 
 -   El Departament de Castellà assumeix la docència del mòdul transversal Comunicació i Societat, excepte els resultats d'aprenentatge vinculats a la llengua anglesa.
 -   El Departament d'Anglés imparteix els resultats d'aprenentatge corresponents a la competència lingüística en llengua estrangera integrats en el mateix mòdul.
@@ -126,9 +115,7 @@ Per al curs 2025-2026, l\'organització docent del cicle incorpora les següents
 Aquesta distribució respon a criteris d'especialització docent i d'adaptació curricular que garanteixen una atenció adequada a les competències bàsiques i professionals requerides
 
 
-
-2. Marc normatiu per al desplegament del projecte curricular
-============================================================
+# 2. Marc normatiu per al desplegament del projecte curricular
 
 L'elaboració d'aquest **Projecte Curricular de Cicle Formatiu (PCCF)** es fonamenta en el seu reconeixement com a instrument de **nivell curricular 2**, segons s'estableix en la guia elaborada per la Direcció General de Formació Professional. En aquest marc, el PCCF **no depén de les programacions didàctiques**, sinó que **les integra i articula** a través dels **acords pedagògics, metodològics i organitzatius** definits col·lectivament per l'equip docent. Així, esdevé el **document de referència per a la planificació i coherència global del cicle**, i orienta el desenvolupament de les **programacions d'aula dels mòduls professionals** (nivell curricular 3).
 
@@ -144,8 +131,7 @@ Dins aquest nou escenari, la **Resolució de 17 de juliol de 2025**, de la Secre
 
 Finalment, cal tenir en compte que, malgrat la vigència de la nova **Llei orgànica 3/2022, de 31 de març**, i del desplegament del **Reial decret 659/2023**, determinats aspectes de l'ordenació de la FPB continuen regulats per normatives anteriors, com ara el **Reial decret 127/2014** o el **Reial decret 356/2014**, tal com estableixen les disposicions transitòries i el **calendari d'implantació del Reial decret 278/2023**. Aquest escenari de transició normativa implica que els centres han de gestionar una convivència ordenada entre marcs nous i vigents, cosa que reforça encara més la funció estructuradora del PCCF com a vertebrador de l'oferta formativa del cicle.
 
-Normativa general
------------------
+## Normativa general
 
 -   **Llei orgànica 2/2006, de 3 de maig**, d'Educació (LOE), modificada per:
 -   **Llei orgànica 8/2013, de 9 de desembre** (LOMCE)
@@ -154,21 +140,18 @@ Normativa general
 -   **Reial decret 659/2023, de 18 de juliol**, pel qual es desplega l'ordenació del Sistema de Formació Professional
 -   **Resolució de 17 de juliol de 2025**, de la Secretaria Autonòmica d'Educació, sobre instruccions per a l'FP
 
-Normativa específica per al títol
----------------------------------
+## Normativa específica per al títol
 
 -   **Reial decret 356/2014, de 16 de maig**, pel qual s'estableix el títol professional bàsic en Informàtica d'Oficina
 -   **Decret 185/2014, de 31 d'octubre**, pel qual s'establix el currículum del cicle a la Comunitat Valenciana
 
-Avaluació i qualificació
-------------------------
+## Avaluació i qualificació
 
 -   **Ordre 79/2010, de 27 d'agost**, sobre l'avaluació de l'alumnat dels cicles formatius a la Comunitat Valenciana
 -   **Ordre 2025/13083, de 30 d'abril**, sobre el nou sistema d'avaluació en l'FP, amb efectes **retroactius** des de l'1 de setembre de 2024
 -   **Reial decret 498/2024, de 21 de maig**, que actualitza els criteris d'avaluació i el sistema de qualificacions en cicles de grau bàsic
 
-Altres referències normatives
------------------------------
+## Altres referències normatives
 
 -   **Reial decret 217/2022**, d'ordenació de l'ESO (en allò aplicable als cicles FPB)
 -   **Decret 107/2022**, d'ordenació del currículum de l'ESO a la Comunitat Valenciana
@@ -179,16 +162,13 @@ Altres referències normatives
 Aquest conjunt normatiu dona **suport i legitimitat a les decisions recollides en el PCCF**, que esdevé el document estratègic per **alinear, coordinar i millorar la pràctica docent** del cicle, afavorint l'eficàcia pedagògica i l'atenció a la diversitat dins d'un marc legal en evolució.
 
 
-
-3. Adequació i adaptació de les competències professionals del títol al context socioeconòmic i cultural del centre
-===================================================================================================================
+# 3. Adequació i adaptació de les competències professionals del títol al context socioeconòmic i cultural del centre
 
 L'adaptació de les competències professionals del títol ha de partir d'una anàlisi del **context socioeconòmic i cultural del centre educatiu**, així com de les característiques específiques de l'alumnat. Aquesta adequació no implica modificar ni suprimir competències recollides en el perfil professional, sinó **ponderar-les i contextualitzar-les** d'acord amb les necessitats del territori i les orientacions del **Projecte d'Acció Curricular (PAC)**.
 
 L'**IES Jaume II el Just**, situat a Tavernes de la Valldigna, es troba en una posició estratègica per donar resposta a les necessitats del **sector TIC** de les comarques de la Safor i la Ribera. El centre compta amb una àmplia trajectòria dins la **Família Professional d'Informàtica i Comunicacions**, i ofereix cicles formatius de grau bàsic, mitjà i superior, així com **cursos d'especialització en Ciberseguretat i Intel·ligència Artificial i Big Data**.
 
-3.1. Anàlisi del context territorial i productiu
-------------------------------------------------
+## 3.1. Anàlisi del context territorial i productiu
 
 Segons dades de la Cambra de Comerç, el País Valencià és un dels principals pols tecnològics de l'Estat espanyol, amb més de **2.000 empreses TIC**, de les quals un 70% són **pimes**. Aquest teixit empresarial, amb escassos recursos per a formació pròpia, demanda professionals polivalents i adaptables.
 
@@ -201,10 +181,9 @@ Les comarques de **la Safor** i **la Ribera** han experimentat un creixement not
 
 L'impacte de la **DANA d'octubre de 2024** ha incrementat, a més, la necessitat de perfils relacionats amb la **recuperació de dades, manteniment i seguretat informàtica**, i la transformació digital del teixit comercial.
 
-3.2. Marc normatiu de referència
---------------------------------
+## 3.2. Marc normatiu de referència
 
-Segons el **Reial decret 498/2024**, que actualitza els perfils professionals dels cicles de grau bàsic, les antigues \"competències professionals, personals i socials\" passen a denominar-se **competències professionals i per a l'ocupabilitat**, posant èmfasi en:
+Segons el **Reial decret 498/2024**, que actualitza els perfils professionals dels cicles de grau bàsic, les antigues /"competències professionals, personals i socials/" passen a denominar-se **competències professionals i per a l'ocupabilitat**, posant èmfasi en:
 
 -   L'adaptació al canvi tecnològic
 -   La capacitat de treball en equip
@@ -213,8 +192,7 @@ Segons el **Reial decret 498/2024**, que actualitza els perfils professionals de
 
 Aquest enfocament està recollit també al **Decret 185/2014, de 31 d'octubre**, que fixa el currículum del **Títol Professional Bàsic en Informàtica d'Oficina** per a la Comunitat Valenciana, vigent fins a la plena implementació dels nous currículums previstos per la **LOFP 3/2022** i el **RD 659/2023**.
 
-3.3. Adequació de les competències al perfil territorial
---------------------------------------------------------
+## 3.3. Adequació de les competències al perfil territorial
 
 A partir de l'anàlisi del context i la consulta amb els agents socioeconòmics i empresarials de la zona, s'han identificat com a **competències prioritàries** per afavorir la inserció laboral i la projecció professional dels titulats les següents:
 
@@ -228,12 +206,10 @@ A partir de l'anàlisi del context i la consulta amb els agents socioeconòmics 
 
 Aquestes prioritats s'han traslladat al **desenvolupament metodològic i curricular** del present PCCF, tot mantenint el marc competencial oficial però ajustant el **pes relatiu de cadascuna de les competències** segons el seu impacte formatiu i ocupacional.
 
-3.4. Proposta de ponderació de competències
--------------------------------------------
+## 3.4. Proposta de ponderació de competències
 
 Per tal de garantir la coherència entre el perfil del títol i les demandes de l'entorn productiu, l'equip docent ha consensuat la següent **ponderació orientativa** de les competències professionals:
 
-::: {.keep-html}
   **Codi**    **Competència professional**                                                                   **Ponderació (%)**
   ----------- ---------------------------------------------------------------------------------------------- --------------------
   a           Preparar equips i aplicacions per al tractament, impressió i arxiu de dades i textos           10 %
@@ -245,7 +221,7 @@ Per tal de garantir la coherència entre el perfil del títol i les demandes de 
   g           Verificar sistemes i instal·lacions informàtiques segons procediments establerts               5 %
   h           Muntar canalitzacions i cablatge de dades amb criteris de qualitat i seguretat                 5 %
   i           Realitzar el cablejat de xarxes locals segons tècniques normalitzades                          5 %
-  j           Manejar eines de l\'entorn d'usuari i dispositius d'emmagatzematge d'informació                5 %
+  j           Manejar eines de l/'entorn d'usuari i dispositius d'emmagatzematge d'informació                5 %
   k           Resoldre problemes previsibles amb suport científic i tecnològic                               3 %
   l           Fomentar hàbits saludables en l'entorn personal i social                                       2 %
   m           Aplicar accions de conservació del medi ambient                                                2 %
@@ -261,14 +237,11 @@ Per tal de garantir la coherència entre el perfil del títol i les demandes de 
   w           Actuar amb iniciativa i responsabilitat en la tria de procediments professionals               2 %
   x           Exercir els drets i obligacions professionals amb participació en la vida social i econòmica   1 %
   **Total**                                                                                                  **100 %**
-:::
 
 Aquesta ponderació serà tinguda en compte en la programació d'aula, en les situacions d'aprenentatge i en el disseny de projectes intermodulars, amb l'objectiu de formar titulats i titulades preparats per a **l'ocupabilitat real i el desenvolupament professional sostenible** dins del sector TIC del territori.
 
 
-
-4. Contribució de cada mòdul a les competències professionals del cicle
-=======================================================================
+# 4. Contribució de cada mòdul a les competències professionals del cicle
 
 Per a la coordinació del treball educatiu, és necessari **estudiar com cada mòdul contribueix al desenvolupament de les competències professionals** del títol. Aquesta visió integrada permet una planificació coherent i compartida entre els docents implicats, i ajuda a garantir que totes les competències requerides siguen abordades de manera progressiva i equilibrada al llarg del cicle formatiu.
 
@@ -278,31 +251,27 @@ Per tal d'arribar a aquest nivell de concreció, es proposa estructurar una **ta
 
 La **competència general** del títol és la següent:
 
-> *\"Realitzar operacions auxiliars de muntatge i manteniment de sistemes microinformàtics, perifèrics i xarxes de comunicació de dades, i de tractament, reproducció i arxiu de documents, operant amb la qualitat indicada i actuant en condicions de seguretat i de protecció ambiental amb responsabilitat i iniciativa personal, i comunicant-se de forma oral i escrita en llengua castellana, i si escau, en la llengua cooficial pròpia, així com en alguna llengua estrangera.\"*
+> */"Realitzar operacions auxiliars de muntatge i manteniment de sistemes microinformàtics, perifèrics i xarxes de comunicació de dades, i de tractament, reproducció i arxiu de documents, operant amb la qualitat indicada i actuant en condicions de seguretat i de protecció ambiental amb responsabilitat i iniciativa personal, i comunicant-se de forma oral i escrita en llengua castellana, i si escau, en la llengua cooficial pròpia, així com en alguna llengua estrangera./"*
 
-4.1. Taula de correspondència entre mòduls i competències professionals
------------------------------------------------------------------------
+## 4.1. Taula de correspondència entre mòduls i competències professionals
 
 A continuació es presenta la relació entre els **mòduls professionals** del cicle i les **competències professionals, personals i socials** que contribueixen a desenvolupar:
 
-::: {.keep-html}
   **Mòdul Professional**                                                   **Competències Professionals, Personals i Socials Desenvolupades**
   ------------------------------------------------------------------------ --------------------------------------------------------------------
-  3029\. Muntatge i manteniment de sistemes i components informàtics       c), d), e), f), g), h), i), j)
-  3030\. Operacions auxiliars per a la configuració i explotació           a), j)
-  3016\. Instal·lació i manteniment de xarxes per a transmissió de dades   h), i)
-  3031\. Ofimàtica i arxiu de documents                                    a), b), j)
-  3011\. Comunicació i societat I                                          m), n), ñ), o), p)
-  3012\. Comunicació i societat II                                         q), r), s), t), u), v), w)
-  3009\. Ciències aplicades I                                              j), k), l), m)
-  3010\. Ciències aplicades II                                             q), r), s), t), u), v), w), x)
-  3033\. Formació en centres de treball (FCT)                              Totes les competències transversals i tècniques en context real
-:::
+  3029/. Muntatge i manteniment de sistemes i components informàtics       c), d), e), f), g), h), i), j)
+  3030/. Operacions auxiliars per a la configuració i explotació           a), j)
+  3016/. Instal·lació i manteniment de xarxes per a transmissió de dades   h), i)
+  3031/. Ofimàtica i arxiu de documents                                    a), b), j)
+  3011/. Comunicació i societat I                                          m), n), ñ), o), p)
+  3012/. Comunicació i societat II                                         q), r), s), t), u), v), w)
+  3009/. Ciències aplicades I                                              j), k), l), m)
+  3010/. Ciències aplicades II                                             q), r), s), t), u), v), w), x)
+  3033/. Formació en centres de treball (FCT)                              Totes les competències transversals i tècniques en context real
 
 > Aquesta taula és un instrument fonamental per a la **coordinació entre docents**, la programació compartida de situacions d'aprenentatge i la detecció de possibles buits competencials en el desenvolupament del currículum.
 
-4.2. Utilització didàctica
---------------------------
+## 4.2. Utilització didàctica
 
 El claustre i l'equip docent poden utilitzar aquesta informació per:
 
@@ -319,32 +288,29 @@ Actualment, el cicle **Tècnic Bàsic en Informàtica d'Oficina** presenta la se
 
 #### **Estructura vigent fins al curs 2024-2025**
 
-::: {.keep-html}
   **Curs**   **Mòdul Professional**                                                   **Hores setmanals**   **Hores totals**
   ---------- ------------------------------------------------------------------------ --------------------- ------------------
-  **1r**     3031\. Ofimàtica i arxiu de documents                                    9                     300
-             3029\. Muntatge i manteniment de sistemes i components informàtics       9                     290
-             3009\. Ciències aplicades I                                              5                     158
-             3011\. Comunicació i societat I                                          5                     158
+  **1r**     3031/. Ofimàtica i arxiu de documents                                    9                     300
+             3029/. Muntatge i manteniment de sistemes i components informàtics       9                     290
+             3009/. Ciències aplicades I                                              5                     158
+             3011/. Comunicació i societat I                                          5                     158
              Tutoria                                                                  1                     34
              CV0005. Formació i Orientació Laboral I                                  1                     30
              **Total 1r curs**                                                        **30**                **970**
-  **2n**     3016\. Instal·lació i manteniment de xarxes per a transmissió de dades   10                    255
-             3030\. Operacions auxiliars per a la configuració i l'explotació         6                     155
-             3019\. Ciències aplicades II                                             6                     158
-             3012\. Comunicació i societat II                                         6                     158
+  **2n**     3016/. Instal·lació i manteniment de xarxes per a transmissió de dades   10                    255
+             3030/. Operacions auxiliars per a la configuració i l'explotació         6                     155
+             3019/. Ciències aplicades II                                             6                     158
+             3012/. Comunicació i societat II                                         6                     158
              Tutoria                                                                  1                     34
              CV0006. Formació i Orientació Laboral II                                 1                     30
-             3033\. Formació en centres de treball                                    \-                    240
+             3033/. Formació en centres de treball                                    /-                    240
              **Total 2n curs**                                                        **30**                **1.030**
              **Total cicle**                                                          **60**                **2.000**
-:::
 
 ------------------------------------------------------------------------
 
 #### **Nova estructura a partir del curs 2025-2026**
 
-::: {.keep-html}
   **Curs**   **Codi**   **Mòdul Professional**                                        **Hores setmanals**   **Hores totals**
   ---------- ---------- ------------------------------------------------------------- --------------------- ------------------
   **1r**     3029       Muntatge i manteniment de sistemes i components informàtics   9                     299
@@ -363,18 +329,15 @@ Actualment, el cicle **Tècnic Bàsic en Informàtica d'Oficina** presenta la se
              3160972    Projecte intermodular d'aprenentatge col·laboratiu            2                     67
                         **Total 2n curs**                                             **30**                **1.000**
                         **Total cicle**                                               **60**                **2.000**
-:::
 
 ------------------------------------------------------------------------
 
 Aquesta nova estructura reforça el **component competencial, transversal i integrat del currículum**, amb una clara aposta per la coordinació entre mòduls, la personalització de l'itinerari formatiu i el treball per projectes. L'equip docent haurà d'adaptar les seues programacions i estratègies metodològiques per tal de garantir l'aplicació efectiva d'aquest nou model.
 
-4.4. Comparativa entre l'estructura vigent i la nova proposta curricular
-------------------------------------------------------------------------
+## 4.4. Comparativa entre l'estructura vigent i la nova proposta curricular
 
 La següent taula resumeix de manera comparativa les diferències entre l'estructura **vigent fins al curs 2024-2025** i la **nova proposta curricular a partir del curs 2025-2026** per al cicle de **Tècnic Bàsic en Informàtica d'Oficina**:
 
-::: {.keep-html}
   **Aspecte**                               **Estructura vigent (fins 2024-2025)**          **Nova estructura (a partir de 2025-2026)**
   ----------------------------------------- ----------------------------------------------- ------------------------------------------------------------------
   Nombre total de mòduls                    12 mòduls                                       12 mòduls (amb codis i denominacions revisades)
@@ -383,14 +346,12 @@ La següent taula resumeix de manera comparativa les diferències entre l'estruc
   Tutoria                                   Dos mòduls (1r i 2n)                            Es manté igual
   Comunicació i Ciències Socials            Dues fases (I i II)                             Es manté, amb ajustos metodològics
   Ciències aplicades                        Dues fases (I i II)                             Es manté, amb orientació cap a contextos professionals
-  Denominació de mòduls tècnics             Formulació genèrica                             Denominació més precisa i funcional: configuració, xarxes\...
+  Denominació de mòduls tècnics             Formulació genèrica                             Denominació més precisa i funcional: configuració, xarxes/...
   Distribució horària                       30 h setmanals / 2.000 h totals                 Sense canvis (mateix volum global)
   Orientació competencial                   Implícita i a través d'objectius                Explícita, integrada i centrada en resultats d'aprenentatge (RA)
   Enfocament metodològic                    Tradicional amb algunes iniciatives actives     Actiu, per projectes, personalitzat i transversal
-:::
 
-4.5. Consideracions per a la implementació
-------------------------------------------
+## 4.5. Consideracions per a la implementació
 
 La nova proposta curricular comporta un **canvi de paradigma** en la manera com es planifica, s'imparteix i s'avalua el currículum de la Formació Professional Bàsica. Les principals implicacions per al desenvolupament del **PCCF** són:
 
@@ -403,11 +364,9 @@ La nova proposta curricular comporta un **canvi de paradigma** en la manera com 
 Aquest context reforça la funció estratègica del **PCCF com a instrument de planificació col·lectiva**, alineat amb els objectius del centre, el PEC i les exigències de la nova legislació educativa.
 
 
+# 5. Contribució de cada mòdul a les competències per a l/'ocupabilitat
 
-5. Contribució de cada mòdul a les competències per a l\'ocupabilitat
-=====================================================================
-
-Igual que en l'apartat anterior, és important identificar **quines competències per a l'ocupabilitat es treballaran en cada mòdul professional**, per tal d'integrar-les de manera coherent i efectiva a l\'hora de programar.
+Igual que en l'apartat anterior, és important identificar **quines competències per a l'ocupabilitat es treballaran en cada mòdul professional**, per tal d'integrar-les de manera coherent i efectiva a l/'hora de programar.
 
 Aquestes competències, que inclouen aspectes com la responsabilitat, l'autonomia, el treball en equip o l'adaptabilitat, **no tenen una relació directa amb les habilitats tècniques pròpies de la professió**, i per això no resulta convenient aplicar una ponderació percentual com es fa amb les competències professionals.
 
@@ -415,24 +374,21 @@ Al contrari, es recomana que **l'equip docent, en funció de la seua experiènci
 
 Aquestes competències són fonamentals per a l'**acollida, la permanència i el progrés en l'àmbit laboral**, i han d'estar **reflectides de manera clara i visible en les rúbriques, llistes de control, activitats d'autoavaluació i qualsevol altre instrument emprat per a l'avaluació** dels mòduls que les treballen. Aquesta inclusió permet garantir que el procés d'avaluació valore **tant el desenvolupament tècnic com les actituds i capacitats personals i socials** que configuren un perfil professional complet.
 
-5.1. Relació orientativa entre mòduls i competències per a l'ocupabilitat
--------------------------------------------------------------------------
+## 5.1. Relació orientativa entre mòduls i competències per a l'ocupabilitat
 
 La següent taula ofereix una proposta inicial de **distribució de les competències per a l'ocupabilitat** entre els diferents mòduls del cicle:
 
-::: {.keep-html}
   **Mòdul Professional**                                                   **Competències per a l'ocupabilitat desenvolupades**
   ------------------------------------------------------------------------ ---------------------------------------------------------------
-  3029\. Muntatge i manteniment de sistemes i components informàtics       t), u), v), w), x), y), z)
-  3031\. Ofimàtica i arxiu de documents                                    t), u), v), w), x), y), z)
-  3016\. Instal·lació i manteniment de xarxes per a transmissió de dades   t), u), v), w), x), y), z)
-  3030\. Operacions auxiliars per a la configuració i l'explotació         t), u), v), w), x), y), z)
+  3029/. Muntatge i manteniment de sistemes i components informàtics       t), u), v), w), x), y), z)
+  3031/. Ofimàtica i arxiu de documents                                    t), u), v), w), x), y), z)
+  3016/. Instal·lació i manteniment de xarxes per a transmissió de dades   t), u), v), w), x), y), z)
+  3030/. Operacions auxiliars per a la configuració i l'explotació         t), u), v), w), x), y), z)
   3161 / 3162. Comunicació i Ciències Socials I i II                       s), t), u), v), w), z)
   3163 / 3164. Ciències aplicades I i II                                   t), u), v), w), x), y), z)
-  3159\. Itinerari personal per a l'ocupabilitat                           s), t), u), v), w), x), y), z)
-  3160972\. Projecte intermodular d'aprenentatge col·laboratiu             t), u), v), w), y), z)
+  3159/. Itinerari personal per a l'ocupabilitat                           s), t), u), v), w), x), y), z)
+  3160972/. Projecte intermodular d'aprenentatge col·laboratiu             t), u), v), w), y), z)
   Tutoria (TU01CF / TU02CF)                                                Seguiment actitudinal i suport al desenvolupament transversal
-:::
 
 > Aquesta distribució hauria de ser revisada per l'equip docent en cada curs acadèmic, d'acord amb les programacions, els perfils d'alumnat i els objectius del projecte intermodular. Les competències per a l'ocupabilitat s'han d'integrar de forma natural en la dinàmica d'aula i han de ser **avaluables mitjançant indicadors clars i observables**.
 
@@ -443,19 +399,16 @@ Perquè això siga possible, cal:
 -   Fer ús de **metodologies actives i cooperatives** que faciliten el seu desplegament (projectes, tasques compartides, simulacions, etc.).
 -   Establir espais de coordinació entre docents per **acordar evidències comunes**, seqüenciar-ne el treball i **garantir la coherència avaluadora**.
 
-5.2. Rúbrica d'exemple: Competència "Treball en equip" (competència t)
-----------------------------------------------------------------------
+## 5.2. Rúbrica d'exemple: Competència "Treball en equip" (competència t)
 
 La següent rúbrica mostra un exemple pràctic per a avaluar la competència **t) Comunicar-se i treballar en equip respectant l'autonomia i competència dels altres** dins d'una situació d'aprenentatge col·laborativa:
 
-::: {.keep-html}
   **Indicador**                                             **Nivell 1** (Iniciació)          **Nivell 2** (En procés)         **Nivell 3** (Assolit)                   **Nivell 4** (Excel·lent)
   --------------------------------------------------------- --------------------------------- -------------------------------- ---------------------------------------- ----------------------------------------------------
   Participa activament en les tasques col·lectives          Només quan se li demana           Participa de manera irregular    Participa de manera regular              Participa amb iniciativa i constància
   Respecta les opinions i funcions del grup                 Té dificultats per acceptar-les   Les accepta amb ajuda            Les respecta i coopera activament        Ajuda a integrar les aportacions dels altres
   Es comunica de forma clara i efectiva amb el grup         Amb dificultats i poc claredat    Amb certa claredat i correcció   Amb claredat i adequació                 Amb fluïdesa, assertivitat i empatia
   Assumeix responsabilitats i compleix els acords de grup   Evita responsabilitats            Assumeix algunes tasques         Assumeix tasques de manera responsable   Assumeix lideratges i facilita la cohesió del grup
-:::
 
 > Aquesta rúbrica pot adaptar-se a altres mòduls i a altres competències (com la responsabilitat, la iniciativa o l'autonomia), mantenint sempre la claredat dels indicadors i la relació amb les situacions d'aprenentatge concretes.
 
@@ -473,16 +426,13 @@ Aquest **seguiment sistemàtic, reflexiu i compartit** garanteix una visió inte
 A més, les conclusions de les reunions setmanals es recolliran de manera estructurada en actes i informes de seguiment pedagògic, que permetran fer un **retorn regular a l'alumnat**, així com ajustar, si cal, les intervencions educatives i les estratègies metodològiques.
 
 
-
-6. Enfocaments didàctics i metodològics
-=======================================
+# 6. Enfocaments didàctics i metodològics
 
 El cicle de Formació Professional Bàsica en Informàtica d'Oficina a l'IES Jaume II el Just es fonamenta en un **enfocament actiu, contextualitzat i professionalitzador**, alineat amb els principis recollits a l'article 13 del **Reial decret 659/2023**, que promou la incorporació de **metodologies actives** en la docència dels cicles formatius.
 
 Aquest enfocament no es limita a una declaració d'intencions, sinó que es **materialitza en un conjunt de principis metodològics consensuats** per l'equip docent, amb caràcter vinculant per a totes les programacions del cicle. El consens metodològic ha estat treballat en les reunions setmanals del claustre del cicle i suposa un compromís explícit amb un model pedagògic transformador.
 
-6.1. Principis metodològics acordats
-------------------------------------
+## 6.1. Principis metodològics acordats
 
 L'equip docent acorda aplicar de forma transversal les següents estratègies metodològiques:
 
@@ -497,8 +447,7 @@ L'equip docent acorda aplicar de forma transversal les següents estratègies me
 -   **Ús pedagògic de les TIC**: integració d'eines digitals tant per a la producció com per a la comunicació i l'organització del treball.
 -   **Avaluació contínua i formativa**, basada en evidències d'aprenentatge, rúbriques competencials, observació directa, autoavaluacions i portafolis.
 
-6.2. Coherència, seguiment i compromís docent
----------------------------------------------
+## 6.2. Coherència, seguiment i compromís docent
 
 Aquest marc metodològic consensuat és de **compliment obligat per a tot el professorat del cicle**, i s'aplicarà tant a nivell de mòdul com en el desenvolupament del **Projecte Intermodular d'Aprenentatge Col·laboratiu**.
 
@@ -507,57 +456,48 @@ Les **reunions setmanals de l'equip docent** tindran com a funció, entre altres
 Aquest enfocament metodològic pretén oferir una resposta eficaç als desafiaments del món laboral i educatiu actual, **convertint l'alumnat en protagonista actiu del seu aprenentatge** i facilitant la seua integració futura en entorns professionals reals.
 
 
-
-7. Organització i distribució dels mòduls professionals
-=======================================================
+# 7. Organització i distribució dels mòduls professionals
 
 D'acord amb l'article 11 del **Reial decret 659/2023**, els centres de Formació Professional poden organitzar els mòduls de manera flexible, sempre que es respecten els resultats d'aprenentatge de cada un i el currículum oficial.
 
 Amb aquesta finalitat, l'equip docent del cicle de **Formació Professional Bàsica en Informàtica d'Oficina** ha acordat una organització interna que **afavoreix el treball interdisciplinari dins de cada curs**, mitjançant agrupacions pedagògiques que permeten desenvolupar **projectes comuns, integració competencial i metodologies actives** com l'ABP i l'ApS.
 
-7.1. Organització dels mòduls en **1r curs**
---------------------------------------------
+## 7.1. Organització dels mòduls en **1r curs**
 
-::: {.keep-html}
   --------------------------------------------------------------------------------------------------------------------------------------------------------
   **Àmbit de treball integrador**               **Mòduls implicats**                            **Projectes o actuacions vinculades**
   --------------------------------------------- ----------------------------------------------- ----------------------------------------------------------
-  **Tecnologia i manteniment bàsic**            \- Muntatge i manteniment de sistemes\          Projecte: Simulació d'un taller TIC escolar
+  **Tecnologia i manteniment bàsic**            /- Muntatge i manteniment de sistemes/          Projecte: Simulació d'un taller TIC escolar
                                                 - Ciències Aplicades I                          
 
-  **Ofimàtica i documentació digital**          \- Ofimàtica i arxiu de documents\              Projecte: Creació de materials digitals i fitxes manuals
+  **Ofimàtica i documentació digital**          /- Ofimàtica i arxiu de documents/              Projecte: Creació de materials digitals i fitxes manuals
                                                 - Comunicació i Ciències Socials I              
 
-  **Ocupabilitat i desenvolupament personal**   \- Itinerari personal per a l'ocupabilitat I\   Dossier de perfil professional inicial
+  **Ocupabilitat i desenvolupament personal**   /- Itinerari personal per a l'ocupabilitat I/   Dossier de perfil professional inicial
                                                 - Tutoria I                                     
   --------------------------------------------------------------------------------------------------------------------------------------------------------
-:::
 
-7.2. Organització dels mòduls en **2n curs**
---------------------------------------------
+## 7.2. Organització dels mòduls en **2n curs**
 
-::: {.keep-html}
   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
   **Àmbit de treball integrador**                **Mòduls implicats**                             **Projectes o actuacions vinculades**
   ---------------------------------------------- ------------------------------------------------ ----------------------------------------------------------------------
-  **Xarxes i comunicacions TIC**                 \- Instal·lació i manteniment de xarxes\         Projecte APS: Manteniment real de la xarxa del centre
+  **Xarxes i comunicacions TIC**                 /- Instal·lació i manteniment de xarxes/         Projecte APS: Manteniment real de la xarxa del centre
                                                  - Operacions auxiliars per a la configuració     
 
-  **Tecnologia i sostenibilitat**                \- Ciències Aplicades II\                        Projecte: Reciclatge de plàstic i impressió 3D
+  **Tecnologia i sostenibilitat**                /- Ciències Aplicades II/                        Projecte: Reciclatge de plàstic i impressió 3D
                                                  - Projecte intermodular                          
 
-  **Comunicació i gestió documental avançada**   \- Comunicació i Ciències Socials II\            Projecte: Memòries tècniques i comunicació digital
+  **Comunicació i gestió documental avançada**   /- Comunicació i Ciències Socials II/            Projecte: Memòries tècniques i comunicació digital
                                                  - Ofimàtica aplicada (recuperació i anàlisi)     
 
-  **Ocupabilitat i orientació professional**     \- Itinerari personal per a l'ocupabilitat II\   Projecte: Dossier professional + CV + simulació d'entrevista laboral
+  **Ocupabilitat i orientació professional**     /- Itinerari personal per a l'ocupabilitat II/   Projecte: Dossier professional + CV + simulació d'entrevista laboral
                                                  - Tutoria II                                     
   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-:::
 
 > El mòdul **Projecte intermodular d'aprenentatge col·laboratiu** s'integra de manera transversal als projectes del segon curs, actuant com a eix vertebrador de la metodologia ABP i facilitant la coordinació docent.
 
-7.3. Objectius d'aquesta reorganització
----------------------------------------
+## 7.3. Objectius d'aquesta reorganització
 
 Aquesta estructura respon a la voluntat de:
 
@@ -567,7 +507,7 @@ Aquesta estructura respon a la voluntat de:
 -   Fomentar una **transició progressiva** cap a l'entorn professional i la inserció laboral.
 -   Optimitzar l'ús del **Projecte Intermodular** com a espai de síntesi i treball col·laboratiu.
 
-Aquesta reorganització **no altera la càrrega horària oficial** del cicle, sinó que reconfigura **lògiques de treball didàctic** per a afavorir l\'aprenentatge significatiu, transversal i amb sentit per a l'alumnat.
+Aquesta reorganització **no altera la càrrega horària oficial** del cicle, sinó que reconfigura **lògiques de treball didàctic** per a afavorir l/'aprenentatge significatiu, transversal i amb sentit per a l'alumnat.
 
 ### 7.4. Organització específica del mòdul "Comunicació i Societat"
 
@@ -619,43 +559,37 @@ En **segon curs**, el mòdul aprofundeix en els mateixos àmbits però des d'un 
 
 ### 7.4.3 Comparativa de Resultats d'Aprenentatge: Comunicació i Societat I vs II
 
-::: {.keep-html}
   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   **Àmbit**                          **Comunicació i Societat I (3011)**                     **Comunicació i Societat II (3012)**
   ---------------------------------- ------------------------------------------------------- -----------------------------------------------------------------------------
-  **Ciències Socials**               RA1: Societats prehistòriques i antigues\               RA1: Societats contemporànies i evolució històrica\
+  **Ciències Socials**               RA1: Societats prehistòriques i antigues/               RA1: Societats contemporànies i evolució històrica/
                                      RA2: Edat Mitjana, moderna i construcció europea        RA2: Democràcia, Drets Humans i participació ciutadana
 
   **Llengua Castellana (oral)**      RA3: Comunicació oral bàsica i escolta activa           RA3: Comunicació oral estructurada i expressió adequada a contextos formals
 
-  **Llengua Castellana (escrita)**   RA4: Producció de textos breus i lectura comprensiva\   RA4: Producció escrita de textos més complexos\
+  **Llengua Castellana (escrita)**   RA4: Producció de textos breus i lectura comprensiva/   RA4: Producció escrita de textos més complexos/
                                      RA5: Iniciació a la literatura clàssica                 RA5: Literatura contemporània i anàlisi crítica
 
-  **Llengua Anglesa**                RA6: Expressió oral bàsica i estructurada\              RA6: Presentacions orals concretes\
-                                     RA7: Diàlegs i converses senzilles\                     RA7: Interacció en contextos personals i laborals\
+  **Llengua Anglesa**                RA6: Expressió oral bàsica i estructurada/              RA6: Presentacions orals concretes/
+                                     RA7: Diàlegs i converses senzilles/                     RA7: Interacció en contextos personals i laborals/
                                      RA8: Textos escrits breus                               RA8: Textos escrits amb detall
   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-:::
 
 ------------------------------------------------------------------------
 
 ### 7.4.4 Distribució orientativa de responsabilitats docents
 
-::: {.keep-html}
   **Àmbit**              **Responsable principal**                **Funcions específiques**
   ---------------------- ---------------------------------------- ---------------------------------------------------------------------------------------------
-  Llengua Castellana\*   Professor/a de Llengua Castellana        Expressió oral i escrita, anàlisi de textos, lectura literària, gramàtica, ortografia
-  Ciències Socials\*     Professor/a de Geografia i Història      Evolució històrica, ciutadania, democràcia, anàlisi de fonts i contextos socials
+  Llengua Castellana/*   Professor/a de Llengua Castellana        Expressió oral i escrita, anàlisi de textos, lectura literària, gramàtica, ortografia
+  Ciències Socials/*     Professor/a de Geografia i Història      Evolució històrica, ciutadania, democràcia, anàlisi de fonts i contextos socials
   Llengua Anglesa        Professor/a d'Anglés                     Producció i comprensió oral i escrita, vocabulari funcional, interacció en contextos reals
   Coordinació general    Equip docent del cicle + cap d'estudis   Planificació conjunta, seguiment d'alumnat, disseny de situacions d'aprenentatge integrades
-:::
 
-> \* *Per motius d'organització interna i racionalització de recursos docents, els àmbits de Llengua Castellana i Ciències Socials poden estar integrats i ser atesos pel mateix professorat, habitualment el de Llengua Castellana.*
-
+> /* *Per motius d'organització interna i racionalització de recursos docents, els àmbits de Llengua Castellana i Ciències Socials poden estar integrats i ser atesos pel mateix professorat, habitualment el de Llengua Castellana.*
 
 
-8. Criteris generals sobre l\'organització, la comunicació i desenvolupament del procés d\'avaluació de l\'aprenentatge
-=======================================================================================================================
+# 8. Criteris generals sobre l/'organització, la comunicació i desenvolupament del procés d/'avaluació de l/'aprenentatge
 
 El procés d'avaluació de l'alumnat en el cicle de Formació Professional Bàsica en Informàtica d'Oficina es regirà per:
 
@@ -669,8 +603,7 @@ Els principis generals que emanen d'aquesta normativa són:
 2.  L'avaluació es basa en l'assoliment dels **Resultats d'Aprenentatge (RA)** definits per a cada mòdul.
 3.  El procés ha de facilitar l'**orientació, la millora dels aprenentatges** i la **inserció laboral** de l'alumnat.
 
-8.1 Organització del procés d'avaluació
----------------------------------------
+## 8.1 Organització del procés d'avaluació
 
 -   Es realitzarà una **sessió inicial de diagnòstic** dins del primer mes de curs.
 -   L'equip docent celebrarà **sessions d'avaluació trimestrals** i farà un seguiment setmanal de l'evolució de l'alumnat.
@@ -679,8 +612,7 @@ Els principis generals que emanen d'aquesta normativa són:
 -   Es preveuen **convocatòries ordinària i extraordinària** per a la recuperació dels RA no assolits.
 -   El Projecte Intermodular serà també objecte d'avaluació coordinada entre els docents implicats.
 
-8.2 Instruments d'avaluació
----------------------------
+## 8.2 Instruments d'avaluació
 
 Els instruments d'avaluació es seleccionaran en funció del tipus de tasca i metodologia utilitzada:
 
@@ -694,24 +626,21 @@ Els instruments d'avaluació es seleccionaran en funció del tipus de tasca i me
 
 Els criteris d'avaluació s'ajustaran als RA i seran compartits amb l'alumnat des de l'inici del curs.
 
-8.3 Comunicació amb l'alumnat i les famílies
---------------------------------------------
+## 8.3 Comunicació amb l'alumnat i les famílies
 
 -   Els criteris i instruments d'avaluació es publicaran a través de la plataforma *Aules* i seran explicats a l'alumnat a l'inici de cada mòdul.
 -   L'equip docent mantindrà una **comunicació constant** mitjançant reunions de tutoria, notificacions digitals i entrevistes.
 -   Els **butlletins oficials** de qualificacions es tramitaran a través de la plataforma *ITACA*.
 -   Es fomentarà la **transparència i la participació activa** de les famílies en el seguiment del procés educatiu.
 
-8.4 Desenvolupament del procés d'avaluació
-------------------------------------------
+## 8.4 Desenvolupament del procés d'avaluació
 
 -   L'avaluació es realitzarà sobre **cada RA de forma diferenciada**.
 -   Cada RA haurà d'estar **superat de forma individual** per considerar-se el mòdul aprovat.
 -   El professorat farà **ajustaments metodològics i de planificació** segons l'evolució del grup.
 -   L'avaluació continuarà en la **Formació en Entorns Laborals (FEE)**.
 
-8.5 Avaluació en la Formació en Entorns Laborals (FEE)
-------------------------------------------------------
+## 8.5 Avaluació en la Formació en Entorns Laborals (FEE)
 
 La FEE és una part fonamental del cicle formatiu. Es realitzarà:
 
@@ -721,8 +650,7 @@ La FEE és una part fonamental del cicle formatiu. Es realitzarà:
 
 > *L'avaluació de la FEE es regirà pels mateixos criteris de rigor, objectivitat i coherència que la resta de mòduls del cicle.*
 
-8.6 Avaluació del procés docent i del professorat
--------------------------------------------------
+## 8.6 Avaluació del procés docent i del professorat
 
 -   El professorat realitzarà una **autoavaluació contínua** de la seua pràctica docent.
 -   L'equip docent revisarà **trimestralment** la coherència i eficàcia de les seues programacions.
@@ -733,9 +661,7 @@ La FEE és una part fonamental del cicle formatiu. Es realitzarà:
 -   Els resultats de l'alumnat i el seu progrés.
 
 
-
-9. Base de dades d\'empreses o organismes equiparats que col·laboren amb el PCCF i criteris d\'assignació de l\'alumnat
-=======================================================================================================================
+# 9. Base de dades d/'empreses o organismes equiparats que col·laboren amb el PCCF i criteris d/'assignació de l/'alumnat
 
 La plataforma **SAO** per a la gestió de la FEE (Formació en Entorns Laborals), així com de l'antiga FCT i la FP Dual, disposa d'una **base de dades** amb el registre de les empreses que col·laboren anualment amb el centre.
 
@@ -749,8 +675,7 @@ A més, es fomentarà la **col·laboració activa de les empreses** en:
 -   El disseny i participació en projectes col·laboratius.
 -   El desenvolupament d'una **xarxa de mentors** que done suport a l'alumnat en iniciatives d'emprenedoria.
 
-Criteris d'assignació de l'alumnat a les empreses
--------------------------------------------------
+## Criteris d'assignació de l'alumnat a les empreses
 
 Per garantir una distribució equitativa i ajustada, es tindran en compte els següents criteris:
 
@@ -770,28 +695,23 @@ La seua avaluació es basarà en **percentatges d'assoliment**, en lloc de consi
 
 ### Exemple de taula de distribució dels RA entre centre i empresa
 
-::: {.keep-html}
-  **Mòdul professional**                 **Codi**   **RA**   **Descripció del RA**                                    \% al Centre   \% a l\'Empresa   Observacions
+  **Mòdul professional**                 **Codi**   **RA**   **Descripció del RA**                                    /% al Centre   /% a l/'Empresa   Observacions
   -------------------------------------- ---------- -------- -------------------------------------------------------- -------------- ----------------- ---------------------------------------
   Aplicacions Ofimàtiques                3013       RA1      Utilitza aplicacions de processador de textos            70%            30%               Activitats de redacció a l'empresa
   Instal·lació i manteniment de xarxes   3014       RA2      Realitza connexions bàsiques i diagnòstics de xarxa      50%            50%               Pràctiques directes amb client
   Comunicació i Societat II              3012       RA6      Comunica informació oral en anglès en context laboral    40%            60%               Simulacions reals i atenció en anglès
   Tractament de la informació digital    3015       RA3      Arxiva i gestiona informació amb criteris de seguretat   60%            40%               Adaptat a protocols de l'empresa
-:::
 
-*Aquesta taula pot ser adaptada per a cada mòdul, i complementada amb instruments d'avaluació específics (rúbriques, fulls d'observació, informes de tutoria\...).*
-
+*Aquesta taula pot ser adaptada per a cada mòdul, i complementada amb instruments d'avaluació específics (rúbriques, fulls d'observació, informes de tutoria/...).*
 
 
-10. Criteris per a realitzar els plans formatius individuals
-============================================================
+# 10. Criteris per a realitzar els plans formatius individuals
 
 Cada alumne o alumna que participe en un itinerari de **Formació en Entorns Laborals (FEE)** haurà de disposar d'un **Pla Formatiu Individualitzat (PFI)** que definisca de manera clara i flexible les activitats formatives a desenvolupar tant al **centre educatiu** com a l'**empresa o organisme col·laborador**.
 
 Aquest Pla Formatiu serà el resultat d'un procés de **codisseny entre el centre i l'empresa**, i haurà d'assegurar la **cobertura de tots els Resultats d'Aprenentatge (RA)** establits en el currículum, distribuint-los entre ambdós espais formatius segons la seua naturalesa, les capacitats de l'empresa i les necessitats de l'alumnat.
 
-Criteris generals per a la seua elaboració
-------------------------------------------
+## Criteris generals per a la seua elaboració
 
 -   El Pla Formatiu haurà de ser **coherent amb la programació d'aula del mòdul professional** i el **PAC del cicle**.
 -   Es concretarà la **relació de RA assignats a l'empresa, al centre i compartits**, indicant els **percentatges d'assoliment estimats** en cada àmbit.
@@ -799,8 +719,7 @@ Criteris generals per a la seua elaboració
 -   S'inclouran les **competències per a l'ocupabilitat** a desenvolupar preferentment en context real.
 -   Es preveuran **mecanismes de revisió i ajust del pla**, especialment quan es produïsquen canvis rellevants en el context formatiu o empresarial.
 
-Documentació i protocol
------------------------
+## Documentació i protocol
 
 Per garantir l'homogeneïtat i el seguiment de qualitat, el centre establirà un **model de document de PFI**, que inclourà com a mínim:
 
@@ -819,14 +738,11 @@ Els Plans Formatius Individuals s'arxivaran en format digital i estaran **dispon
 > 🗂 *A més, la informació continguda en el PFI podrà ser incorporada com a evidència dins del portafoli d'avaluació de l'alumnat.*
 
 
+# 11. Criteris per a adaptar els mòduls de Digitalització i Sostenibilitat a les característiques específiques del perfil professional del cicle formatiu
 
-11. Criteris per a adaptar els mòduls de Digitalització i Sostenibilitat a les característiques específiques del perfil professional del cicle formatiu
-=======================================================================================================================================================
+Els mòduls **transversals** de **Digitalització Aplicada als Sectors Productius** i **Sostenibilitat Aplicada al Sistema Productiu** formen part del currículum comú de la nova Formació Professional i tenen un **caràcter integrador i contextual**. Per això, és necessari **adaptar-ne els continguts, activitats i enfocaments** a les **característiques del cicle formatiu de FPB en Informàtica d'Oficina**, així com al **perfil professional de l'alumnat** i a la realitat del teixit productiu de l/'entorn.
 
-Els mòduls **transversals** de **Digitalització Aplicada als Sectors Productius** i **Sostenibilitat Aplicada al Sistema Productiu** formen part del currículum comú de la nova Formació Professional i tenen un **caràcter integrador i contextual**. Per això, és necessari **adaptar-ne els continguts, activitats i enfocaments** a les **característiques del cicle formatiu de FPB en Informàtica d'Oficina**, així com al **perfil professional de l'alumnat** i a la realitat del teixit productiu de l\'entorn.
-
-Adaptació del mòdul de Digitalització
--------------------------------------
+## Adaptació del mòdul de Digitalització
 
 El mòdul de **Digitalització** s'orientarà a dotar l'alumnat de competències bàsiques per a comprendre i aplicar processos de digitalització en contextos administratius i d'oficina. En concret, es treballaran:
 
@@ -836,19 +752,17 @@ El mòdul de **Digitalització** s'orientarà a dotar l'alumnat de competències
 -   Introducció al concepte d'**automatització de tasques administratives** amb programari d'oficina.
 -   Participació en **projectes de digitalització del centre o de la comunitat**, com per exemple, la gestió de fitxers o l'organització de dades per a esdeveniments escolars.
 
-Adaptació del mòdul de Sostenibilitat
--------------------------------------
+## Adaptació del mòdul de Sostenibilitat
 
 Pel que fa al mòdul de **Sostenibilitat**, es proposarà una aproximació pràctica i contextualitzada, que ajude a l'alumnat a comprendre l'impacte ambiental i social de les activitats administratives i digitals. Es prioritzaran:
 
--   Pràctiques d'**estalvi de recursos** en l'ús de tecnologies (paper, tinta, energia\...).
+-   Pràctiques d'**estalvi de recursos** en l'ús de tecnologies (paper, tinta, energia/...).
 -   **Gestió responsable de residus electrònics** (tòners, aparells informàtics obsolets).
 -   Foment del **consum responsable**, especialment en compres i equipaments per a l'oficina.
 -   Introducció al càlcul de la **petjada ecològica** i a l'impacte dels hàbits digitals (ús de núvol, enviament massiu de correus, etc.).
 -   Participació en **projectes transversals** com el projecte de **reciclatge de plàstic i impressió 3D**, en col·laboració amb altres mòduls.
 
-Enfocament transversal i coordinat
-----------------------------------
+## Enfocament transversal i coordinat
 
 Ambdós mòduls es desplegaran en coordinació amb la resta de mòduls del cicle, i **preferentment dins de situacions d'aprenentatge o projectes intermodulars**. Això garantirà:
 
@@ -859,14 +773,11 @@ Ambdós mòduls es desplegaran en coordinació amb la resta de mòduls del cicle
 L'equip docent establirà anualment, dins de la **PGA**, quines activitats o projectes oferiran millor encaix per integrar **digitalització i sostenibilitat** dins del cicle, i quins criteris s'utilitzaran per a la seua avaluació.
 
 
-
-12. El pla de tutoria i orientació professional
-===============================================
+# 12. El pla de tutoria i orientació professional
 
 Per al cicle formatiu de **Formació Professional Bàsica en Informàtica d'Oficina**, i d'acord amb l'article 91 de la LOMLOE, el Decret 72/2021 i l'Orde 10/2023, l'equip docent estableix les següents **línies estratègiques de tutoria i orientació professional**. Aquestes s'han de concretar en els **plans d'acció tutorial (PAT)** anuals de cada grup.
 
-1. Organització de la tutoria
------------------------------
+## 1. Organització de la tutoria
 
 -   El/la tutor/a serà un/a docent del grup amb hores assignades a tutoria segons la PGA.
 -   Encara que no hi haja hora setmanal específica, es podran fer **sessions de tutoria dins de les hores lectives** del mòdul assignat al/la tutor/a.
@@ -877,8 +788,7 @@ Per al cicle formatiu de **Formació Professional Bàsica en Informàtica d'Ofic
 -   Establir estratègies individualitzades.
 -   Fer acompanyament emocional i acadèmic.
 
-2. Orientació acadèmica
------------------------
+## 2. Orientació acadèmica
 
 -   S'organitzaran activitats per a informar sobre opcions formatives posteriors:
 -   Cicles de Grau Mitjà de la mateixa família professional.
@@ -889,8 +799,7 @@ Per al cicle formatiu de **Formació Professional Bàsica en Informàtica d'Ofic
 -   **Trobades amb exalumnes** titulats.
 -   **Sessions informatives** sobre les comissions col·legiades d'orientació.
 
-3. Orientació professional, inserció laboral i emprenedoria
------------------------------------------------------------
+## 3. Orientació professional, inserció laboral i emprenedoria
 
 -   L'alumnat participarà en activitats com:
 -   **Taller de recerca d'ocupació** (CV, entrevistes, portals).
@@ -901,8 +810,7 @@ Per al cicle formatiu de **Formació Professional Bàsica en Informàtica d'Ofic
 -   Mentories amb professionals i exalumnes per fomentar l'emprenedoria.
 -   Orientació cap a **reptes reals** que puguen convertir-se en projectes d'empresa.
 
-4. Seguiment i avaluació del pla
---------------------------------
+## 4. Seguiment i avaluació del pla
 
 -   El Pla de Tutoria i Orientació es **avaluarà anualment**, durant el tercer trimestre, amb:
 -   **Enquestes de valoració de l'alumnat**.
@@ -912,8 +820,7 @@ Per al cicle formatiu de **Formació Professional Bàsica en Informàtica d'Ofic
 
 ------------------------------------------------------------------------
 
-📎 Annexos del pla de tutoria i orientació
------------------------------------------
+## /[clip/] Annexos del pla de tutoria i orientació
 
 ### [Annex 1. Model d'entrevista individual](../annexos/Annex1-Entrevista/)
 
@@ -924,14 +831,11 @@ Per al cicle formatiu de **Formació Professional Bàsica en Informàtica d'Ofic
 ### [Annex 4. Enquesta de valoració del pla (alumnat)](../annexos/Annex4-EnquestaAlumnat/)
 
 
-
-13. Concreció dels plans i els programes del centre vinculats al currículum
-===========================================================================
+# 13. Concreció dels plans i els programes del centre vinculats al currículum
 
 Aquest apartat concreta com es despleguen, dins del cicle de **Formació Professional Bàsica en Informàtica d'Oficina**, els **plans, projectes i programes impulsats pel centre**, assegurant la seua **coherència amb els objectius del currículum** i la formació integral de l'alumnat. Es descriuen accions específiques, mòduls implicats, responsables i temporalització aproximada.
 
-1. Programa Emprén -- Aula Emprenedora
---------------------------------------
+## 1. Programa Emprén -- Aula Emprenedora
 
 El centre participa activament en el **Programa Emprén**, de foment de la cultura emprenedora. L'Aula Emprenedora promou:
 
@@ -939,8 +843,7 @@ El centre participa activament en el **Programa Emprén**, de foment de la cultu
 -   El desenvolupament d'**habilitats personals i professionals**.
 -   La sensibilització cap a models de negoci responsables i innovadors.
 
-2. Projecte \"JustHub Garage -- Espai d'Innovació i Creativitat\"
------------------------------------------------------------------
+## 2. Projecte /"JustHub Garage -- Espai d'Innovació i Creativitat/"
 
 Llançat el curs 2024, aquest projecte transforma l'aula en un **entorn de coworking i laboratori de prototipatge**, inspirat en les empreses nascudes en garatges. Està alineat amb l'estratègia d'**Aules Transformadores**, i s'hi desenvolupen:
 
@@ -950,7 +853,6 @@ Llançat el curs 2024, aquest projecte transforma l'aula en un **entorn de cowor
 
 ### Accions concretes:
 
-::: {.keep-html}
   Acció                                                     Mòduls implicats                       Temporalització    Responsables
   --------------------------------------------------------- -------------------------------------- ------------------ ----------------------------------------
   Desenvolupament de projectes col·laboratius (coworking)   IMX, CAII, Comunicació i Societat II   Octubre - Maig     Equip docent i mentors externs
@@ -958,17 +860,14 @@ Llançat el curs 2024, aquest projecte transforma l'aula en un **entorn de cowor
   Projectes de sostenibilitat i digitalització              Tots els mòduls                        Tot el curs        Coordinació docent
   Tallers i xarrades d'emprenedoria                         Tutoria, Comunicació                   Novembre - Abril   Aula Emprén + empreses col·laboradores
   Mostra final de projectes (demo day)                      Tots els mòduls                        Final de curs      Equip docent i col·laboradors externs
-:::
 
-3. Altres plans i programes
----------------------------
+## 3. Altres plans i programes
 
 -   **Orientació Professional (Decret 72/2021)**: Integrada en les tutories i activitats del mòdul de Comunicació, coordinada amb el Departament d'Orientació.
 -   **Formació i inserció laboral (FCT i borsa d'ocupació)**: Coordinació amb empreses locals i serveis municipals d'ocupació.
 -   **Participació en convocatòries INNOVATEC o projectes de millora**: Quan siga aplicable, els projectes d'innovació es connectaran amb continguts del mòdul de digitalització o sostenibilitat.
 
-4. Objectius didàctics i alineació curricular
----------------------------------------------
+## 4. Objectius didàctics i alineació curricular
 
 Tots aquests programes reforcen:
 
@@ -979,14 +878,11 @@ Tots aquests programes reforcen:
 Amb aquesta visió transversal, es fomenta una formació contextualitzada, flexible i orientada a la ciutadania activa i emprenedora.
 
 
-
-14. Orientacions per a l\'ús d\'espais, mitjans i equipaments disponibles
-=========================================================================
+# 14. Orientacions per a l/'ús d/'espais, mitjans i equipaments disponibles
 
 L'organització dels espais i dels recursos materials en el cicle de **Formació Professional Bàsica en Informàtica d'Oficina** té com a objectiu **facilitar un aprenentatge actiu, segur i contextualitzat**, d'acord amb els requisits establerts pel *Reial decret 405/2023* i alineat amb els principis d'innovació metodològica i pedagògica.
 
-1. Condicions dels espais docents
----------------------------------
+## 1. Condicions dels espais docents
 
 Segons la normativa:
 
@@ -998,8 +894,7 @@ Segons la normativa:
 -   **Cablejat**: centralitzat, segur i fora de zones de pas.
 -   **Mobiliari ergonòmic**: per protegir la salut postural de l'alumnat.
 
-2. Transformació metodològica i Aula-Empresa
---------------------------------------------
+## 2. Transformació metodològica i Aula-Empresa
 
 El cicle es desplega seguint un model d'**aula-empresa**, on l'aula simula un **entorn productiu col·laboratiu**. Aquesta transformació implica:
 
@@ -1010,8 +905,7 @@ El cicle es desplega seguint un model d'**aula-empresa**, on l'aula simula un **
 
 Aquest entorn afavoreix metodologies com l'**Aprenentatge Basat en Projectes (ABP)**, **reptes**, o **simulacions d'entorns laborals**, fonamentals per a l'adquisició de les competències del cicle.
 
-3. Ús de l'Aula Emprén
-----------------------
+## 3. Ús de l'Aula Emprén
 
 El centre disposa d'una **Aula Emprén**, vinculada al Programa Emprén. Aquesta aula permet desenvolupar:
 
@@ -1022,8 +916,7 @@ El centre disposa d'una **Aula Emprén**, vinculada al Programa Emprén. Aquesta
 
 S'utilitzarà especialment per a l'impuls del projecte **JustHub Garage** i per activitats dels mòduls de *Tutoria*, *Comunicació i Societat* i *Sostenibilitat*.
 
-4. Coordinació i ús compartit dels espais
------------------------------------------
+## 4. Coordinació i ús compartit dels espais
 
 Per optimitzar els espais del centre i garantir-ne un ús eficient:
 
@@ -1033,20 +926,17 @@ Per optimitzar els espais del centre i garantir-ne un ús eficient:
 
 ------------------------------------------------------------------------
 
-**Conclusió**:\
-L\'ús intencionat dels espais i equipaments disponibles permetrà **contextualitzar l'aprenentatge**, millorar la **motivació de l'alumnat**, i connectar-lo amb els **entorns reals de treball**, facilitant així l'assoliment dels resultats d'aprenentatge establerts.
+**Conclusió**:/
+L/'ús intencionat dels espais i equipaments disponibles permetrà **contextualitzar l'aprenentatge**, millorar la **motivació de l'alumnat**, i connectar-lo amb els **entorns reals de treball**, facilitant així l'assoliment dels resultats d'aprenentatge establerts.
 
 
-
-15. Criteris i procediments per a l\'avaluació i la revisió de la pràctica docent
-=================================================================================
+# 15. Criteris i procediments per a l/'avaluació i la revisió de la pràctica docent
 
 L'avaluació i revisió de la **pràctica docent** en la Formació Professional Bàsica és una eina clau per garantir la qualitat educativa i millorar de manera contínua el procés d'ensenyament-aprenentatge. En aquesta etapa, on l'alumnat sovint presenta trajectòries escolars complexes, cal una revisió docent **especialment sensible a la motivació, inclusió i orientació professional**.
 
 Aquest procés d'avaluació es fonamenta en els **principis de la LOMLOE** (article 1, LO 3/2020) i inclou la reflexió sobre la **planificació, execució i resultats**, tant individuals com col·lectius, de la tasca docent.
 
-Criteris per a la revisió de la pràctica docent
------------------------------------------------
+## Criteris per a la revisió de la pràctica docent
 
 1.  **Adequació al currículum de FPB**:
 
@@ -1079,8 +969,7 @@ Criteris per a la revisió de la pràctica docent
     -   Integració del pla de tutoria i orientació dins de les activitats del mòdul.
     -   Coordinació amb el departament d'orientació i serveis socials si cal.
 
-Procediments d'avaluació de la pràctica docent
-----------------------------------------------
+## Procediments d'avaluació de la pràctica docent
 
 -   **Autoavaluació docent**: cada professor realitzarà una reflexió individual (almenys un cop per curs) sobre les seues fortaleses, àrees de millora i necessitats de suport.
 
@@ -1090,8 +979,7 @@ Procediments d'avaluació de la pràctica docent
 
 -   **Valoració conjunta amb l'equip orientador**: especialment en casos amb PPA, es farà una valoració específica de les adaptacions aplicades i de l'impacte en la motivació i l'assistència de l'alumnat.
 
-Revisió del Projecte Curricular del Cicle Formatiu (PCCF)
----------------------------------------------------------
+## Revisió del Projecte Curricular del Cicle Formatiu (PCCF)
 
 El **PCCF s'analitzarà anualment** al final del curs escolar en una sessió d'avaluació global. En aquest espai, es valorarà:
 
@@ -1104,27 +992,23 @@ El resultat d'aquesta revisió podrà comportar **modificacions concretes** per 
 
 ------------------------------------------------------------------------
 
-📎 Annexos de suport
--------------------
+## /[clip/] Annexos de suport
 
 Per facilitar el procés de revisió i reflexió docent, es proposen els següents annexos:
 
--   [📝 Model d'autoavaluació docent](../annexos/Annex-Autoavaluacio-Docent/)
--   [📋 Enquesta de valoració del mòdul (alumnat)](../annexos/Annex-Enquesta-Alumnat/)
+-   [/[nota/] Model d'autoavaluació docent](../annexos/Annex-Autoavaluacio-Docent/)
+-   [/[llista/] Enquesta de valoració del mòdul (alumnat)](../annexos/Annex-Enquesta-Alumnat/)
 
 Aquests materials es poden adaptar a cada mòdul o departament, i poden formar part de la documentació habitual de final de trimestre o de curs.
 
 
+# 16. Atenció a la diversitat. Mesures de resposta educativa a la inclusió
 
-16. Atenció a la diversitat. Mesures de resposta educativa a la inclusió
-========================================================================
+L/'atenció a les diferències individuals és un **precepte constitucional** (Constitució Espanyola, Art. 27.1) i un pilar de l/'educació inclusiva. En l/'àmbit de la Formació Professional Bàsica (FPB), aquest compromís es concreta mitjançant les **Mesures de Resposta Educativa per a la Inclusió (MREI)**, tal com estableixen la **LO 3/2022** i el **RD 659/2023**.
 
-L\'atenció a les diferències individuals és un **precepte constitucional** (Constitució Espanyola, Art. 27.1) i un pilar de l\'educació inclusiva. En l\'àmbit de la Formació Professional Bàsica (FPB), aquest compromís es concreta mitjançant les **Mesures de Resposta Educativa per a la Inclusió (MREI)**, tal com estableixen la **LO 3/2022** i el **RD 659/2023**.
+Aquestes mesures tenen com a finalitat **eliminar les barreres** d/'accés, participació i aprenentatge, i assegurar que tot l'alumnat tinga oportunitats reals per assolir les competències del cicle.
 
-Aquestes mesures tenen com a finalitat **eliminar les barreres** d\'accés, participació i aprenentatge, i assegurar que tot l'alumnat tinga oportunitats reals per assolir les competències del cicle.
-
-Principis normatius
--------------------
+## Principis normatius
 
 D'acord amb el RD 659/2023, article 15, les mesures s'han d'ajustar a:
 
@@ -1132,13 +1016,12 @@ D'acord amb el RD 659/2023, article 15, les mesures s'han d'ajustar a:
 -   **Accessibilitat universal i disseny per a tots**
 -   **Adaptació de condicions d'aprenentatge i avaluació**
 
-Tipologia de mesures (MREI)
----------------------------
+## Tipologia de mesures (MREI)
 
 ### 1. Adaptacions metodològiques
 
 -   Ús de **metodologies actives i flexibles** (ABP, reptes, tallers col·laboratius).
--   Disseny d'**activitats graduades** que permeten diferents nivells d\'assoliment.
+-   Disseny d'**activitats graduades** que permeten diferents nivells d/'assoliment.
 -   Atenció a la diversitat d'estils d'aprenentatge (visual, kinestèsic, etc.).
 
 ### 2. Suport personalitzat i tutorització
@@ -1155,58 +1038,50 @@ Tipologia de mesures (MREI)
 
 ### 4. Accessibilitat i recursos adaptats
 
--   Materials accessibles (ampliació de tipografia, contrast, lectura fàcil\...).
--   Ús de **tecnologies assistives** (lector de pantalla, subtítols, teclats especials\...).
+-   Materials accessibles (ampliació de tipografia, contrast, lectura fàcil/...).
+-   Ús de **tecnologies assistives** (lector de pantalla, subtítols, teclats especials/...).
 -   Eliminació de barreres físiques, sensorials i digitals.
 
-Avaluació inclusiva
--------------------
+## Avaluació inclusiva
 
 -   Avaluació **personalitzada i formativa**, orientada al progrés.
 -   Ús d'**instruments diversos i adaptats** (rúbriques, observació, exposicions, autoavaluació).
--   Flexibilitat en les condicions (temps extra, format de proves, presentacions orals\...).
+-   Flexibilitat en les condicions (temps extra, format de proves, presentacions orals/...).
 
-Revisió i seguiment
--------------------
+## Revisió i seguiment
 
 -   Les MREI seran acordades i revisades **col·lectivament** per l'equip docent en coordinació amb el departament d'orientació.
 -   Les mesures aplicades es revisaran **trimestralment**, i s'ajustaran segons l'evolució de l'alumnat i les necessitats detectades.
 
-Referències normatives i recursos
----------------------------------
+## Referències normatives i recursos
 
--   LO 3/2022, d\'ordenació i integració de la Formació Professional
+-   LO 3/2022, d/'ordenació i integració de la Formació Professional
 -   RD 659/2023, d'ordenació dels cicles de grau bàsic
 -   GVA: [Mesures d'inclusió educativa](https://ceice.gva.es/va/web/inclusioeducativa)
 -   GVA: [Identificació de barreres](https://ceice.gva.es/es/web/inclusioeducativa/identificacio-de-barreres)
 
-Comentari final
----------------
+## Comentari final
 
 En el marc del Projecte Curricular de Cicle Formatiu, les MREI s'integren com a part fonamental del model pedagògic del centre. La seua aplicació en FPB esdevé imprescindible per garantir l'**equitat real** i la **justícia educativa**, superant una visió només compensatòria.
 
-> 💡 Les MREI no són excepcions, sinó respostes sistemàtiques i estructurades que reconeixen i abracen la diversitat.
+> /[idea/] Les MREI no són excepcions, sinó respostes sistemàtiques i estructurades que reconeixen i abracen la diversitat.
 
 
-
-17. Criteris per a la planificació d\'activitats complementàries i extraescolars
-================================================================================
+# 17. Criteris per a la planificació d/'activitats complementàries i extraescolars
 
 Les **activitats complementàries i extraescolars** són eines pedagògiques que **enriqueixen i consoliden** el procés d'ensenyament-aprenentatge. Permeten a l'alumnat aplicar els coneixements adquirits en entorns reals, millorar la motivació i desenvolupar competències transversals.
 
 Aquestes activitats es programaran seguint els criteris acordats per l'equip docent i alineats amb els **objectius del currículum del cicle FPB d'Informàtica d'Oficina**.
 
-Criteris generals per a la planificació
----------------------------------------
+## Criteris generals per a la planificació
 
 1.  **Pertinència curricular**: han de reforçar els continguts i sabers treballats als mòduls.
 2.  **Caràcter inclusiu**: totes les activitats han de ser accessibles i promoure la participació de tot l'alumnat.
-3.  **Coherència amb la programació d\'aula**: han d'estar relacionades amb els objectius i competències específiques dels mòduls.
+3.  **Coherència amb la programació d/'aula**: han d'estar relacionades amb els objectius i competències específiques dels mòduls.
 4.  **Viabilitat organitzativa**: es valorarà la logística, horaris, pressupost i recursos disponibles.
 5.  **Informació prèvia a l'alumnat i famílies**: es facilitarà una comunicació clara sobre objectius, continguts, dates i requisits de participació.
 
-Tipus d\'activitats
--------------------
+## Tipus d/'activitats
 
 ### Activitats complementàries
 
@@ -1233,8 +1108,7 @@ Fora de l'horari lectiu, obertes a la participació voluntària i orientades a l
 -   **Buca IMSEF** (projectes internacionals)
 -   **ISIF** (fira internacional d'innovació educativa)
 
-Coordinació i seguiment
------------------------
+## Coordinació i seguiment
 
 L'equip docent farà una planificació anual d'activitats, tenint en compte:
 
@@ -1246,65 +1120,55 @@ Així mateix, es garantirà l'avaluació de cada activitat per mitjà de **rúbr
 
 ------------------------------------------------------------------------
 
-📎 Annexos de suport
--------------------
+## /[clip/] Annexos de suport
 
 Els següents documents faciliten la planificació i valoració de les activitats complementàries i extraescolars:
 
--   [🗓️ Fitxa de planificació d'activitat](../annexos/Annex-Planificacio-Activitat/)
--   [📊 Fitxa de valoració d'activitat](../annexos/Annex-Valoracio-Activitat/)
+-   [/[calendari/] Fitxa de planificació d'activitat](../annexos/Annex-Planificacio-Activitat/)
+-   [/[gràfic/] Fitxa de valoració d'activitat](../annexos/Annex-Valoracio-Activitat/)
 
 Es recomana utilitzar aquestes plantilles per a totes les activitats organitzades dins del cicle FPB.
 
 
+# 18. Criteris per a l/'organització del mòdul professional de projecte
 
-18. Criteris per a l\'organització del mòdul professional de projecte
-=====================================================================
+Aquest apartat **no és aplicable al cicle de Formació Professional Bàsica d/'Informàtica d/'Oficina**, ja que aquest **no inclou el mòdul professional de projecte** dins del seu currículum, segons el Reial decret 127/2014 i el Reial decret 356/2014.
 
-Aquest apartat **no és aplicable al cicle de Formació Professional Bàsica d\'Informàtica d\'Oficina**, ja que aquest **no inclou el mòdul professional de projecte** dins del seu currículum, segons el Reial decret 127/2014 i el Reial decret 356/2014.
-
-No obstant això, els **projectes interdisciplinaris** i activitats col·laboratives realitzades al llarg del cicle compleixen la funció d\'aplicació pràctica dels coneixements, d\'acord amb els principis metodològics de l\'FPB.
+No obstant això, els **projectes interdisciplinaris** i activitats col·laboratives realitzades al llarg del cicle compleixen la funció d/'aplicació pràctica dels coneixements, d/'acord amb els principis metodològics de l/'FPB.
 
 
-
-19. Altres aspectes que ha de contindre el PCCF
-===============================================
+# 19. Altres aspectes que ha de contindre el PCCF
 
 Aquest apartat recull **acords interns, decisions pedagògiques i aspectes rellevants** consensuats per l'equip docent del cicle de **Formació Professional Bàsica d'Informàtica d'Oficina**.
 
 Tot i que no formen part d'un bloc normatiu específic, aquests aspectes complementen el projecte curricular i **contribueixen a la cohesió metodològica, pedagògica i organitzativa** del cicle.
 
-1. Acords metodològics
-----------------------
+## 1. Acords metodològics
 
--   Ús generalitzat de metodologies actives: ABP, reptes, simulacions, tallers\...
+-   Ús generalitzat de metodologies actives: ABP, reptes, simulacions, tallers/...
 -   Aposta per l'**aprenentatge vivencial i contextualitzat**, relacionat amb entorns reals.
 -   Preferència per activitats intermodulars coordinades dins d'un mateix projecte o situació d'aprenentatge.
 
-2. Acords d\'avaluació
-----------------------
+## 2. Acords d/'avaluació
 
 -   Ús compartit d'escales qualitatives, rúbriques i portafolis per a una avaluació formativa.
 -   Disseny conjunt d'instruments d'avaluació per projectes transversals.
 -   Establiment de mínims consensuats per a l'avaluació contínua.
 
-3. Acords d'inclusió i convivència
-----------------------------------
+## 3. Acords d'inclusió i convivència
 
 -   Protocol intern per a la detecció primerenca de dificultats d'aprenentatge.
 -   Coordinació mensual amb orientació per al seguiment de casos amb MREI o PPA.
 -   Espais de trobada amb alumnat per tractar qüestions de convivència, benestar i clima d'aula.
 
-4. Altres acords específics
----------------------------
+## 4. Altres acords específics
 
 -   Compromís de participació del cicle en activitats del centre (jornades culturals, fires, etc.)
 -   Creació d'una comissió de projectes per coordinar accions com JustHub Garage o FP Skills.
 
 > 🗒️ *Aquest apartat pot actualitzar-se cada curs escolar amb els nous acords establerts pel claustre docent o la comissió pedagògica del cicle.*
 
-5. Informe del Departament d'Informàtica i Comunicacions sobre la programació didàctica en FPB
-----------------------------------------------------------------------------------------------
+## 5. Informe del Departament d'Informàtica i Comunicacions sobre la programació didàctica en FPB
 
 En compliment de les **Instruccions d'inici de curs 2025-2026 de la GVA**, aquest Departament elaborarà la **programació didàctica única de cada mòdul professional** del cicle, amb caràcter de document marc per a tot el curs i per a tot l'alumnat, independentment del torn, la modalitat o el règim en què s'impartisca.
 
@@ -1319,16 +1183,14 @@ Per tant, **acatem les Instruccions vigents**, però el Departament d'Informàti
 
 ------------------------------------------------------------------------
 
-Annex: Diferències entre Unitats Didàctiques / Unitats de Programació (UD/UP) i Situacions d'Aprenentatge (SA)
---------------------------------------------------------------------------------------------------------------
+## Annex: Diferències entre Unitats Didàctiques / Unitats de Programació (UD/UP) i Situacions d'Aprenentatge (SA)
 
-Les **Unitats Didàctiques (UD)** foren introduïdes amb la LOGSE i mantingudes amb la LOMCE com a model bàsic de planificació.\
+Les **Unitats Didàctiques (UD)** foren introduïdes amb la LOGSE i mantingudes amb la LOMCE com a model bàsic de planificació./
 Actualment, les **Instruccions d'inici de curs de la GVA** exigeixen l'ús de **Unitats de Programació (UP)** com a instrument de la programació didàctica en FP.
 
-En canvi, la **LOMLOE** i la **Llei de FP** estableixen un nou paradigma educatiu basat en el desenvolupament competencial i l'avaluació formativa.\
+En canvi, la **LOMLOE** i la **Llei de FP** estableixen un nou paradigma educatiu basat en el desenvolupament competencial i l'avaluació formativa./
 Aquest canvi, en altres etapes educatives (Primària, ESO i Batxillerat), s'ha concretat a través de les **Situacions d'Aprenentatge (SA)**, que actuen com a instrument didàctic central.
 
-::: {.keep-html}
   Aspecte                   Unitats Didàctiques / Unitats de Programació (UD/UP)                                                                   Situacions d'Aprenentatge (SA)
   ------------------------- ---------------------------------------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------------------------------------------------
   **Marc normatiu**         Introduïdes amb LOGSE i mantingudes amb LOMCE. En FP, les Instruccions d'inici de curs 25-26 de la GVA exigeixen UP.   La LOMLOE i la Llei de FP impulsen un model competencial i d'avaluació formativa que en altres etapes s'ha traduït en SA.
@@ -1337,31 +1199,26 @@ Aquest canvi, en altres etapes educatives (Primària, ESO i Batxillerat), s'ha c
   **Metodologia**           Lineal, centrada en la transmissió i la repetició de continguts.                                                       Activa, col·laborativa i basada en la resolució de problemes i la interdisciplinarietat.
   **Avaluació**             Generalment sumativa, centrada en proves i resultats individuals.                                                      Formativa i contínua, vinculada al procés i a l'aplicació pràctica en contextos reals.
   **Finalitat educativa**   Adquisició ordenada de coneixements i habilitats concretes.                                                            Preparació integral per a la vida personal, social i professional mitjançant contextos aplicats.
-:::
 
 
-
-20. Les programacions didàctiques dels mòduls i/o els projectes
-===============================================================
+# 20. Les programacions didàctiques dels mòduls i/o els projectes
 
 Les programacions didàctiques concreten com s'imparteixen els mòduls professionals i, si escau, els projectes del cicle. S'elaboren d'acord amb el PCCF i amb les directrius de la comissió de coordinació pedagògica del centre, i serveixen de base per a les programacions d'aula.
 
 ::: {.admonition .note}
 Marc normatiu
 
-Tal com estableix l'article 9.2 del Decret 114/2025, de 29 de juliol, del Consell,\
+Tal com estableix l'article 9.2 del Decret 114/2025, de 29 de juliol, del Consell,/
 les programacions didàctiques han d'incloure, com a mínim, els elements següents.
 :::
 
-1. Concepte i finalitat
------------------------
+## 1. Concepte i finalitat
 
 La programació del mòdul ha de ser un document clar, concís i útil per a planificar l'activitat docent. Ha d'ajustar-se al que preveu el PCCF i donar resposta a: - La seqüència i organització dels resultats d'aprenentatge (RA) i dels criteris d'avaluació. - L'organització i temporització dels continguts, metodologies i recursos. - Les condicions d'impartició (presencial o semipresencial) i l'atenció a la diversitat.
 
 La programació és única per a cada mòdul del cicle; la seua concreció operativa es reflectirà en les programacions d'aula de cada grup.
 
-2. Contingut mínim de la programació didàctica del mòdul
---------------------------------------------------------
+## 2. Contingut mínim de la programació didàctica del mòdul
 
 -   Dades identificatives, marc normatiu i contextualització del mòdul.
 -   Relació entre els estàndards de competència i els mòduls del cicle formatiu.
@@ -1384,6 +1241,5 @@ Recomanacions de qualitat
 -   Preveu adaptacions metodològiques i d'avaluació per a necessitats específiques.
 -   Actualitza anualment la programació amb evidències
 :::
-
 
 
