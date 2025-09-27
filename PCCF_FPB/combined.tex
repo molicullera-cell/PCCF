@@ -1,0 +1,3315 @@
+%%
+% Copyright (c) 2017 - 2023, Pascal Wagler;
+% Copyright (c) 2014 - 2023, John MacFarlane
+%
+% All rights reserved.
+%
+% Redistribution and use in source and binary forms, with or without
+% modification, are permitted provided that the following conditions
+% are met:
+%
+% - Redistributions of source code must retain the above copyright
+% notice, this list of conditions and the following disclaimer.
+%
+% - Redistributions in binary form must reproduce the above copyright
+% notice, this list of conditions and the following disclaimer in the
+% documentation and/or other materials provided with the distribution.
+%
+% - Neither the name of John MacFarlane nor the names of other
+% contributors may be used to endorse or promote products derived
+% from this software without specific prior written permission.
+%
+% THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+% "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+% LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+% FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+% COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+% INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+% BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+% LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+% CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+% LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+% ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+% POSSIBILITY OF SUCH DAMAGE.
+%%
+
+%%
+% This is the Eisvogel pandoc LaTeX template.
+%
+% For usage information and examples visit the official GitHub page:
+% https://github.com/Wandmalfarbe/pandoc-latex-template
+%%
+
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names,table}{xcolor}
+%
+\documentclass[
+  paper=a4,
+  ,captions=tableheading
+]{scrartcl}
+\usepackage{amsmath,amssymb}
+% Use setspace anyway because we change the default line spacing.
+% The spacing is changed early to affect the titlepage and the TOC.
+\usepackage{setspace}
+\setstretch{1.2}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\definecolor{default-linkcolor}{HTML}{A50000}
+\definecolor{default-filecolor}{HTML}{A50000}
+\definecolor{default-citecolor}{HTML}{4077C0}
+\definecolor{default-urlcolor}{HTML}{4077C0}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=3cm]{geometry}
+\usepackage{listings}
+\newcommand{\passthrough}[1]{#1}
+\lstset{defaultdialect=[5.3]Lua}
+\lstset{defaultdialect=[x86masm]Assembler}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+% add backlinks to footnote references, cf. https://tex.stackexchange.com/questions/302266/make-footnote-clickable-both-ways
+\usepackage{footnotebackref}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{catalan}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\input{latex-macros.tex}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Proposta curricular de cicle formatiu FPB Informàtica d'Oficina},
+  pdfauthor={JB Talens},
+  pdflang={ca},
+  hidelinks,
+  breaklinks=true,
+  pdfcreator={LaTeX via pandoc with the Eisvogel template}}
+\title{Proposta curricular de cicle formatiu \newline FPB Informàtica
+d'Oficina}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{FPB Informàtica i Comunicacions \newline \today}
+\author{JB Talens}
+\date{}
+
+
+
+%%
+%% added
+%%
+
+\usepackage[pages=all]{background}
+
+%
+% for the background color of the title page
+%
+\usepackage{pagecolor}
+\usepackage{afterpage}
+\usepackage{tikz}
+
+%
+% break urls
+%
+\PassOptionsToPackage{hyphens}{url}
+
+%
+% When using babel or polyglossia with biblatex, loading csquotes is recommended
+% to ensure that quoted texts are typeset according to the rules of your main language.
+%
+\usepackage{csquotes}
+
+%
+% captions
+%
+\definecolor{caption-color}{HTML}{777777}
+\usepackage[font={stretch=1.2}, textfont={color=caption-color}, position=top, skip=4mm, labelfont=bf, singlelinecheck=false, justification=raggedright]{caption}
+\setcapindent{0em}
+
+%
+% blockquote
+%
+\definecolor{blockquote-border}{RGB}{221,221,221}
+\definecolor{blockquote-text}{RGB}{119,119,119}
+\usepackage{mdframed}
+\newmdenv[rightline=false,bottomline=false,topline=false,linewidth=3pt,linecolor=blockquote-border,skipabove=\parskip]{customblockquote}
+\renewenvironment{quote}{\begin{customblockquote}\list{}{\rightmargin=0em\leftmargin=0em}%
+\item\relax\color{blockquote-text}\ignorespaces}{\unskip\unskip\endlist\end{customblockquote}}
+
+%
+% Source Sans Pro as the default font family
+% Source Code Pro for monospace text
+%
+% 'default' option sets the default
+% font family to Source Sans Pro, not \sfdefault.
+%
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+    \usepackage[default]{sourcesanspro}
+  \usepackage{sourcecodepro}
+  \else % if not pdftex
+    \usepackage[default]{sourcesanspro}
+  \usepackage{sourcecodepro}
+
+  % XeLaTeX specific adjustments for straight quotes: https://tex.stackexchange.com/a/354887
+  % This issue is already fixed (see https://github.com/silkeh/latex-sourcecodepro/pull/5) but the
+  % fix is still unreleased.
+  % TODO: Remove this workaround when the new version of sourcecodepro is released on CTAN.
+  \ifxetex
+    \makeatletter
+    \defaultfontfeatures[\ttfamily]
+      { Numbers   = \sourcecodepro@figurestyle,
+        Scale     = \SourceCodePro@scale,
+        Extension = .otf }
+    \setmonofont
+      [ UprightFont    = *-\sourcecodepro@regstyle,
+        ItalicFont     = *-\sourcecodepro@regstyle It,
+        BoldFont       = *-\sourcecodepro@boldstyle,
+        BoldItalicFont = *-\sourcecodepro@boldstyle It ]
+      {SourceCodePro}
+    \makeatother
+  \fi
+  \fi
+
+%
+% heading color
+%
+\definecolor{heading-color}{RGB}{40,40,40}
+\addtokomafont{section}{\color{heading-color}}
+% When using the classes report, scrreprt, book,
+% scrbook or memoir, uncomment the following line.
+%\addtokomafont{chapter}{\color{heading-color}}
+
+%
+% variables for title, author and date
+%
+\usepackage{titling}
+\title{Proposta curricular de cicle formatiu \newline FPB Informàtica
+d'Oficina}
+\author{JB Talens}
+\date{}
+
+%
+% tables
+%
+
+\definecolor{table-row-color}{HTML}{F5F5F5}
+\definecolor{table-rule-color}{HTML}{999999}
+
+%\arrayrulecolor{black!40}
+\arrayrulecolor{table-rule-color}     % color of \toprule, \midrule, \bottomrule
+\setlength\heavyrulewidth{0.3ex}      % thickness of \toprule, \bottomrule
+\renewcommand{\arraystretch}{1.3}     % spacing (padding)
+
+
+%
+% remove paragraph indentation
+%
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+
+%
+%
+% Listings
+%
+%
+
+
+%
+% general listing colors
+%
+\definecolor{listing-background}{HTML}{F7F7F7}
+\definecolor{listing-rule}{HTML}{B3B2B3}
+\definecolor{listing-numbers}{HTML}{B3B2B3}
+\definecolor{listing-text-color}{HTML}{000000}
+\definecolor{listing-keyword}{HTML}{435489}
+\definecolor{listing-keyword-2}{HTML}{1284CA} % additional keywords
+\definecolor{listing-keyword-3}{HTML}{9137CB} % additional keywords
+\definecolor{listing-identifier}{HTML}{435489}
+\definecolor{listing-string}{HTML}{00999A}
+\definecolor{listing-comment}{HTML}{8E8E8E}
+
+\lstdefinestyle{eisvogel_listing_style}{
+  language         = java,
+  numbers          = left,
+  xleftmargin      = 2.7em,
+  framexleftmargin = 2.5em,
+  backgroundcolor  = \color{listing-background},
+  basicstyle       = \color{listing-text-color}\linespread{1.0}%
+                      \lst@ifdisplaystyle%
+                      \small%
+                      \fi\ttfamily{},
+  breaklines       = true,
+  frame            = single,
+  framesep         = 0.19em,
+  rulecolor        = \color{listing-rule},
+  frameround       = ffff,
+  tabsize          = 4,
+  numberstyle      = \color{listing-numbers},
+  aboveskip        = 1.0em,
+  belowskip        = 0.1em,
+  abovecaptionskip = 0em,
+  belowcaptionskip = 1.0em,
+  keywordstyle     = {\color{listing-keyword}\bfseries},
+  keywordstyle     = {[2]\color{listing-keyword-2}\bfseries},
+  keywordstyle     = {[3]\color{listing-keyword-3}\bfseries\itshape},
+  sensitive        = true,
+  identifierstyle  = \color{listing-identifier},
+  commentstyle     = \color{listing-comment},
+  stringstyle      = \color{listing-string},
+  showstringspaces = false,
+  escapeinside     = {/*@}{@*/}, % Allow LaTeX inside these special comments
+  literate         =
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\`E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\EUR}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+  {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1
+  {…}{{\ldots}}1 {≥}{{>=}}1 {≤}{{<=}}1 {„}{{\glqq}}1 {“}{{\grqq}}1
+  {”}{{''}}1
+}
+\lstset{style=eisvogel_listing_style}
+
+%
+% Java (Java SE 12, 2019-06-22)
+%
+\lstdefinelanguage{Java}{
+  morekeywords={
+    % normal keywords (without data types)
+    abstract,assert,break,case,catch,class,continue,default,
+    do,else,enum,exports,extends,final,finally,for,if,implements,
+    import,instanceof,interface,module,native,new,package,private,
+    protected,public,requires,return,static,strictfp,super,switch,
+    synchronized,this,throw,throws,transient,try,volatile,while,
+    % var is an identifier
+    var
+  },
+  morekeywords={[2] % data types
+    % primitive data types
+    boolean,byte,char,double,float,int,long,short,
+    % String
+    String,
+    % primitive wrapper types
+    Boolean,Byte,Character,Double,Float,Integer,Long,Short
+    % number types
+    Number,AtomicInteger,AtomicLong,BigDecimal,BigInteger,DoubleAccumulator,DoubleAdder,LongAccumulator,LongAdder,Short,
+    % other
+    Object,Void,void
+  },
+  morekeywords={[3] % literals
+    % reserved words for literal values
+    null,true,false,
+  },
+  sensitive,
+  morecomment  = [l]//,
+  morecomment  = [s]{/*}{*/},
+  morecomment  = [s]{/**}{*/},
+  morestring   = [b]",
+  morestring   = [b]',
+}
+
+\lstdefinelanguage{XML}{
+  morestring      = [b]",
+  moredelim       = [s][\bfseries\color{listing-keyword}]{<}{\ },
+  moredelim       = [s][\bfseries\color{listing-keyword}]{</}{>},
+  moredelim       = [l][\bfseries\color{listing-keyword}]{/>},
+  moredelim       = [l][\bfseries\color{listing-keyword}]{>},
+  morecomment     = [s]{<?}{?>},
+  morecomment     = [s]{<!--}{-->},
+  commentstyle    = \color{listing-comment},
+  stringstyle     = \color{listing-string},
+  identifierstyle = \color{listing-identifier}
+}
+
+%
+% header and footer
+%
+\usepackage[headsepline,footsepline]{scrlayer-scrpage}
+
+\newpairofpagestyles{eisvogel-header-footer}{
+  \clearpairofpagestyles
+  \ihead*{\includegraphics[scale=0.5]{docs/img/logos/logoJust.png}
+\textcolor{morat}{| Programació d'Aula IMX}}
+  \chead*{}
+  \ohead*{\includegraphics[scale=0.5]{docs/img/logos/GvaNext.png}}
+  \ifoot*{\includegraphics[scale=0.1]{docs/img/logos/FonsVal.png}}
+  \cfoot*{\thepage/\pageref{LastPage}}
+  \ofoot*{\includegraphics[scale=0.3]{docs/img/logos/miniPla.png}}
+  \addtokomafont{pageheadfoot}{\upshape}
+}
+\pagestyle{eisvogel-header-footer}
+
+
+\backgroundsetup{
+scale=1,
+color=black,
+opacity=0.2,
+angle=0,
+contents={%
+  \includegraphics[width=\paperwidth,height=\paperheight]{docs/img/fondo.png}
+  }%
+}
+
+%%
+%% end added
+%%
+
+\begin{document}
+
+%%
+%% begin titlepage
+%%
+\begin{titlepage}
+\newgeometry{top=2cm, right=4cm, bottom=3cm, left=4cm}
+\tikz[remember picture,overlay] \node[inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{docs/img/portada-aula.png}};
+\newcommand{\colorRule}[3][black]{\textcolor[HTML]{#1}{\rule{#2}{#3}}}
+\begin{flushleft}
+\noindent
+\\[-1em]
+\color[HTML]{F08A2A}
+\makebox[0pt][l]{\colorRule[435488]{1.3\textwidth}{0pt}}
+\par
+\noindent
+
+% The titlepage with a background image has other text spacing and text size
+{
+  \setstretch{2}
+  \vfill
+  \vskip -8em
+  \noindent {\huge \textbf{\textsf{Proposta curricular de cicle formatiu
+\newline FPB Informàtica d'Oficina}}}
+    \vskip 1em
+  {\Large \textsf{FPB Informàtica i Comunicacions \newline \today}}
+    \vskip 2em
+  \noindent {\Large \textsf{JB Talens} \vskip 0.6em \textsf{}}
+  \vfill
+}
+
+
+\end{flushleft}
+\end{titlepage}
+\restoregeometry
+\pagenumbering{arabic}
+
+%%
+%% end titlepage
+%%
+
+% \maketitle
+
+
+\renewcommand*\contentsname{Índex}
+{
+\setcounter{tocdepth}{3}
+\tableofcontents
+\newpage
+}
+El \emph{Decret 114/2025, de 29 de juliol del Consell, pel qual
+s/'establixen els currículums dels cicles formatius de grau mitjà i de
+grau superior de Formació Professional}, estableix que cada centre
+docent desenvoluparà i completarà, en el marc de la seua autonomia, els
+curriculums de cada cicle formatiu que impartisca mitjançant
+l/'elaboració de projectes curriculars (PCCF), els quals suposaran el
+marc de referència per a la planificació, el desenvolupament i
+l/'avaluació del procés d/'ensenyament i aprenentatge del cicle.
+
+El present document, en virtut d/'aquest Decret, desenvolupa i completa
+el currículum per al \textbf{CFGM de Sistemes Microinformàtics i
+Xarxes}, i l/'adapta a l/'entorn socioeconòmic i empresarial de l/'IES
+Jaume II el Just, a Tavernes de la Valldigna. Les programacions
+didàctiques de cada mòdul professional s/'elaboraran tenint en compte
+aquest projecte, assegurant la coherència perdagògica i metodològica en
+la impartició del cicle.
+
+\hypertarget{identificaciuxf3-del-cicle-formatiu}{%
+\section{1. Identificació del Cicle
+Formatiu}\label{identificaciuxf3-del-cicle-formatiu}}
+
+El primer requeriment d'un projecte curricular de cicle formatiu (PCCF)
+és la seua identificació clara. En aquest apartat es recullen les dades
+essencials que permeten reconéixer oficialment el cicle objecte de
+programació, així com la vinculació amb el centre educatiu i l'equip
+docent responsable de la seua implementació. Aquesta informació assegura
+la traçabilitat institucional del projecte i el seu encaix amb l'oferta
+educativa del centre i del sistema valencià de Formació Professional.
+
+\hypertarget{denominaciuxf3-oficial-del-tuxedtol}{%
+\subsection{Denominació oficial del
+títol}\label{denominaciuxf3-oficial-del-tuxedtol}}
+
+\begin{itemize}
+\tightlist
+\item
+  Denominació: Títol Professional Bàsic en Informàtica d'Oficina.
+\item
+  Nivell: Formació Professional Bàsica.
+\item
+  Durada: 2.000 hores (dos cursos acadèmics).
+\item
+  Família professional: Informàtica i Comunicacions.
+\item
+  Normativa estatal de referència: Reial decret 356/2014, de 16 de maig.
+\item
+  Normativa autonòmica: adaptació curricular segons normativa de la
+  Comunitat Valenciana.
+\item
+  Referència internacional: CINE-3.5.4 (Classificació Internacional
+  Normalitzada de l'Educació, UNESCO).
+\item
+  Marc Espanyol de Qualificacions per a l/'Educació i la Formació
+  (MECU): Nivell 1.
+\end{itemize}
+
+\hypertarget{centre-educatiu}{%
+\subsection{Centre educatiu}\label{centre-educatiu}}
+
+\begin{itemize}
+\tightlist
+\item
+  Nom del centre: IES Jaume II el Just.
+\item
+  Codi del centre: 46008340.
+\item
+  Localitat: Tavernes de la Valldigna (La Safor).
+\item
+  Província: València.
+\item
+  Tipus de centre: Institut públic d'Educació Secundària, Batxillerat i
+  FP.
+\item
+  Modalitat d'ensenyament: presencial.
+\end{itemize}
+
+\hypertarget{equip-educatiu-responsable}{%
+\subsection{Equip educatiu
+responsable}\label{equip-educatiu-responsable}}
+
+El projecte curricular és responsabilitat de l'equip docent del cicle,
+liderat pel Departament d'Informàtica i Comunicacions. Aquest equip
+incorpora professorat de mòduls específics i transversals, així com la
+figura de la tutoria i la coordinació de Formació Professional Bàsica.
+La direcció d'estudis de FP garanteix la integració del projecte en la
+programació general anual del centre.
+
+Per al curs 2025-2026, l/'organització docent del cicle incorpora les
+següents assignacions específiques:
+
+\begin{itemize}
+\tightlist
+\item
+  El Departament de Castellà assumeix la docència del mòdul transversal
+  Comunicació i Societat, excepte els resultats d'aprenentatge vinculats
+  a la llengua anglesa.
+\item
+  El Departament d'Anglés imparteix els resultats d'aprenentatge
+  corresponents a la competència lingüística en llengua estrangera
+  integrats en el mateix mòdul.
+\item
+  El Departament de Física i Química es fa càrrec de la docència del
+  mòdul Ciències Aplicades.
+\end{itemize}
+
+Aquesta distribució respon a criteris d'especialització docent i
+d'adaptació curricular que garanteixen una atenció adequada a les
+competències bàsiques i professionals requerides
+
+\hypertarget{marc-normatiu-per-al-desplegament-del-projecte-curricular}{%
+\section{2. Marc normatiu per al desplegament del projecte
+curricular}\label{marc-normatiu-per-al-desplegament-del-projecte-curricular}}
+
+L'elaboració d'aquest \textbf{Projecte Curricular de Cicle Formatiu
+(PCCF)} es fonamenta en el seu reconeixement com a instrument de
+\textbf{nivell curricular 2}, segons s'estableix en la guia elaborada
+per la Direcció General de Formació Professional. En aquest marc, el
+PCCF \textbf{no depén de les programacions didàctiques}, sinó que
+\textbf{les integra i articula} a través dels \textbf{acords pedagògics,
+metodològics i organitzatius} definits col·lectivament per l'equip
+docent. Així, esdevé el \textbf{document de referència per a la
+planificació i coherència global del cicle}, i orienta el
+desenvolupament de les \textbf{programacions d'aula dels mòduls
+professionals} (nivell curricular 3).
+
+Tot i aquesta estructuració clara en dos nivells curriculars, cal
+destacar que, mentre que en altres etapes educatives com
+\textbf{Primària, ESO i Batxillerat} la normativa ha substituït el
+concepte de \emph{programació didàctica} pel de \emph{projecte
+curricular d'etapa o de cicle}, en l'àmbit de la Formació Professional
+\textbf{aquesta substitució terminològica no s'ha produït encara}. Per
+tant, en FP es manté l'ús del terme \emph{programació didàctica}, tot i
+que el \textbf{Projecte Curricular de Cicle Formatiu (PCCF)}
+\textbf{assumeix i integra} tot allò corresponent al \textbf{nivell
+curricular 2}, segons les directrius de la Direcció General de Formació
+Professional.
+
+Així, entenem que \textbf{el PCCF conté els acords i orientacions
+pedagògiques comunes del cicle}, que donen coherència a la pràctica
+docent i que \textbf{substitueixen la necessitat de programacions
+didàctiques individuals desvinculades}. Per tant, mentre la normativa no
+indique el contrari, el PCCF \textbf{integra funcionalment les
+programacions didàctiques}, i cada docent ha de \textbf{desenvolupar la
+seua pròpia programació d'aula} (nivell curricular 3) \textbf{basant-se
+en el marc establit pel PCCF}, coherent amb els criteris d'avaluació,
+els resultats d'aprenentatge i les metodologies comunes acordades per
+l'equip docent.
+
+D'aquesta manera, es garanteix una coordinació acurada entre els
+documents, es reforça la coherència de la pràctica docent i es preserva
+el dret de l'alumnat a una avaluació objectiva, personalitzada i
+adaptada al seu progrés i circumstàncies, tal com estableix
+l'\textbf{Ordre 2025/13083}.
+
+A més, aquesta normativa dona suport a la \textbf{implantació de
+metodologies actives}, la \textbf{flexibilitat curricular}, i
+l'enfocament \textbf{intermodular}, amb especial atenció a la
+\textbf{singularització del projecte per a cada estudiant}. Aquest
+plantejament reforça la funció del PCCF com a peça clau per garantir
+l'alineació metodològica, la contextualització i l'assoliment dels
+resultats d'aprenentatge (RA).
+
+Dins aquest nou escenari, la \textbf{Resolució de 17 de juliol de 2025},
+de la Secretaria Autonòmica d'Educació, dicta les \textbf{instruccions
+per a l'organització i funcionament dels cicles formatius de grau D i E}
+i estableix que el \textbf{PCCF ha d'incloure-se a la PGA} i
+\textbf{avaluar-se} com a part essencial de la gestió pedagògica anual.
+A més, aquest document ha de reflectir les directrius de centre,
+integrar les mesures d'atenció a la diversitat, i establir mecanismes de
+seguiment i millora contínua (apartat 22.1 de la resolució).
+
+Finalment, cal tenir en compte que, malgrat la vigència de la nova
+\textbf{Llei orgànica 3/2022, de 31 de març}, i del desplegament del
+\textbf{Reial decret 659/2023}, determinats aspectes de l'ordenació de
+la FPB continuen regulats per normatives anteriors, com ara el
+\textbf{Reial decret 127/2014} o el \textbf{Reial decret 356/2014}, tal
+com estableixen les disposicions transitòries i el \textbf{calendari
+d'implantació del Reial decret 278/2023}. Aquest escenari de transició
+normativa implica que els centres han de gestionar una convivència
+ordenada entre marcs nous i vigents, cosa que reforça encara més la
+funció estructuradora del PCCF com a vertebrador de l'oferta formativa
+del cicle.
+
+\hypertarget{normativa-general}{%
+\subsection{Normativa general}\label{normativa-general}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Llei orgànica 2/2006, de 3 de maig}, d'Educació (LOE),
+  modificada per:
+\item
+  \textbf{Llei orgànica 8/2013, de 9 de desembre} (LOMCE)
+\item
+  \textbf{Llei orgànica 3/2020, de 29 de desembre} (LOMLOE)
+\item
+  \textbf{Llei orgànica 3/2022, de 31 de març}, d'ordenació i integració
+  de la Formació Professional
+\item
+  \textbf{Reial decret 659/2023, de 18 de juliol}, pel qual es desplega
+  l'ordenació del Sistema de Formació Professional
+\item
+  \textbf{Resolució de 17 de juliol de 2025}, de la Secretaria
+  Autonòmica d'Educació, sobre instruccions per a l'FP
+\end{itemize}
+
+\hypertarget{normativa-especuxedfica-per-al-tuxedtol}{%
+\subsection{Normativa específica per al
+títol}\label{normativa-especuxedfica-per-al-tuxedtol}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Reial decret 356/2014, de 16 de maig}, pel qual s'estableix el
+  títol professional bàsic en Informàtica d'Oficina
+\item
+  \textbf{Decret 185/2014, de 31 d'octubre}, pel qual s'establix el
+  currículum del cicle a la Comunitat Valenciana
+\end{itemize}
+
+\hypertarget{avaluaciuxf3-i-qualificaciuxf3}{%
+\subsection{Avaluació i
+qualificació}\label{avaluaciuxf3-i-qualificaciuxf3}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Ordre 79/2010, de 27 d'agost}, sobre l'avaluació de l'alumnat
+  dels cicles formatius a la Comunitat Valenciana
+\item
+  \textbf{Ordre 2025/13083, de 30 d'abril}, sobre el nou sistema
+  d'avaluació en l'FP, amb efectes \textbf{retroactius} des de l'1 de
+  setembre de 2024
+\item
+  \textbf{Reial decret 498/2024, de 21 de maig}, que actualitza els
+  criteris d'avaluació i el sistema de qualificacions en cicles de grau
+  bàsic
+\end{itemize}
+
+\hypertarget{altres-referuxe8ncies-normatives}{%
+\subsection{Altres referències
+normatives}\label{altres-referuxe8ncies-normatives}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Reial decret 217/2022}, d'ordenació de l'ESO (en allò
+  aplicable als cicles FPB)
+\item
+  \textbf{Decret 107/2022}, d'ordenació del currículum de l'ESO a la
+  Comunitat Valenciana
+\item
+  \textbf{Reial decret 278/2023}, sobre calendari d'implantació de la
+  nova ordenació de l'FP
+\item
+  \textbf{Resolucions anuals d'inici de curs} de la Conselleria
+  d'Educació
+\item
+  \textbf{Projecte educatiu del centre (PEC)} i \textbf{programació
+  general anual (PGA)}
+\end{itemize}
+
+Aquest conjunt normatiu dona \textbf{suport i legitimitat a les
+decisions recollides en el PCCF}, que esdevé el document estratègic per
+\textbf{alinear, coordinar i millorar la pràctica docent} del cicle,
+afavorint l'eficàcia pedagògica i l'atenció a la diversitat dins d'un
+marc legal en evolució.
+
+\hypertarget{adequaciuxf3-i-adaptaciuxf3-de-les-competuxe8ncies-professionals-del-tuxedtol-al-context-socioeconuxf2mic-i-cultural-del-centre}{%
+\section{3. Adequació i adaptació de les competències professionals del
+títol al context socioeconòmic i cultural del
+centre}\label{adequaciuxf3-i-adaptaciuxf3-de-les-competuxe8ncies-professionals-del-tuxedtol-al-context-socioeconuxf2mic-i-cultural-del-centre}}
+
+L'adaptació de les competències professionals del títol ha de partir
+d'una anàlisi del \textbf{context socioeconòmic i cultural del centre
+educatiu}, així com de les característiques específiques de l'alumnat.
+Aquesta adequació no implica modificar ni suprimir competències
+recollides en el perfil professional, sinó \textbf{ponderar-les i
+contextualitzar-les} d'acord amb les necessitats del territori i les
+orientacions del \textbf{Projecte d'Acció Curricular (PAC)}.
+
+L'\textbf{IES Jaume II el Just}, situat a Tavernes de la Valldigna, es
+troba en una posició estratègica per donar resposta a les necessitats
+del \textbf{sector TIC} de les comarques de la Safor i la Ribera. El
+centre compta amb una àmplia trajectòria dins la \textbf{Família
+Professional d'Informàtica i Comunicacions}, i ofereix cicles formatius
+de grau bàsic, mitjà i superior, així com \textbf{cursos
+d'especialització en Ciberseguretat i Intel·ligència Artificial i Big
+Data}.
+
+\hypertarget{anuxe0lisi-del-context-territorial-i-productiu}{%
+\subsection{3.1. Anàlisi del context territorial i
+productiu}\label{anuxe0lisi-del-context-territorial-i-productiu}}
+
+Segons dades de la Cambra de Comerç, el País Valencià és un dels
+principals pols tecnològics de l'Estat espanyol, amb més de
+\textbf{2.000 empreses TIC}, de les quals un 70\% són \textbf{pimes}.
+Aquest teixit empresarial, amb escassos recursos per a formació pròpia,
+demanda professionals polivalents i adaptables.
+
+Les comarques de \textbf{la Safor} i \textbf{la Ribera} han experimentat
+un creixement notable del sector TIC, vinculat a la digitalització de
+processos empresarials i a la creació d'espais d'innovació, especialment
+en àmbits com:
+
+\begin{itemize}
+\tightlist
+\item
+  Digitalització del sector agroalimentari
+\item
+  Automatització i gestió empresarial
+\item
+  Suport i manteniment de sistemes i infraestructures TIC
+\item
+  Desenvolupament d'aplicacions i serveis multiplataforma
+\end{itemize}
+
+L'impacte de la \textbf{DANA d'octubre de 2024} ha incrementat, a més,
+la necessitat de perfils relacionats amb la \textbf{recuperació de
+dades, manteniment i seguretat informàtica}, i la transformació digital
+del teixit comercial.
+
+\hypertarget{marc-normatiu-de-referuxe8ncia}{%
+\subsection{3.2. Marc normatiu de
+referència}\label{marc-normatiu-de-referuxe8ncia}}
+
+Segons el \textbf{Reial decret 498/2024}, que actualitza els perfils
+professionals dels cicles de grau bàsic, les antigues /``competències
+professionals, personals i socials/'' passen a denominar-se
+\textbf{competències professionals i per a l'ocupabilitat}, posant
+èmfasi en:
+
+\begin{itemize}
+\tightlist
+\item
+  L'adaptació al canvi tecnològic
+\item
+  La capacitat de treball en equip
+\item
+  L'autonomia i la iniciativa professional
+\item
+  L'assoliment de tasques pròximes a l'entorn real de treball
+\end{itemize}
+
+Aquest enfocament està recollit també al \textbf{Decret 185/2014, de 31
+d'octubre}, que fixa el currículum del \textbf{Títol Professional Bàsic
+en Informàtica d'Oficina} per a la Comunitat Valenciana, vigent fins a
+la plena implementació dels nous currículums previstos per la
+\textbf{LOFP 3/2022} i el \textbf{RD 659/2023}.
+
+\hypertarget{adequaciuxf3-de-les-competuxe8ncies-al-perfil-territorial}{%
+\subsection{3.3. Adequació de les competències al perfil
+territorial}\label{adequaciuxf3-de-les-competuxe8ncies-al-perfil-territorial}}
+
+A partir de l'anàlisi del context i la consulta amb els agents
+socioeconòmics i empresarials de la zona, s'han identificat com a
+\textbf{competències prioritàries} per afavorir la inserció laboral i la
+projecció professional dels titulats les següents:
+
+\begin{itemize}
+\tightlist
+\item
+  Manteniment de sistemes microinformàtics i xarxes locals
+\item
+  Recuperació de dades i diagnòstic de fallades
+\item
+  Instal·lació i configuració de programari bàsic i d'ofimàtica
+\item
+  Comunicació professional oral i escrita
+\item
+  Atenció al client i suport tècnic bàsic
+\item
+  Gestió de la seguretat i la protecció ambiental
+\item
+  Autonomia, responsabilitat i treball en equip
+\end{itemize}
+
+Aquestes prioritats s'han traslladat al \textbf{desenvolupament
+metodològic i curricular} del present PCCF, tot mantenint el marc
+competencial oficial però ajustant el \textbf{pes relatiu de cadascuna
+de les competències} segons el seu impacte formatiu i ocupacional.
+
+\hypertarget{proposta-de-ponderaciuxf3-de-competuxe8ncies}{%
+\subsection{3.4. Proposta de ponderació de
+competències}\label{proposta-de-ponderaciuxf3-de-competuxe8ncies}}
+
+Per tal de garantir la coherència entre el perfil del títol i les
+demandes de l'entorn productiu, l'equip docent ha consensuat la següent
+\textbf{ponderació orientativa} de les competències professionals:
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\textbf{Codi} & \textbf{Competència professional} & \textbf{Ponderació
+(\%)} \\
+\midrule
+\endhead
+a & Preparar equips i aplicacions per al tractament, impressió i arxiu
+de dades i textos & 10 \% \\
+b & Elaborar documents amb processadors de text i fulls de càlcul
+seguint protocols & 10 \% \\
+c & Acopiar materials per al muntatge i manteniment de sistemes
+informàtics & 5 \% \\
+d & Realitzar operacions auxiliars de muntatge de sistemes
+microinformàtics & 10 \% \\
+e & Realitzar operacions de manteniment bàsic de sistemes
+microinformàtics & 10 \% \\
+f & Realitzar operacions d'emmagatzematge i transport de perifèrics i
+sistemes & 5 \% \\
+g & Verificar sistemes i instal·lacions informàtiques segons
+procediments establerts & 5 \% \\
+h & Muntar canalitzacions i cablatge de dades amb criteris de qualitat i
+seguretat & 5 \% \\
+i & Realitzar el cablejat de xarxes locals segons tècniques
+normalitzades & 5 \% \\
+j & Manejar eines de l/'entorn d'usuari i dispositius d'emmagatzematge
+d'informació & 5 \% \\
+k & Resoldre problemes previsibles amb suport científic i tecnològic & 3
+\% \\
+l & Fomentar hàbits saludables en l'entorn personal i social & 2 \% \\
+m & Aplicar accions de conservació del medi ambient & 2 \% \\
+n & Utilitzar tecnologies per a l'autonomia i aprenentatge permanent & 3
+\% \\
+o & Comunicar-se amb claredat en diversos entorns i mitjans & 3 \% \\
+p & Comunicar-se en llengua estrangera en situacions habituals & 2 \% \\
+q & Explicar fets o fenòmens socials amb precisió lingüística & 2 \% \\
+r & Adaptar-se a canvis tecnològics i organitzatius en l'activitat
+professional & 3 \% \\
+s & Complir tasques pròpies amb responsabilitat i eficiència & 4 \% \\
+t & Comunicar-se i treballar en equip respectant l'autonomia i
+competència dels altres & 3 \% \\
+u & Aplicar mesures de prevenció de riscos laborals i seguretat & 3
+\% \\
+v & Complir normes de qualitat, accessibilitat i disseny universal & 2
+\% \\
+w & Actuar amb iniciativa i responsabilitat en la tria de procediments
+professionals & 2 \% \\
+x & Exercir els drets i obligacions professionals amb participació en la
+vida social i econòmica & 1 \% \\
+\textbf{Total} & & \textbf{100 \%} \\
+\bottomrule
+\end{longtable}
+
+Aquesta ponderació serà tinguda en compte en la programació d'aula, en
+les situacions d'aprenentatge i en el disseny de projectes
+intermodulars, amb l'objectiu de formar titulats i titulades preparats
+per a \textbf{l'ocupabilitat real i el desenvolupament professional
+sostenible} dins del sector TIC del territori.
+
+\hypertarget{contribuciuxf3-de-cada-muxf2dul-a-les-competuxe8ncies-professionals-del-cicle}{%
+\section{4. Contribució de cada mòdul a les competències professionals
+del
+cicle}\label{contribuciuxf3-de-cada-muxf2dul-a-les-competuxe8ncies-professionals-del-cicle}}
+
+Per a la coordinació del treball educatiu, és necessari \textbf{estudiar
+com cada mòdul contribueix al desenvolupament de les competències
+professionals} del títol. Aquesta visió integrada permet una
+planificació coherent i compartida entre els docents implicats, i ajuda
+a garantir que totes les competències requerides siguen abordades de
+manera progressiva i equilibrada al llarg del cicle formatiu.
+
+Aquest enfocament també permet, en un nivell més avançat de programació,
+\textbf{identificar resultats d'aprenentatge (RA) clau} que, pel seu
+caràcter transversal o pel seu impacte professional, requerisquen una
+atenció especial dins de cada mòdul. Així, el procés de programació pot
+ajustar-se per garantir que cap competència quede desatesa i que es
+desenvolupen de manera efectiva aquelles que són més rellevants per a la
+inserció laboral i el desenvolupament personal de l'alumnat.
+
+Per tal d'arribar a aquest nivell de concreció, es proposa estructurar
+una \textbf{taula de contribució competencial}, en què es relacione cada
+mòdul amb les competències professionals del perfil. Aquesta associació
+s'establix a partir de les orientacions del Reial decret que regula el
+títol (RD 356/2014), i pot ser revisada o ajustada per l'equip educatiu
+si ho considera oportú, d'acord amb les característiques del context i
+del grup classe.
+
+La \textbf{competència general} del títol és la següent:
+
+\begin{quote}
+\emph{/``Realitzar operacions auxiliars de muntatge i manteniment de
+sistemes microinformàtics, perifèrics i xarxes de comunicació de dades,
+i de tractament, reproducció i arxiu de documents, operant amb la
+qualitat indicada i actuant en condicions de seguretat i de protecció
+ambiental amb responsabilitat i iniciativa personal, i comunicant-se de
+forma oral i escrita en llengua castellana, i si escau, en la llengua
+cooficial pròpia, així com en alguna llengua estrangera./''}
+\end{quote}
+
+\hypertarget{taula-de-corresponduxe8ncia-entre-muxf2duls-i-competuxe8ncies-professionals}{%
+\subsection{4.1. Taula de correspondència entre mòduls i competències
+professionals}\label{taula-de-corresponduxe8ncia-entre-muxf2duls-i-competuxe8ncies-professionals}}
+
+A continuació es presenta la relació entre els \textbf{mòduls
+professionals} del cicle i les \textbf{competències professionals,
+personals i socials} que contribueixen a desenvolupar:
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\textbf{Mòdul Professional} & \textbf{Competències Professionals,
+Personals i Socials Desenvolupades} \\
+\midrule
+\endhead
+3029/. Muntatge i manteniment de sistemes i components informàtics & c),
+d), e), f), g), h), i), j) \\
+3030/. Operacions auxiliars per a la configuració i explotació & a),
+j) \\
+3016/. Instal·lació i manteniment de xarxes per a transmissió de dades &
+h), i) \\
+3031/. Ofimàtica i arxiu de documents & a), b), j) \\
+3011/. Comunicació i societat I & m), n), ñ), o), p) \\
+3012/. Comunicació i societat II & q), r), s), t), u), v), w) \\
+3009/. Ciències aplicades I & j), k), l), m) \\
+3010/. Ciències aplicades II & q), r), s), t), u), v), w), x) \\
+3033/. Formació en centres de treball (FCT) & Totes les competències
+transversals i tècniques en context real \\
+\bottomrule
+\end{longtable}
+
+\begin{quote}
+Aquesta taula és un instrument fonamental per a la \textbf{coordinació
+entre docents}, la programació compartida de situacions d'aprenentatge i
+la detecció de possibles buits competencials en el desenvolupament del
+currículum.
+\end{quote}
+
+\hypertarget{utilitzaciuxf3-diduxe0ctica}{%
+\subsection{4.2. Utilització
+didàctica}\label{utilitzaciuxf3-diduxe0ctica}}
+
+El claustre i l'equip docent poden utilitzar aquesta informació per:
+
+\begin{itemize}
+\tightlist
+\item
+  Dissenyar activitats i projectes integrats amb una visió competencial
+\item
+  Assignar responsabilitats específiques de seguiment i avaluació per
+  competència
+\item
+  Coordinar l'acció tutorial i les activitats d'orientació professional
+\item
+  Planificar de manera col·laborativa els \textbf{projectes
+  intermodulars} i les \textbf{situacions d'aprenentatge}
+\end{itemize}
+
+Amb tot això, el \textbf{PCCF esdevé una eina viva}, en constant
+revisió, que assegura la cohesió del treball educatiu i l'alineació de
+les actuacions docents amb els objectius del sistema de Formació
+Professional i les necessitats de l'entorn.
+
+\hypertarget{estructura-modular-i-transiciuxf3-del-curruxedculum}{%
+\subsubsection{4.3. Estructura modular i transició del
+currículum}\label{estructura-modular-i-transiciuxf3-del-curruxedculum}}
+
+Actualment, el cicle \textbf{Tècnic Bàsic en Informàtica d'Oficina}
+presenta la següent estructura modular i horària, vigent \textbf{fins al
+curs 2024-2025}. A partir del curs 2025-2026, s'implantarà una nova
+estructura que reflecteix els canvis introduïts pel nou marc normatiu.
+
+\hypertarget{estructura-vigent-fins-al-curs-2024-2025}{%
+\paragraph{\texorpdfstring{\textbf{Estructura vigent fins al curs
+2024-2025}}{Estructura vigent fins al curs 2024-2025}}\label{estructura-vigent-fins-al-curs-2024-2025}}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+\textbf{Curs} & \textbf{Mòdul Professional} & \textbf{Hores setmanals} &
+\textbf{Hores totals} \\
+\midrule
+\endhead
+\textbf{1r} & 3031/. Ofimàtica i arxiu de documents & 9 & 300 \\
+& 3029/. Muntatge i manteniment de sistemes i components informàtics & 9
+& 290 \\
+& 3009/. Ciències aplicades I & 5 & 158 \\
+& 3011/. Comunicació i societat I & 5 & 158 \\
+& Tutoria & 1 & 34 \\
+& CV0005. Formació i Orientació Laboral I & 1 & 30 \\
+& \textbf{Total 1r curs} & \textbf{30} & \textbf{970} \\
+\textbf{2n} & 3016/. Instal·lació i manteniment de xarxes per a
+transmissió de dades & 10 & 255 \\
+& 3030/. Operacions auxiliars per a la configuració i l'explotació & 6 &
+155 \\
+& 3019/. Ciències aplicades II & 6 & 158 \\
+& 3012/. Comunicació i societat II & 6 & 158 \\
+& Tutoria & 1 & 34 \\
+& CV0006. Formació i Orientació Laboral II & 1 & 30 \\
+& 3033/. Formació en centres de treball & /- & 240 \\
+& \textbf{Total 2n curs} & \textbf{30} & \textbf{1.030} \\
+& \textbf{Total cicle} & \textbf{60} & \textbf{2.000} \\
+\bottomrule
+\end{longtable}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{nova-estructura-a-partir-del-curs-2025-2026}{%
+\paragraph{\texorpdfstring{\textbf{Nova estructura a partir del curs
+2025-2026}}{Nova estructura a partir del curs 2025-2026}}\label{nova-estructura-a-partir-del-curs-2025-2026}}
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule
+\textbf{Curs} & \textbf{Codi} & \textbf{Mòdul Professional} &
+\textbf{Hores setmanals} & \textbf{Hores totals} \\
+\midrule
+\endhead
+\textbf{1r} & 3029 & Muntatge i manteniment de sistemes i components
+informàtics & 9 & 299 \\
+& 3031 & Ofimàtica i arxiu de documents & 9 & 299 \\
+& 3161 & Comunicació i Ciències Socials I & 4 & 133 \\
+& 3163 & Ciències aplicades I & 4 & 133 \\
+& TU01CF & Tutoria Primer & 2 & 69 \\
+& 3159p & Itinerari personal per a l'ocupabilitat 1r & 2 & 67 \\
+& & \textbf{Total 1r curs} & \textbf{30} & \textbf{1.000} \\
+\textbf{2n} & 3016 & Instal·lació i manteniment de xarxes de comunicació
+& 10 & 332 \\
+& 3030 & Configuració i explotació de sistemes informàtics & 6 & 200 \\
+& 3159 & Itinerari personal per a l'ocupabilitat & 1 & 34 \\
+& 3162 & Comunicació i Ciències Socials II & 5 & 166 \\
+& 3164 & Ciències aplicades II & 5 & 166 \\
+& TU02CF & Tutoria Segon & 1 & 35 \\
+& 3160972 & Projecte intermodular d'aprenentatge col·laboratiu & 2 &
+67 \\
+& & \textbf{Total 2n curs} & \textbf{30} & \textbf{1.000} \\
+& & \textbf{Total cicle} & \textbf{60} & \textbf{2.000} \\
+\bottomrule
+\end{longtable}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+Aquesta nova estructura reforça el \textbf{component competencial,
+transversal i integrat del currículum}, amb una clara aposta per la
+coordinació entre mòduls, la personalització de l'itinerari formatiu i
+el treball per projectes. L'equip docent haurà d'adaptar les seues
+programacions i estratègies metodològiques per tal de garantir
+l'aplicació efectiva d'aquest nou model.
+
+\hypertarget{comparativa-entre-lestructura-vigent-i-la-nova-proposta-curricular}{%
+\subsection{4.4. Comparativa entre l'estructura vigent i la nova
+proposta
+curricular}\label{comparativa-entre-lestructura-vigent-i-la-nova-proposta-curricular}}
+
+La següent taula resumeix de manera comparativa les diferències entre
+l'estructura \textbf{vigent fins al curs 2024-2025} i la \textbf{nova
+proposta curricular a partir del curs 2025-2026} per al cicle de
+\textbf{Tècnic Bàsic en Informàtica d'Oficina}:
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\textbf{Aspecte} & \textbf{Estructura vigent (fins 2024-2025)} &
+\textbf{Nova estructura (a partir de 2025-2026)} \\
+\midrule
+\endhead
+Nombre total de mòduls & 12 mòduls & 12 mòduls (amb codis i
+denominacions revisades) \\
+Projecte intermodular & Apareix només a 2n curs com a mòdul específic &
+Es manté i es reforça com a element vertebrador \\
+Itinerari personal per a l'ocupabilitat & Present als dos cursos & Es
+manté, però amb integració més activa en el PCCF \\
+Tutoria & Dos mòduls (1r i 2n) & Es manté igual \\
+Comunicació i Ciències Socials & Dues fases (I i II) & Es manté, amb
+ajustos metodològics \\
+Ciències aplicades & Dues fases (I i II) & Es manté, amb orientació cap
+a contextos professionals \\
+Denominació de mòduls tècnics & Formulació genèrica & Denominació més
+precisa i funcional: configuració, xarxes/\ldots{} \\
+Distribució horària & 30 h setmanals / 2.000 h totals & Sense canvis
+(mateix volum global) \\
+Orientació competencial & Implícita i a través d'objectius & Explícita,
+integrada i centrada en resultats d'aprenentatge (RA) \\
+Enfocament metodològic & Tradicional amb algunes iniciatives actives &
+Actiu, per projectes, personalitzat i transversal \\
+\bottomrule
+\end{longtable}
+
+\hypertarget{consideracions-per-a-la-implementaciuxf3}{%
+\subsection{4.5. Consideracions per a la
+implementació}\label{consideracions-per-a-la-implementaciuxf3}}
+
+La nova proposta curricular comporta un \textbf{canvi de paradigma} en
+la manera com es planifica, s'imparteix i s'avalua el currículum de la
+Formació Professional Bàsica. Les principals implicacions per al
+desenvolupament del \textbf{PCCF} són:
+
+\begin{itemize}
+\tightlist
+\item
+  Necessitat d'una \textbf{coordinació didàctica més estreta} entre
+  docents dels diferents mòduls.
+\item
+  Incorporació de \textbf{metodologies actives} i de situacions
+  d'aprenentatge contextualitzades.
+\item
+  Major \textbf{centralitat del projecte intermodular}, que esdevé eix
+  transversal del procés formatiu.
+\item
+  Integració efectiva de les \textbf{competències per a l'ocupabilitat},
+  amb accions concretes des de cada mòdul.
+\item
+  Adaptació progressiva de les programacions a un model \textbf{orientat
+  a l'assoliment de RA} i no només de continguts.
+\end{itemize}
+
+Aquest context reforça la funció estratègica del \textbf{PCCF com a
+instrument de planificació col·lectiva}, alineat amb els objectius del
+centre, el PEC i les exigències de la nova legislació educativa.
+
+\hypertarget{contribuciuxf3-de-cada-muxf2dul-a-les-competuxe8ncies-per-a-locupabilitat}{%
+\section{5. Contribució de cada mòdul a les competències per a
+l/'ocupabilitat}\label{contribuciuxf3-de-cada-muxf2dul-a-les-competuxe8ncies-per-a-locupabilitat}}
+
+Igual que en l'apartat anterior, és important identificar \textbf{quines
+competències per a l'ocupabilitat es treballaran en cada mòdul
+professional}, per tal d'integrar-les de manera coherent i efectiva a
+l/'hora de programar.
+
+Aquestes competències, que inclouen aspectes com la responsabilitat,
+l'autonomia, el treball en equip o l'adaptabilitat, \textbf{no tenen una
+relació directa amb les habilitats tècniques pròpies de la professió}, i
+per això no resulta convenient aplicar una ponderació percentual com es
+fa amb les competències professionals.
+
+Al contrari, es recomana que \textbf{l'equip docent, en funció de la
+seua experiència i del disseny de les activitats d'aprenentatge,
+decidisca en quins mòduls és més adient treballar cada competència per a
+l'ocupabilitat}. Aquesta decisió s'hauria de prendre col·lectivament,
+tenint en compte el context, l'alumnat i els escenaris d'aplicació
+professional simulats o reals.
+
+Aquestes competències són fonamentals per a l'\textbf{acollida, la
+permanència i el progrés en l'àmbit laboral}, i han d'estar
+\textbf{reflectides de manera clara i visible en les rúbriques, llistes
+de control, activitats d'autoavaluació i qualsevol altre instrument
+emprat per a l'avaluació} dels mòduls que les treballen. Aquesta
+inclusió permet garantir que el procés d'avaluació valore \textbf{tant
+el desenvolupament tècnic com les actituds i capacitats personals i
+socials} que configuren un perfil professional complet.
+
+\hypertarget{relaciuxf3-orientativa-entre-muxf2duls-i-competuxe8ncies-per-a-locupabilitat}{%
+\subsection{5.1. Relació orientativa entre mòduls i competències per a
+l'ocupabilitat}\label{relaciuxf3-orientativa-entre-muxf2duls-i-competuxe8ncies-per-a-locupabilitat}}
+
+La següent taula ofereix una proposta inicial de \textbf{distribució de
+les competències per a l'ocupabilitat} entre els diferents mòduls del
+cicle:
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\textbf{Mòdul Professional} & \textbf{Competències per a l'ocupabilitat
+desenvolupades} \\
+\midrule
+\endhead
+3029/. Muntatge i manteniment de sistemes i components informàtics & t),
+u), v), w), x), y), z) \\
+3031/. Ofimàtica i arxiu de documents & t), u), v), w), x), y), z) \\
+3016/. Instal·lació i manteniment de xarxes per a transmissió de dades &
+t), u), v), w), x), y), z) \\
+3030/. Operacions auxiliars per a la configuració i l'explotació & t),
+u), v), w), x), y), z) \\
+3161 / 3162. Comunicació i Ciències Socials I i II & s), t), u), v), w),
+z) \\
+3163 / 3164. Ciències aplicades I i II & t), u), v), w), x), y), z) \\
+3159/. Itinerari personal per a l'ocupabilitat & s), t), u), v), w), x),
+y), z) \\
+3160972/. Projecte intermodular d'aprenentatge col·laboratiu & t), u),
+v), w), y), z) \\
+Tutoria (TU01CF / TU02CF) & Seguiment actitudinal i suport al
+desenvolupament transversal \\
+\bottomrule
+\end{longtable}
+
+\begin{quote}
+Aquesta distribució hauria de ser revisada per l'equip docent en cada
+curs acadèmic, d'acord amb les programacions, els perfils d'alumnat i
+els objectius del projecte intermodular. Les competències per a
+l'ocupabilitat s'han d'integrar de forma natural en la dinàmica d'aula i
+han de ser \textbf{avaluables mitjançant indicadors clars i
+observables}.
+\end{quote}
+
+Perquè això siga possible, cal:
+
+\begin{itemize}
+\tightlist
+\item
+  Planificar situacions d'aprenentatge on aquestes competències
+  apareguen de manera contextualitzada i significativa.
+\item
+  Incorporar-les explícitament en els \textbf{instruments d'avaluació}
+  del mòdul (rúbriques, escales de valoració, llistes de control,
+  autoavaluacions, etc.).
+\item
+  Fer ús de \textbf{metodologies actives i cooperatives} que faciliten
+  el seu desplegament (projectes, tasques compartides, simulacions,
+  etc.).
+\item
+  Establir espais de coordinació entre docents per \textbf{acordar
+  evidències comunes}, seqüenciar-ne el treball i \textbf{garantir la
+  coherència avaluadora}.
+\end{itemize}
+
+\hypertarget{ruxfabrica-dexemple-competuxe8ncia-treball-en-equip-competuxe8ncia-t}{%
+\subsection{5.2. Rúbrica d'exemple: Competència ``Treball en equip''
+(competència
+t)}\label{ruxfabrica-dexemple-competuxe8ncia-treball-en-equip-competuxe8ncia-t}}
+
+La següent rúbrica mostra un exemple pràctic per a avaluar la
+competència \textbf{t) Comunicar-se i treballar en equip respectant
+l'autonomia i competència dels altres} dins d'una situació
+d'aprenentatge col·laborativa:
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule
+\textbf{Indicador} & \textbf{Nivell 1} (Iniciació) & \textbf{Nivell 2}
+(En procés) & \textbf{Nivell 3} (Assolit) & \textbf{Nivell 4}
+(Excel·lent) \\
+\midrule
+\endhead
+Participa activament en les tasques col·lectives & Només quan se li
+demana & Participa de manera irregular & Participa de manera regular &
+Participa amb iniciativa i constància \\
+Respecta les opinions i funcions del grup & Té dificultats per
+acceptar-les & Les accepta amb ajuda & Les respecta i coopera activament
+& Ajuda a integrar les aportacions dels altres \\
+Es comunica de forma clara i efectiva amb el grup & Amb dificultats i
+poc claredat & Amb certa claredat i correcció & Amb claredat i adequació
+& Amb fluïdesa, assertivitat i empatia \\
+Assumeix responsabilitats i compleix els acords de grup & Evita
+responsabilitats & Assumeix algunes tasques & Assumeix tasques de manera
+responsable & Assumeix lideratges i facilita la cohesió del grup \\
+\bottomrule
+\end{longtable}
+
+\begin{quote}
+Aquesta rúbrica pot adaptar-se a altres mòduls i a altres competències
+(com la responsabilitat, la iniciativa o l'autonomia), mantenint sempre
+la claredat dels indicadors i la relació amb les situacions
+d'aprenentatge concretes.
+\end{quote}
+
+La inclusió d'aquests instruments en les programacions d'aula, així com
+el seu ús sistemàtic per part del professorat, permetrà consolidar una
+\textbf{avaluació integral i equitativa}, que tinga en compte
+\textbf{tant el desenvolupament tècnic com el creixement personal i
+social} de l'alumnat.
+
+A més, cal tindre en compte que \textbf{l'equip docent es reuneix de
+manera setmanal}, fet que facilita el \textbf{seguiment compartit del
+desenvolupament de les competències per a l'ocupabilitat}. Aquestes
+reunions permeten:
+
+\begin{itemize}
+\tightlist
+\item
+  Analitzar l'evolució de l'alumnat en relació amb aquestes competències
+  transversals.
+\item
+  Compartir evidències d'aprenentatge observades en els diferents
+  mòduls.
+\item
+  Ajustar o redefinir indicadors i estratègies d'intervenció educativa
+  segons les necessitats reals del grup.
+\item
+  Coordinar accions específiques per al desenvolupament d'algunes
+  competències en situacions comunes (com el projecte intermodular o
+  activitats col·laboratives).
+\end{itemize}
+
+Aquest \textbf{seguiment sistemàtic, reflexiu i compartit} garanteix una
+visió integral de l'alumnat, i assegura que la \textbf{avaluació de les
+competències per a l'ocupabilitat} siga \textbf{coherent, contínua i
+orientada a la millora}.
+
+A més, les conclusions de les reunions setmanals es recolliran de manera
+estructurada en actes i informes de seguiment pedagògic, que permetran
+fer un \textbf{retorn regular a l'alumnat}, així com ajustar, si cal,
+les intervencions educatives i les estratègies metodològiques.
+
+\hypertarget{enfocaments-diduxe0ctics-i-metodoluxf2gics}{%
+\section{6. Enfocaments didàctics i
+metodològics}\label{enfocaments-diduxe0ctics-i-metodoluxf2gics}}
+
+El cicle de Formació Professional Bàsica en Informàtica d'Oficina a
+l'IES Jaume II el Just es fonamenta en un \textbf{enfocament actiu,
+contextualitzat i professionalitzador}, alineat amb els principis
+recollits a l'article 13 del \textbf{Reial decret 659/2023}, que promou
+la incorporació de \textbf{metodologies actives} en la docència dels
+cicles formatius.
+
+Aquest enfocament no es limita a una declaració d'intencions, sinó que
+es \textbf{materialitza en un conjunt de principis metodològics
+consensuats} per l'equip docent, amb caràcter vinculant per a totes les
+programacions del cicle. El consens metodològic ha estat treballat en
+les reunions setmanals del claustre del cicle i suposa un compromís
+explícit amb un model pedagògic transformador.
+
+\hypertarget{principis-metodoluxf2gics-acordats}{%
+\subsection{6.1. Principis metodològics
+acordats}\label{principis-metodoluxf2gics-acordats}}
+
+L'equip docent acorda aplicar de forma transversal les següents
+estratègies metodològiques:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Aprenentatge basat en projectes (ABP)}: l'alumnat desenvolupa
+  \textbf{projectes interdisciplinars} reals o simulats, com ara:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \emph{Projecte de reciclatge de plàstics i impressió 3D} (Ciències
+    Aplicades II, IMX i Comunicació i Societat II)
+  \item
+    \emph{Projecte ``Aprenem de la Pluja''}, vinculat a la DANA de 2024,
+    orientat a la restauració d'equipament TIC i dades.
+  \item
+    \emph{Participació en la Fira Experimenta}, amb projectes de
+    caràcter científic-tecnològic de divulgació.
+  \end{itemize}
+\item
+  \textbf{Aprenentatge-Servei (ApS)}: com a eix transversal, alguns
+  projectes integren una dimensió social i de servei comunitari, com el
+  \textbf{manteniment i instal·lació de xarxes} al propi centre per part
+  de l'alumnat, amb finalitats reals i aplicació immediata.
+\item
+  \textbf{Aprenentatge col·laboratiu}: foment del treball en equip
+  mitjançant activitats grupals estructurades, ús d'eines de gestió
+  col·laborativa i \textbf{responsabilitat compartida} en tasques i
+  rols.
+\item
+  \textbf{Contextualització professional i realisme pedagògic}: les
+  situacions d'aprenentatge s'inspiren en l'àmbit laboral real i
+  aprofiten el context del centre i l'entorn socioeconòmic.
+\item
+  \textbf{Personalització de l'aprenentatge i enfocament inclusiu},
+  adaptant les activitats als ritmes, necessitats i potencialitats de
+  l'alumnat.
+\item
+  \textbf{Ús pedagògic de les TIC}: integració d'eines digitals tant per
+  a la producció com per a la comunicació i l'organització del treball.
+\item
+  \textbf{Avaluació contínua i formativa}, basada en evidències
+  d'aprenentatge, rúbriques competencials, observació directa,
+  autoavaluacions i portafolis.
+\end{itemize}
+
+\hypertarget{coheruxe8ncia-seguiment-i-compromuxeds-docent}{%
+\subsection{6.2. Coherència, seguiment i compromís
+docent}\label{coheruxe8ncia-seguiment-i-compromuxeds-docent}}
+
+Aquest marc metodològic consensuat és de \textbf{compliment obligat per
+a tot el professorat del cicle}, i s'aplicarà tant a nivell de mòdul com
+en el desenvolupament del \textbf{Projecte Intermodular d'Aprenentatge
+Col·laboratiu}.
+
+Les \textbf{reunions setmanals de l'equip docent} tindran com a funció,
+entre altres, fer \textbf{seguiment del desplegament metodològic},
+ajustar estratègies si cal i garantir que es manté la coherència entre
+els mòduls i els objectius del PCCF.
+
+Aquest enfocament metodològic pretén oferir una resposta eficaç als
+desafiaments del món laboral i educatiu actual, \textbf{convertint
+l'alumnat en protagonista actiu del seu aprenentatge} i facilitant la
+seua integració futura en entorns professionals reals.
+
+\hypertarget{organitzaciuxf3-i-distribuciuxf3-dels-muxf2duls-professionals}{%
+\section{7. Organització i distribució dels mòduls
+professionals}\label{organitzaciuxf3-i-distribuciuxf3-dels-muxf2duls-professionals}}
+
+D'acord amb l'article 11 del \textbf{Reial decret 659/2023}, els centres
+de Formació Professional poden organitzar els mòduls de manera flexible,
+sempre que es respecten els resultats d'aprenentatge de cada un i el
+currículum oficial.
+
+Amb aquesta finalitat, l'equip docent del cicle de \textbf{Formació
+Professional Bàsica en Informàtica d'Oficina} ha acordat una
+organització interna que \textbf{afavoreix el treball interdisciplinari
+dins de cada curs}, mitjançant agrupacions pedagògiques que permeten
+desenvolupar \textbf{projectes comuns, integració competencial i
+metodologies actives} com l'ABP i l'ApS.
+
+\hypertarget{organitzaciuxf3-dels-muxf2duls-en-1r-curs}{%
+\subsection{\texorpdfstring{7.1. Organització dels mòduls en \textbf{1r
+curs}}{7.1. Organització dels mòduls en 1r curs}}\label{organitzaciuxf3-dels-muxf2duls-en-1r-curs}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2968}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3097}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3806}}@{}}
+\toprule
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Àmbit de treball integrador}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Mòduls implicats}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Projectes o actuacions vinculades}
+\end{minipage} \\
+\midrule
+\endhead
+\textbf{Tecnologia i manteniment bàsic} & /- Muntatge i manteniment de
+sistemes/ - Ciències Aplicades I & Projecte: Simulació d'un taller TIC
+escolar \\
+\textbf{Ofimàtica i documentació digital} & /- Ofimàtica i arxiu de
+documents/ - Comunicació i Ciències Socials I & Projecte: Creació de
+materials digitals i fitxes manuals \\
+\textbf{Ocupabilitat i desenvolupament personal} & /- Itinerari personal
+per a l'ocupabilitat I/ - Tutoria I & Dossier de perfil professional
+inicial \\
+\bottomrule
+\end{longtable}
+
+\hypertarget{organitzaciuxf3-dels-muxf2duls-en-2n-curs}{%
+\subsection{\texorpdfstring{7.2. Organització dels mòduls en \textbf{2n
+curs}}{7.2. Organització dels mòduls en 2n curs}}\label{organitzaciuxf3-dels-muxf2duls-en-2n-curs}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2781}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2899}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4201}}@{}}
+\toprule
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Àmbit de treball integrador}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Mòduls implicats}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Projectes o actuacions vinculades}
+\end{minipage} \\
+\midrule
+\endhead
+\textbf{Xarxes i comunicacions TIC} & /- Instal·lació i manteniment de
+xarxes/ - Operacions auxiliars per a la configuració & Projecte APS:
+Manteniment real de la xarxa del centre \\
+\textbf{Tecnologia i sostenibilitat} & /- Ciències Aplicades II/ -
+Projecte intermodular & Projecte: Reciclatge de plàstic i impressió
+3D \\
+\textbf{Comunicació i gestió documental avançada} & /- Comunicació i
+Ciències Socials II/ - Ofimàtica aplicada (recuperació i anàlisi) &
+Projecte: Memòries tècniques i comunicació digital \\
+\textbf{Ocupabilitat i orientació professional} & /- Itinerari personal
+per a l'ocupabilitat II/ - Tutoria II & Projecte: Dossier professional +
+CV + simulació d'entrevista laboral \\
+\bottomrule
+\end{longtable}
+
+\begin{quote}
+El mòdul \textbf{Projecte intermodular d'aprenentatge col·laboratiu}
+s'integra de manera transversal als projectes del segon curs, actuant
+com a eix vertebrador de la metodologia ABP i facilitant la coordinació
+docent.
+\end{quote}
+
+\hypertarget{objectius-daquesta-reorganitzaciuxf3}{%
+\subsection{7.3. Objectius d'aquesta
+reorganització}\label{objectius-daquesta-reorganitzaciuxf3}}
+
+Aquesta estructura respon a la voluntat de:
+
+\begin{itemize}
+\tightlist
+\item
+  Potenciar la \textbf{coherència metodològica i competencial} dins de
+  cada curs.
+\item
+  Desenvolupar \textbf{projectes amb sentit real i integrats} dins de
+  l'horari lectiu.
+\item
+  Facilitar la \textbf{coordinació entre docents} de cada nivell per
+  planificar i avaluar conjuntament.
+\item
+  Fomentar una \textbf{transició progressiva} cap a l'entorn
+  professional i la inserció laboral.
+\item
+  Optimitzar l'ús del \textbf{Projecte Intermodular} com a espai de
+  síntesi i treball col·laboratiu.
+\end{itemize}
+
+Aquesta reorganització \textbf{no altera la càrrega horària oficial} del
+cicle, sinó que reconfigura \textbf{lògiques de treball didàctic} per a
+afavorir l/'aprenentatge significatiu, transversal i amb sentit per a
+l'alumnat.
+
+\hypertarget{organitzaciuxf3-especuxedfica-del-muxf2dul-comunicaciuxf3-i-societat}{%
+\subsubsection{7.4. Organització específica del mòdul ``Comunicació i
+Societat''}\label{organitzaciuxf3-especuxedfica-del-muxf2dul-comunicaciuxf3-i-societat}}
+
+El mòdul de \textbf{Comunicació i Societat} presenta una estructura
+\textbf{singular} dins la Formació Professional Bàsica, ja que
+\textbf{integra de manera transversal continguts de diverses matèries de
+caràcter general}:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Llengua Castellana}
+\item
+  \textbf{Llengua Valenciana}
+\item
+  \textbf{Ciències Socials}
+\item
+  \textbf{Llengua Estrangera (Anglés)}
+\end{itemize}
+
+A diferència d'altres mòduls de caràcter professional, aquest mòdul
+exigeix una \textbf{planificació didàctica coordinada entre diversos
+docents}, els quals han de garantir conjuntament el desenvolupament de
+tots els resultats d'aprenentatge vinculats als àmbits implicats.
+
+Amb aquesta finalitat, el centre ha establit una \textbf{organització
+interna específica} del mòdul, basada en els següents criteris
+pedagògics:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Coordinació metodològica transversal} mitjançant programacions
+  compartides i reunions de seguiment entre els docents dels àmbits
+  lingüístic, social i estranger.
+\item
+  \textbf{Distribució equilibrada dels continguts entre primer i segon
+  curs}, assegurant una progressió didàctica coherent.
+\item
+  \textbf{Integració funcional de l'anglés} en tasques
+  contextualitzades: simulació d'entrevistes, elaboració de documents,
+  presentacions orals, etc.
+\item
+  \textbf{Orientació competencial i transversal}, vinculada a les
+  competències comunicatives, socials, cíviques i per a l'ocupabilitat.
+\item
+  \textbf{Participació activa en projectes intermodulars}, on la
+  dimensió comunicativa té un paper fonamental: redacció de memòries,
+  sensibilització, exposicions orals, etc.
+\end{itemize}
+
+Aquest enfocament garanteix el desenvolupament d'habilitats de
+comunicació bàsica, de reflexió crítica sobre la realitat social i de
+participació responsable a la comunitat educativa.
+
+Els docents implicats assumeixen el compromís de treballar amb
+\textbf{criteris d'avaluació consensuats}, i d'aplicar
+\textbf{instruments compartits d'avaluació formativa i competencial}, en
+coordinació amb el conjunt del professorat del cicle i dins del marc del
+\textbf{Projecte d'Acció Curricular (PAC)}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{organitzaciuxf3-del-muxf2dul-comunicaciuxf3-i-societat-i-codi-3011}{%
+\subsubsection{7.4.1 Organització del mòdul Comunicació i Societat I
+(Codi
+3011)}\label{organitzaciuxf3-del-muxf2dul-comunicaciuxf3-i-societat-i-codi-3011}}
+
+Aquest mòdul, situat en \textbf{primer curs}, integra continguts
+inicials de llengua castellana, llengua anglesa i ciències socials. Els
+seus resultats d'aprenentatge (RA) tenen com a eixos:
+
+\begin{itemize}
+\tightlist
+\item
+  L'anàlisi de les societats prehistòriques i de l'Edat Antiga, i les
+  seues relacions amb l'entorn natural i artístic.
+\item
+  La construcció de l'espai europeu fins a les primeres transformacions
+  industrials.
+\item
+  L'adquisició de competències bàsiques d'expressió i comprensió oral i
+  escrita en castellà.
+\item
+  La iniciació a la literatura en llengua castellana.
+\item
+  La comunicació oral i escrita funcional en anglès en situacions
+  quotidianes i escolars.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{organitzaciuxf3-del-muxf2dul-comunicaciuxf3-i-societat-ii-codi-3012}{%
+\subsubsection{7.4.2 Organització del mòdul Comunicació i Societat II
+(Codi
+3012)}\label{organitzaciuxf3-del-muxf2dul-comunicaciuxf3-i-societat-ii-codi-3012}}
+
+En \textbf{segon curs}, el mòdul aprofundeix en els mateixos àmbits però
+des d'un enfocament més complex i contextualitzat. Els RA s'orienten a:
+
+\begin{itemize}
+\tightlist
+\item
+  Comprendre l'evolució de les societats contemporànies i el sistema
+  democràtic.
+\item
+  Comunicar-se amb claredat i correcció en llengua castellana en
+  contextos socials i laborals.
+\item
+  Interpretar i produir textos literaris des del segle XIX fins a
+  l'actualitat.
+\item
+  Utilitzar l'anglés en interaccions senzilles de caràcter professional
+  i personal, amb vocabulari específic i estructures bàsiques.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{comparativa-de-resultats-daprenentatge-comunicaciuxf3-i-societat-i-vs-ii}{%
+\subsubsection{7.4.3 Comparativa de Resultats d'Aprenentatge:
+Comunicació i Societat I vs
+II}\label{comparativa-de-resultats-daprenentatge-comunicaciuxf3-i-societat-i-vs-ii}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2047}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3275}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4561}}@{}}
+\toprule
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Àmbit}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Comunicació i Societat I (3011)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Comunicació i Societat II (3012)}
+\end{minipage} \\
+\midrule
+\endhead
+\textbf{Ciències Socials} & RA1: Societats prehistòriques i antigues/
+RA2: Edat Mitjana, moderna i construcció europea & RA1: Societats
+contemporànies i evolució històrica/ RA2: Democràcia, Drets Humans i
+participació ciutadana \\
+\textbf{Llengua Castellana (oral)} & RA3: Comunicació oral bàsica i
+escolta activa & RA3: Comunicació oral estructurada i expressió adequada
+a contextos formals \\
+\textbf{Llengua Castellana (escrita)} & RA4: Producció de textos breus i
+lectura comprensiva/ RA5: Iniciació a la literatura clàssica & RA4:
+Producció escrita de textos més complexos/ RA5: Literatura contemporània
+i anàlisi crítica \\
+\textbf{Llengua Anglesa} & RA6: Expressió oral bàsica i estructurada/
+RA7: Diàlegs i converses senzilles/ RA8: Textos escrits breus & RA6:
+Presentacions orals concretes/ RA7: Interacció en contextos personals i
+laborals/ RA8: Textos escrits amb detall \\
+\bottomrule
+\end{longtable}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{distribuciuxf3-orientativa-de-responsabilitats-docents}{%
+\subsubsection{7.4.4 Distribució orientativa de responsabilitats
+docents}\label{distribuciuxf3-orientativa-de-responsabilitats-docents}}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\textbf{Àmbit} & \textbf{Responsable principal} & \textbf{Funcions
+específiques} \\
+\midrule
+\endhead
+Llengua Castellana/* & Professor/a de Llengua Castellana & Expressió
+oral i escrita, anàlisi de textos, lectura literària, gramàtica,
+ortografia \\
+Ciències Socials/* & Professor/a de Geografia i Història & Evolució
+històrica, ciutadania, democràcia, anàlisi de fonts i contextos
+socials \\
+Llengua Anglesa & Professor/a d'Anglés & Producció i comprensió oral i
+escrita, vocabulari funcional, interacció en contextos reals \\
+Coordinació general & Equip docent del cicle + cap d'estudis &
+Planificació conjunta, seguiment d'alumnat, disseny de situacions
+d'aprenentatge integrades \\
+\bottomrule
+\end{longtable}
+
+\begin{quote}
+/* \emph{Per motius d'organització interna i racionalització de recursos
+docents, els àmbits de Llengua Castellana i Ciències Socials poden estar
+integrats i ser atesos pel mateix professorat, habitualment el de
+Llengua Castellana.}
+\end{quote}
+
+\hypertarget{criteris-generals-sobre-lorganitzaciuxf3-la-comunicaciuxf3-i-desenvolupament-del-procuxe9s-davaluaciuxf3-de-laprenentatge}{%
+\section{8. Criteris generals sobre l/'organització, la comunicació i
+desenvolupament del procés d/'avaluació de
+l/'aprenentatge}\label{criteris-generals-sobre-lorganitzaciuxf3-la-comunicaciuxf3-i-desenvolupament-del-procuxe9s-davaluaciuxf3-de-laprenentatge}}
+
+El procés d'avaluació de l'alumnat en el cicle de Formació Professional
+Bàsica en Informàtica d'Oficina es regirà per:
+
+\begin{itemize}
+\tightlist
+\item
+  L'\textbf{Ordre 2025/13083} (DOGV 30.04.2025), que regula l'avaluació,
+  acreditació, certificació i titulació en l'FP a la Comunitat
+  Valenciana.
+\item
+  La \textbf{Llei orgànica 3/2022}, d'ordenació i integració de la FP.
+\item
+  El \textbf{Reial decret 659/2023}, pel qual s'estableix l'ordenació
+  del sistema de Formació Professional.
+\end{itemize}
+
+Els principis generals que emanen d'aquesta normativa són:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  L'avaluació ha de ser \textbf{contínua, formativa i integradora},
+  adaptada als ritmes i característiques de l'alumnat.
+\item
+  L'avaluació es basa en l'assoliment dels \textbf{Resultats
+  d'Aprenentatge (RA)} definits per a cada mòdul.
+\item
+  El procés ha de facilitar l'\textbf{orientació, la millora dels
+  aprenentatges} i la \textbf{inserció laboral} de l'alumnat.
+\end{enumerate}
+
+\hypertarget{organitzaciuxf3-del-procuxe9s-davaluaciuxf3}{%
+\subsection{8.1 Organització del procés
+d'avaluació}\label{organitzaciuxf3-del-procuxe9s-davaluaciuxf3}}
+
+\begin{itemize}
+\tightlist
+\item
+  Es realitzarà una \textbf{sessió inicial de diagnòstic} dins del
+  primer mes de curs.
+\item
+  L'equip docent celebrarà \textbf{sessions d'avaluació trimestrals} i
+  farà un seguiment setmanal de l'evolució de l'alumnat.
+\item
+  La \textbf{superació de cada mòdul} requerirà l'assoliment de tots els
+  RA amb una qualificació mínima de 5 sobre 10.
+\item
+  L'alumnat amb una assistència inferior al 85\% podrà perdre el dret a
+  l'avaluació contínua.
+\item
+  Es preveuen \textbf{convocatòries ordinària i extraordinària} per a la
+  recuperació dels RA no assolits.
+\item
+  El Projecte Intermodular serà també objecte d'avaluació coordinada
+  entre els docents implicats.
+\end{itemize}
+
+\hypertarget{instruments-davaluaciuxf3}{%
+\subsection{8.2 Instruments
+d'avaluació}\label{instruments-davaluaciuxf3}}
+
+Els instruments d'avaluació es seleccionaran en funció del tipus de
+tasca i metodologia utilitzada:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Proves pràctiques i escrites}
+\item
+  \textbf{Observació sistemàtica}
+\item
+  \textbf{Portafolis}
+\item
+  \textbf{Rúbriques i llistes de control}
+\item
+  \textbf{Autoavaluació i coavaluació}
+\item
+  \textbf{Seguiment de projectes i activitats col·laboratives}
+\item
+  \textbf{Presentacions orals i informes tècnics}
+\end{itemize}
+
+Els criteris d'avaluació s'ajustaran als RA i seran compartits amb
+l'alumnat des de l'inici del curs.
+
+\hypertarget{comunicaciuxf3-amb-lalumnat-i-les-famuxedlies}{%
+\subsection{8.3 Comunicació amb l'alumnat i les
+famílies}\label{comunicaciuxf3-amb-lalumnat-i-les-famuxedlies}}
+
+\begin{itemize}
+\tightlist
+\item
+  Els criteris i instruments d'avaluació es publicaran a través de la
+  plataforma \emph{Aules} i seran explicats a l'alumnat a l'inici de
+  cada mòdul.
+\item
+  L'equip docent mantindrà una \textbf{comunicació constant} mitjançant
+  reunions de tutoria, notificacions digitals i entrevistes.
+\item
+  Els \textbf{butlletins oficials} de qualificacions es tramitaran a
+  través de la plataforma \emph{ITACA}.
+\item
+  Es fomentarà la \textbf{transparència i la participació activa} de les
+  famílies en el seguiment del procés educatiu.
+\end{itemize}
+
+\hypertarget{desenvolupament-del-procuxe9s-davaluaciuxf3}{%
+\subsection{8.4 Desenvolupament del procés
+d'avaluació}\label{desenvolupament-del-procuxe9s-davaluaciuxf3}}
+
+\begin{itemize}
+\tightlist
+\item
+  L'avaluació es realitzarà sobre \textbf{cada RA de forma
+  diferenciada}.
+\item
+  Cada RA haurà d'estar \textbf{superat de forma individual} per
+  considerar-se el mòdul aprovat.
+\item
+  El professorat farà \textbf{ajustaments metodològics i de
+  planificació} segons l'evolució del grup.
+\item
+  L'avaluació continuarà en la \textbf{Formació en Entorns Laborals
+  (FEE)}.
+\end{itemize}
+
+\hypertarget{avaluaciuxf3-en-la-formaciuxf3-en-entorns-laborals-fee}{%
+\subsection{8.5 Avaluació en la Formació en Entorns Laborals
+(FEE)}\label{avaluaciuxf3-en-la-formaciuxf3-en-entorns-laborals-fee}}
+
+La FEE és una part fonamental del cicle formatiu. Es realitzarà:
+
+\begin{itemize}
+\tightlist
+\item
+  Mitjançant un \textbf{seguiment conjunt entre el centre educatiu i
+  l'empresa}.
+\item
+  L'avaluació es fonamentarà en \textbf{l'assoliment dels RA relacionats
+  amb el mòdul}, contextualitzats a l'entorn laboral.
+\item
+  L'empresa col·laboradora emetrà un \textbf{informe de valoració} i el
+  tutor o tutora acadèmica completarà la qualificació.
+\end{itemize}
+
+\begin{quote}
+\emph{L'avaluació de la FEE es regirà pels mateixos criteris de rigor,
+objectivitat i coherència que la resta de mòduls del cicle.}
+\end{quote}
+
+\hypertarget{avaluaciuxf3-del-procuxe9s-docent-i-del-professorat}{%
+\subsection{8.6 Avaluació del procés docent i del
+professorat}\label{avaluaciuxf3-del-procuxe9s-docent-i-del-professorat}}
+
+\begin{itemize}
+\tightlist
+\item
+  El professorat realitzarà una \textbf{autoavaluació contínua} de la
+  seua pràctica docent.
+\item
+  L'equip docent revisarà \textbf{trimestralment} la coherència i
+  eficàcia de les seues programacions.
+\item
+  A final de curs, es farà una \textbf{avaluació col·lectiva} sobre:
+\item
+  La selecció i seqüenciació de continguts.
+\item
+  Els criteris i instruments d'avaluació utilitzats.
+\item
+  L'adequació de les metodologies.
+\item
+  Els resultats de l'alumnat i el seu progrés.
+\end{itemize}
+
+\hypertarget{base-de-dades-dempreses-o-organismes-equiparats-que-collaboren-amb-el-pccf-i-criteris-dassignaciuxf3-de-lalumnat}{%
+\section{9. Base de dades d/'empreses o organismes equiparats que
+col·laboren amb el PCCF i criteris d/'assignació de
+l/'alumnat}\label{base-de-dades-dempreses-o-organismes-equiparats-que-collaboren-amb-el-pccf-i-criteris-dassignaciuxf3-de-lalumnat}}
+
+La plataforma \textbf{SAO} per a la gestió de la FEE (Formació en
+Entorns Laborals), així com de l'antiga FCT i la FP Dual, disposa d'una
+\textbf{base de dades} amb el registre de les empreses que col·laboren
+anualment amb el centre.
+
+Tanmateix, l'equip educatiu ha acordat mantindre un \textbf{registre
+digital complementari}, específic del departament, que reculla
+l'historial de col·laboració amb les empreses i organismes equiparats.
+Aquest registre podrà mantindre's en format \textbf{full de càlcul} o
+integrat en la \textbf{plataforma web de la borsa de treball del
+centre}.
+
+Els responsables de l'actualització d'aquest registre seran el
+\textbf{tutor o tutora del grup} i el/la \textbf{coordinador/a de
+formació en empresa}, i es realitzarà \textbf{just després de la
+finalització del període lectiu}. El registre inclourà, si és possible,
+els \textbf{Resultats d'Aprenentatge (RA)} treballats per l'alumnat en
+cada empresa, per tal d'ajustar els futurs \textbf{programes formatius
+individuals}.
+
+A més, es fomentarà la \textbf{col·laboració activa de les empreses} en:
+
+\begin{itemize}
+\tightlist
+\item
+  L'elaboració i revisió dels programes formatius.
+\item
+  El disseny i participació en projectes col·laboratius.
+\item
+  El desenvolupament d'una \textbf{xarxa de mentors} que done suport a
+  l'alumnat en iniciatives d'emprenedoria.
+\end{itemize}
+
+\hypertarget{criteris-dassignaciuxf3-de-lalumnat-a-les-empreses}{%
+\subsection{Criteris d'assignació de l'alumnat a les
+empreses}\label{criteris-dassignaciuxf3-de-lalumnat-a-les-empreses}}
+
+Per garantir una distribució equitativa i ajustada, es tindran en compte
+els següents criteris:
+
+\begin{itemize}
+\tightlist
+\item
+  Adequació al perfil professional del cicle.
+\item
+  Competències, interessos i característiques personals de l'alumnat.
+\item
+  Ubicació geogràfica i possibilitat de desplaçament.
+\item
+  Capacitat de tutorització de l'empresa.
+\item
+  Garantia d'igualtat d'oportunitats.
+\item
+  Valoració de l'historial de col·laboració amb l'empresa.
+\item
+  Temporalització i disponibilitat per acollir alumnat.
+\end{itemize}
+
+És important destacar que el \textbf{teixit empresarial local} es compon
+principalment de \textbf{petites i mitjanes empreses (pimes)}, i que les
+empreses de major dimensió estan focalitzades en sectors específics dins
+l'àmbit TIC.
+
+Aquest context dificulta, sovint, trobar empreses que puguen acollir
+alumnat en condicions òptimes per desenvolupar \textbf{tots els
+Resultats d'Aprenentatge del cicle}. Per aquest motiu, i per garantir la
+cobertura competencial, es preveu que els RA siguen \textbf{treballats
+de manera complementària entre l'empresa i el centre educatiu}, Aquest
+context dificulta, sovint, trobar empreses que puguen acollir alumnat en
+condicions òptimes per desenvolupar \textbf{tots els Resultats
+d'Aprenentatge del cicle}. Per aquest motiu, i per garantir la cobertura
+competencial, es preveu que els RA siguen \textbf{treballats de manera
+complementària entre l'empresa i el centre educatiu}.
+
+La seua avaluació es basarà en \textbf{percentatges d'assoliment}, en
+lloc de considerar els RA com a blocs tancats. Aquesta distribució
+parcial i compartida haurà de quedar \textbf{clarament reflectida en les
+programacions d'aula dels mòduls implicats}, indicant quines parts
+s'abordaran a l'empresa i quines es desenvoluparan al centre, així com
+els criteris i instruments d'avaluació associats.
+
+\hypertarget{exemple-de-taula-de-distribuciuxf3-dels-ra-entre-centre-i-empresa}{%
+\subsubsection{Exemple de taula de distribució dels RA entre centre i
+empresa}\label{exemple-de-taula-de-distribuciuxf3-dels-ra-entre-centre-i-empresa}}
+
+\begin{longtable}[]{@{}lllllll@{}}
+\toprule
+\textbf{Mòdul professional} & \textbf{Codi} & \textbf{RA} &
+\textbf{Descripció del RA} & /\% al Centre & /\% a l/'Empresa &
+Observacions \\
+\midrule
+\endhead
+Aplicacions Ofimàtiques & 3013 & RA1 & Utilitza aplicacions de
+processador de textos & 70\% & 30\% & Activitats de redacció a
+l'empresa \\
+Instal·lació i manteniment de xarxes & 3014 & RA2 & Realitza connexions
+bàsiques i diagnòstics de xarxa & 50\% & 50\% & Pràctiques directes amb
+client \\
+Comunicació i Societat II & 3012 & RA6 & Comunica informació oral en
+anglès en context laboral & 40\% & 60\% & Simulacions reals i atenció en
+anglès \\
+Tractament de la informació digital & 3015 & RA3 & Arxiva i gestiona
+informació amb criteris de seguretat & 60\% & 40\% & Adaptat a protocols
+de l'empresa \\
+\bottomrule
+\end{longtable}
+
+\emph{Aquesta taula pot ser adaptada per a cada mòdul, i complementada
+amb instruments d'avaluació específics (rúbriques, fulls d'observació,
+informes de tutoria/\ldots).}
+
+\hypertarget{criteris-per-a-realitzar-els-plans-formatius-individuals}{%
+\section{10. Criteris per a realitzar els plans formatius
+individuals}\label{criteris-per-a-realitzar-els-plans-formatius-individuals}}
+
+Cada alumne o alumna que participe en un itinerari de \textbf{Formació
+en Entorns Laborals (FEE)} haurà de disposar d'un \textbf{Pla Formatiu
+Individualitzat (PFI)} que definisca de manera clara i flexible les
+activitats formatives a desenvolupar tant al \textbf{centre educatiu}
+com a l'\textbf{empresa o organisme col·laborador}.
+
+Aquest Pla Formatiu serà el resultat d'un procés de \textbf{codisseny
+entre el centre i l'empresa}, i haurà d'assegurar la \textbf{cobertura
+de tots els Resultats d'Aprenentatge (RA)} establits en el currículum,
+distribuint-los entre ambdós espais formatius segons la seua naturalesa,
+les capacitats de l'empresa i les necessitats de l'alumnat.
+
+\hypertarget{criteris-generals-per-a-la-seua-elaboraciuxf3}{%
+\subsection{Criteris generals per a la seua
+elaboració}\label{criteris-generals-per-a-la-seua-elaboraciuxf3}}
+
+\begin{itemize}
+\tightlist
+\item
+  El Pla Formatiu haurà de ser \textbf{coherent amb la programació
+  d'aula del mòdul professional} i el \textbf{PAC del cicle}.
+\item
+  Es concretarà la \textbf{relació de RA assignats a l'empresa, al
+  centre i compartits}, indicant els \textbf{percentatges d'assoliment
+  estimats} en cada àmbit.
+\item
+  Caldrà indicar els \textbf{objectius específics}, \textbf{tasques
+  formatives}, \textbf{condicions de seguiment}, així com els
+  \textbf{instruments i criteris d'avaluació}.
+\item
+  S'inclouran les \textbf{competències per a l'ocupabilitat} a
+  desenvolupar preferentment en context real.
+\item
+  Es preveuran \textbf{mecanismes de revisió i ajust del pla},
+  especialment quan es produïsquen canvis rellevants en el context
+  formatiu o empresarial.
+\end{itemize}
+
+\hypertarget{documentaciuxf3-i-protocol}{%
+\subsection{Documentació i protocol}\label{documentaciuxf3-i-protocol}}
+
+Per garantir l'homogeneïtat i el seguiment de qualitat, el centre
+establirà un \textbf{model de document de PFI}, que inclourà com a
+mínim:
+
+\begin{itemize}
+\tightlist
+\item
+  Dades de l'alumne/a i de l'empresa col·laboradora.
+\item
+  Responsable de tutoria acadèmica i de supervisió a l'empresa.
+\item
+  RA assignats i percentatges corresponents.
+\item
+  Activitats formatives previstes.
+\item
+  Indicadors d'avaluació i instruments associats.
+\item
+  Dates clau i horari previst.
+\item
+  Signatura de les parts implicades.
+\end{itemize}
+
+Aquest document serà \textbf{signat pel centre, l'empresa i l'alumne/a},
+i constituirà el marc de referència per al seguiment i l'avaluació de
+l'estada formativa.
+
+Els Plans Formatius Individuals s'arxivaran en format digital i estaran
+\textbf{disponibles per a la inspecció educativa, la coordinació de FEE
+i l'equip docent}.
+
+\begin{quote}
+🗂 \emph{A més, la informació continguda en el PFI podrà ser incorporada
+com a evidència dins del portafoli d'avaluació de l'alumnat.}
+\end{quote}
+
+\hypertarget{criteris-per-a-adaptar-els-muxf2duls-de-digitalitzaciuxf3-i-sostenibilitat-a-les-caracteruxedstiques-especuxedfiques-del-perfil-professional-del-cicle-formatiu}{%
+\section{11. Criteris per a adaptar els mòduls de Digitalització i
+Sostenibilitat a les característiques específiques del perfil
+professional del cicle
+formatiu}\label{criteris-per-a-adaptar-els-muxf2duls-de-digitalitzaciuxf3-i-sostenibilitat-a-les-caracteruxedstiques-especuxedfiques-del-perfil-professional-del-cicle-formatiu}}
+
+Els mòduls \textbf{transversals} de \textbf{Digitalització Aplicada als
+Sectors Productius} i \textbf{Sostenibilitat Aplicada al Sistema
+Productiu} formen part del currículum comú de la nova Formació
+Professional i tenen un \textbf{caràcter integrador i contextual}. Per
+això, és necessari \textbf{adaptar-ne els continguts, activitats i
+enfocaments} a les \textbf{característiques del cicle formatiu de FPB en
+Informàtica d'Oficina}, així com al \textbf{perfil professional de
+l'alumnat} i a la realitat del teixit productiu de l/'entorn.
+
+\hypertarget{adaptaciuxf3-del-muxf2dul-de-digitalitzaciuxf3}{%
+\subsection{Adaptació del mòdul de
+Digitalització}\label{adaptaciuxf3-del-muxf2dul-de-digitalitzaciuxf3}}
+
+El mòdul de \textbf{Digitalització} s'orientarà a dotar l'alumnat de
+competències bàsiques per a comprendre i aplicar processos de
+digitalització en contextos administratius i d'oficina. En concret, es
+treballaran:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Ús d'eines digitals col·laboratives} (drive, calendari, suite
+  ofimàtica en núvol, etc.)
+\item
+  \textbf{Digitalització de documents i arxius}, amb formats
+  estandarditzats i criteris d'organització segura.
+\item
+  \textbf{Coneixements bàsics de ciberseguretat i protecció de dades},
+  aplicats a la gestió documental.
+\item
+  Introducció al concepte d'\textbf{automatització de tasques
+  administratives} amb programari d'oficina.
+\item
+  Participació en \textbf{projectes de digitalització del centre o de la
+  comunitat}, com per exemple, la gestió de fitxers o l'organització de
+  dades per a esdeveniments escolars.
+\end{itemize}
+
+\hypertarget{adaptaciuxf3-del-muxf2dul-de-sostenibilitat}{%
+\subsection{Adaptació del mòdul de
+Sostenibilitat}\label{adaptaciuxf3-del-muxf2dul-de-sostenibilitat}}
+
+Pel que fa al mòdul de \textbf{Sostenibilitat}, es proposarà una
+aproximació pràctica i contextualitzada, que ajude a l'alumnat a
+comprendre l'impacte ambiental i social de les activitats
+administratives i digitals. Es prioritzaran:
+
+\begin{itemize}
+\tightlist
+\item
+  Pràctiques d'\textbf{estalvi de recursos} en l'ús de tecnologies
+  (paper, tinta, energia/\ldots).
+\item
+  \textbf{Gestió responsable de residus electrònics} (tòners, aparells
+  informàtics obsolets).
+\item
+  Foment del \textbf{consum responsable}, especialment en compres i
+  equipaments per a l'oficina.
+\item
+  Introducció al càlcul de la \textbf{petjada ecològica} i a l'impacte
+  dels hàbits digitals (ús de núvol, enviament massiu de correus, etc.).
+\item
+  Participació en \textbf{projectes transversals} com el projecte de
+  \textbf{reciclatge de plàstic i impressió 3D}, en col·laboració amb
+  altres mòduls.
+\end{itemize}
+
+\hypertarget{enfocament-transversal-i-coordinat}{%
+\subsection{Enfocament transversal i
+coordinat}\label{enfocament-transversal-i-coordinat}}
+
+Ambdós mòduls es desplegaran en coordinació amb la resta de mòduls del
+cicle, i \textbf{preferentment dins de situacions d'aprenentatge o
+projectes intermodulars}. Això garantirà:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Contextualització real dels continguts}, afavorint la
+  transferència d'aprenentatges.
+\item
+  \textbf{Avaluació integrada} a través de projectes i activitats
+  col·laboratives.
+\item
+  \textbf{Enfocament competencial i vivencial}, orientat a la inserció
+  laboral i la ciutadania responsable.
+\end{itemize}
+
+L'equip docent establirà anualment, dins de la \textbf{PGA}, quines
+activitats o projectes oferiran millor encaix per integrar
+\textbf{digitalització i sostenibilitat} dins del cicle, i quins
+criteris s'utilitzaran per a la seua avaluació.
+
+\hypertarget{el-pla-de-tutoria-i-orientaciuxf3-professional}{%
+\section{12. El pla de tutoria i orientació
+professional}\label{el-pla-de-tutoria-i-orientaciuxf3-professional}}
+
+Per al cicle formatiu de \textbf{Formació Professional Bàsica en
+Informàtica d'Oficina}, i d'acord amb l'article 91 de la LOMLOE, el
+Decret 72/2021 i l'Orde 10/2023, l'equip docent estableix les següents
+\textbf{línies estratègiques de tutoria i orientació professional}.
+Aquestes s'han de concretar en els \textbf{plans d'acció tutorial (PAT)}
+anuals de cada grup.
+
+\hypertarget{organitzaciuxf3-de-la-tutoria}{%
+\subsection{1. Organització de la
+tutoria}\label{organitzaciuxf3-de-la-tutoria}}
+
+\begin{itemize}
+\tightlist
+\item
+  El/la tutor/a serà un/a docent del grup amb hores assignades a tutoria
+  segons la PGA.
+\item
+  Encara que no hi haja hora setmanal específica, es podran fer
+  \textbf{sessions de tutoria dins de les hores lectives} del mòdul
+  assignat al/la tutor/a.
+\item
+  Les \textbf{sessions grupals} es dedicaran a aspectes personals,
+  acadèmics i professionals.
+\item
+  Les \textbf{entrevistes individuals} serviran per fer seguiment i
+  donar suport a l'alumnat amb NESE o situacions personals complexes.
+\item
+  Es garantirà la coordinació amb el \textbf{departament d'orientació}
+  per:
+\item
+  Detectar necessitats específiques.
+\item
+  Establir estratègies individualitzades.
+\item
+  Fer acompanyament emocional i acadèmic.
+\end{itemize}
+
+\hypertarget{orientaciuxf3-acaduxe8mica}{%
+\subsection{2. Orientació acadèmica}\label{orientaciuxf3-acaduxe8mica}}
+
+\begin{itemize}
+\tightlist
+\item
+  S'organitzaran activitats per a informar sobre opcions formatives
+  posteriors:
+\item
+  Cicles de Grau Mitjà de la mateixa família professional.
+\item
+  Cursos d'especialització i certificacions professionals.
+\item
+  Altres vies formatives (ocupacional, PICE, formació a distància,
+  etc.).
+\item
+  Es realitzaran:
+\item
+  \textbf{Xarrades amb professorat} de cicles superiors.
+\item
+  \textbf{Trobades amb exalumnes} titulats.
+\item
+  \textbf{Sessions informatives} sobre les comissions col·legiades
+  d'orientació.
+\end{itemize}
+
+\hypertarget{orientaciuxf3-professional-inserciuxf3-laboral-i-emprenedoria}{%
+\subsection{3. Orientació professional, inserció laboral i
+emprenedoria}\label{orientaciuxf3-professional-inserciuxf3-laboral-i-emprenedoria}}
+
+\begin{itemize}
+\tightlist
+\item
+  L'alumnat participarà en activitats com:
+\item
+  \textbf{Taller de recerca d'ocupació} (CV, entrevistes, portals).
+\item
+  \textbf{Fires d'ocupació i visites a empreses}.
+\item
+  \textbf{Xarrades amb professionals del sector}.
+\item
+  Difusió del \textbf{caràcter dual de la FP} i possibilitats d'inserció
+  directa.
+\item
+  \textbf{Hackatons, concursos i activitats de captació de talent}.
+\item
+  Mentories amb professionals i exalumnes per fomentar l'emprenedoria.
+\item
+  Orientació cap a \textbf{reptes reals} que puguen convertir-se en
+  projectes d'empresa.
+\end{itemize}
+
+\hypertarget{seguiment-i-avaluaciuxf3-del-pla}{%
+\subsection{4. Seguiment i avaluació del
+pla}\label{seguiment-i-avaluaciuxf3-del-pla}}
+
+\begin{itemize}
+\tightlist
+\item
+  El Pla de Tutoria i Orientació es \textbf{avaluarà anualment}, durant
+  el tercer trimestre, amb:
+\item
+  \textbf{Enquestes de valoració de l'alumnat}.
+\item
+  \textbf{Reunions de l'equip docent i amb el departament d'orientació}.
+\item
+  \textbf{Informe final de valoració del PAT}, amb propostes de millora.
+\item
+  Els resultats d'aquesta avaluació es tindran en compte per ajustar les
+  accions del curs següent.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{clip-annexos-del-pla-de-tutoria-i-orientaciuxf3}{%
+\subsection{/{[}clip/{]} Annexos del pla de tutoria i
+orientació}\label{clip-annexos-del-pla-de-tutoria-i-orientaciuxf3}}
+
+\hypertarget{annex-1.-model-dentrevista-individual}{%
+\subsubsection{\texorpdfstring{\href{../annexos/Annex1-Entrevista/}{Annex
+1. Model d'entrevista
+individual}}{Annex 1. Model d'entrevista individual}}\label{annex-1.-model-dentrevista-individual}}
+
+\hypertarget{annex-2.-quxfcestionari-dinteressos-professionals}{%
+\subsubsection{\texorpdfstring{\href{../annexos/Annex2-Interessos/}{Annex
+2. Qüestionari d'interessos
+professionals}}{Annex 2. Qüestionari d'interessos professionals}}\label{annex-2.-quxfcestionari-dinteressos-professionals}}
+
+\hypertarget{annex-3.-fitxa-de-seguiment-del-pat}{%
+\subsubsection{\texorpdfstring{\href{../annexos/Annex3-SeguimentPAT/}{Annex
+3. Fitxa de seguiment del
+PAT}}{Annex 3. Fitxa de seguiment del PAT}}\label{annex-3.-fitxa-de-seguiment-del-pat}}
+
+\hypertarget{annex-4.-enquesta-de-valoraciuxf3-del-pla-alumnat}{%
+\subsubsection{\texorpdfstring{\href{../annexos/Annex4-EnquestaAlumnat/}{Annex
+4. Enquesta de valoració del pla
+(alumnat)}}{Annex 4. Enquesta de valoració del pla (alumnat)}}\label{annex-4.-enquesta-de-valoraciuxf3-del-pla-alumnat}}
+
+\hypertarget{concreciuxf3-dels-plans-i-els-programes-del-centre-vinculats-al-curruxedculum}{%
+\section{13. Concreció dels plans i els programes del centre vinculats
+al
+currículum}\label{concreciuxf3-dels-plans-i-els-programes-del-centre-vinculats-al-curruxedculum}}
+
+Aquest apartat concreta com es despleguen, dins del cicle de
+\textbf{Formació Professional Bàsica en Informàtica d'Oficina}, els
+\textbf{plans, projectes i programes impulsats pel centre}, assegurant
+la seua \textbf{coherència amb els objectius del currículum} i la
+formació integral de l'alumnat. Es descriuen accions específiques,
+mòduls implicats, responsables i temporalització aproximada.
+
+\hypertarget{programa-empruxe9n-aula-emprenedora}{%
+\subsection{1. Programa Emprén -- Aula
+Emprenedora}\label{programa-empruxe9n-aula-emprenedora}}
+
+El centre participa activament en el \textbf{Programa Emprén}, de foment
+de la cultura emprenedora. L'Aula Emprenedora promou:
+
+\begin{itemize}
+\tightlist
+\item
+  L'\textbf{emprenedoria social, sostenible i col·laborativa}.
+\item
+  El desenvolupament d'\textbf{habilitats personals i professionals}.
+\item
+  La sensibilització cap a models de negoci responsables i innovadors.
+\end{itemize}
+
+\hypertarget{projecte-justhub-garage-espai-dinnovaciuxf3-i-creativitat}{%
+\subsection{2. Projecte /``JustHub Garage -- Espai d'Innovació i
+Creativitat/''}\label{projecte-justhub-garage-espai-dinnovaciuxf3-i-creativitat}}
+
+Llançat el curs 2024, aquest projecte transforma l'aula en un
+\textbf{entorn de coworking i laboratori de prototipatge}, inspirat en
+les empreses nascudes en garatges. Està alineat amb l'estratègia
+d'\textbf{Aules Transformadores}, i s'hi desenvolupen:
+
+\begin{itemize}
+\tightlist
+\item
+  Projectes interdisciplinars basats en reptes reals del sector TIC.
+\item
+  Metodologies com \textbf{Design Thinking}, \textbf{Scrum} o
+  \textbf{ABP}.
+\item
+  Espais que simulen una \textbf{aula-empresa col·laborativa}.
+\end{itemize}
+
+\hypertarget{accions-concretes}{%
+\subsubsection{Accions concretes:}\label{accions-concretes}}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+Acció & Mòduls implicats & Temporalització & Responsables \\
+\midrule
+\endhead
+Desenvolupament de projectes col·laboratius (coworking) & IMX, CAII,
+Comunicació i Societat II & Octubre - Maig & Equip docent i mentors
+externs \\
+Introducció a metodologies àgils & IMX, Sostenibilitat & Octubre - Gener
+& Coordinador/a JustHub \\
+Projectes de sostenibilitat i digitalització & Tots els mòduls & Tot el
+curs & Coordinació docent \\
+Tallers i xarrades d'emprenedoria & Tutoria, Comunicació & Novembre -
+Abril & Aula Emprén + empreses col·laboradores \\
+Mostra final de projectes (demo day) & Tots els mòduls & Final de curs &
+Equip docent i col·laboradors externs \\
+\bottomrule
+\end{longtable}
+
+\hypertarget{altres-plans-i-programes}{%
+\subsection{3. Altres plans i
+programes}\label{altres-plans-i-programes}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Orientació Professional (Decret 72/2021)}: Integrada en les
+  tutories i activitats del mòdul de Comunicació, coordinada amb el
+  Departament d'Orientació.
+\item
+  \textbf{Formació i inserció laboral (FCT i borsa d'ocupació)}:
+  Coordinació amb empreses locals i serveis municipals d'ocupació.
+\item
+  \textbf{Participació en convocatòries INNOVATEC o projectes de
+  millora}: Quan siga aplicable, els projectes d'innovació es
+  connectaran amb continguts del mòdul de digitalització o
+  sostenibilitat.
+\end{itemize}
+
+\hypertarget{objectius-diduxe0ctics-i-alineaciuxf3-curricular}{%
+\subsection{4. Objectius didàctics i alineació
+curricular}\label{objectius-diduxe0ctics-i-alineaciuxf3-curricular}}
+
+Tots aquests programes reforcen:
+
+\begin{itemize}
+\tightlist
+\item
+  El treball de les \textbf{competències professionals, personals i
+  socials}.
+\item
+  La connexió amb els \textbf{ODS} (Agenda 2030), especialment en
+  l'àmbit tecnològic i ambiental.
+\item
+  L'adquisició d'\textbf{experiència pràctica i projectes significatius}
+  per a l'alumnat.
+\end{itemize}
+
+Amb aquesta visió transversal, es fomenta una formació contextualitzada,
+flexible i orientada a la ciutadania activa i emprenedora.
+
+\hypertarget{orientacions-per-a-luxfas-despais-mitjans-i-equipaments-disponibles}{%
+\section{14. Orientacions per a l/'ús d/'espais, mitjans i equipaments
+disponibles}\label{orientacions-per-a-luxfas-despais-mitjans-i-equipaments-disponibles}}
+
+L'organització dels espais i dels recursos materials en el cicle de
+\textbf{Formació Professional Bàsica en Informàtica d'Oficina} té com a
+objectiu \textbf{facilitar un aprenentatge actiu, segur i
+contextualitzat}, d'acord amb els requisits establerts pel \emph{Reial
+decret 405/2023} i alineat amb els principis d'innovació metodològica i
+pedagògica.
+
+\hypertarget{condicions-dels-espais-docents}{%
+\subsection{1. Condicions dels espais
+docents}\label{condicions-dels-espais-docents}}
+
+Segons la normativa:
+
+\begin{itemize}
+\tightlist
+\item
+  Cal disposar d'un \textbf{espai formatiu de mínim 60 m²} per grup.
+\item
+  El grau d'utilització ha de ser \textbf{igual o superior al 50\%} del
+  temps disponible.
+\item
+  Es garantiran les següents \textbf{condicions ambientals i de
+  seguretat}:
+\item
+  \textbf{Humitat}: controlada per evitar condensació i electricitat
+  estàtica.
+\item
+  \textbf{Il·luminació}: lateral i difusa, per evitar reflexos en
+  pantalles.
+\item
+  \textbf{Cablejat}: centralitzat, segur i fora de zones de pas.
+\item
+  \textbf{Mobiliari ergonòmic}: per protegir la salut postural de
+  l'alumnat.
+\end{itemize}
+
+\hypertarget{transformaciuxf3-metodoluxf2gica-i-aula-empresa}{%
+\subsection{2. Transformació metodològica i
+Aula-Empresa}\label{transformaciuxf3-metodoluxf2gica-i-aula-empresa}}
+
+El cicle es desplega seguint un model d'\textbf{aula-empresa}, on l'aula
+simula un \textbf{entorn productiu col·laboratiu}. Aquesta transformació
+implica:
+
+\begin{itemize}
+\tightlist
+\item
+  Organització de l'espai en \textbf{illes de treball col·laboratiu}.
+\item
+  Creació d'una \textbf{zona de reunions} per a planificació i feedback.
+\item
+  Utilització de \textbf{mobiliari flexible} (pissarres mòbils,
+  pantalles compartides).
+\item
+  Espais diferenciats per a \textbf{presentació de projectes} o defensa
+  d'evidències.
+\end{itemize}
+
+Aquest entorn afavoreix metodologies com l'\textbf{Aprenentatge Basat en
+Projectes (ABP)}, \textbf{reptes}, o \textbf{simulacions d'entorns
+laborals}, fonamentals per a l'adquisició de les competències del cicle.
+
+\hypertarget{uxfas-de-laula-empruxe9n}{%
+\subsection{3. Ús de l'Aula Emprén}\label{uxfas-de-laula-empruxe9n}}
+
+El centre disposa d'una \textbf{Aula Emprén}, vinculada al Programa
+Emprén. Aquesta aula permet desenvolupar:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Tallers de creativitat i ideació de projectes}
+\item
+  \textbf{Hackatons i concursos} interdisciplinars
+\item
+  \textbf{Xarrades amb empreses i mentors}
+\item
+  \textbf{Simulació de presentacions professionals} i esdeveniments
+\end{itemize}
+
+S'utilitzarà especialment per a l'impuls del projecte \textbf{JustHub
+Garage} i per activitats dels mòduls de \emph{Tutoria},
+\emph{Comunicació i Societat} i \emph{Sostenibilitat}.
+
+\hypertarget{coordinaciuxf3-i-uxfas-compartit-dels-espais}{%
+\subsection{4. Coordinació i ús compartit dels
+espais}\label{coordinaciuxf3-i-uxfas-compartit-dels-espais}}
+
+Per optimitzar els espais del centre i garantir-ne un ús eficient:
+
+\begin{itemize}
+\tightlist
+\item
+  Es coordinarà la utilització de les aules especialitzades
+  (\emph{tècniques, informàtiques, Emprén}) entre els diferents mòduls i
+  grups.
+\item
+  Es podran establir \textbf{protocols d'ús i reserva}.
+\item
+  Es prioritzaran aquelles activitats relacionades amb \textbf{projectes
+  intermodulars, digitalització i sostenibilitat}.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Conclusió}:/ L/'ús intencionat dels espais i equipaments
+disponibles permetrà \textbf{contextualitzar l'aprenentatge}, millorar
+la \textbf{motivació de l'alumnat}, i connectar-lo amb els
+\textbf{entorns reals de treball}, facilitant així l'assoliment dels
+resultats d'aprenentatge establerts.
+
+\hypertarget{criteris-i-procediments-per-a-lavaluaciuxf3-i-la-revisiuxf3-de-la-pruxe0ctica-docent}{%
+\section{15. Criteris i procediments per a l/'avaluació i la revisió de
+la pràctica
+docent}\label{criteris-i-procediments-per-a-lavaluaciuxf3-i-la-revisiuxf3-de-la-pruxe0ctica-docent}}
+
+L'avaluació i revisió de la \textbf{pràctica docent} en la Formació
+Professional Bàsica és una eina clau per garantir la qualitat educativa
+i millorar de manera contínua el procés d'ensenyament-aprenentatge. En
+aquesta etapa, on l'alumnat sovint presenta trajectòries escolars
+complexes, cal una revisió docent \textbf{especialment sensible a la
+motivació, inclusió i orientació professional}.
+
+Aquest procés d'avaluació es fonamenta en els \textbf{principis de la
+LOMLOE} (article 1, LO 3/2020) i inclou la reflexió sobre la
+\textbf{planificació, execució i resultats}, tant individuals com
+col·lectius, de la tasca docent.
+
+\hypertarget{criteris-per-a-la-revisiuxf3-de-la-pruxe0ctica-docent}{%
+\subsection{Criteris per a la revisió de la pràctica
+docent}\label{criteris-per-a-la-revisiuxf3-de-la-pruxe0ctica-docent}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Adequació al currículum de FPB}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Ajust de les programacions als resultats d'aprenentatge i sabers
+    bàsics del currículum.
+  \item
+    Adaptació dels continguts al nivell competencial i ritme de
+    l'alumnat.
+  \item
+    Coherència entre sabers, criteris d'avaluació i instruments
+    aplicats.
+  \end{itemize}
+\item
+  \textbf{Adaptació a les característiques de l'alumnat}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Aplicació de mesures universals, addicionals o personalitzades per
+    garantir l'èxit educatiu.
+  \item
+    Consideració del pla personal d'aprenentatge (PPA) quan siga
+    aplicable.
+  \end{itemize}
+\item
+  \textbf{Metodologies actives i personalitzades}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Ús d'ABP, APS, reptes, tallers i simulacions com a estratègies
+    habituals.
+  \item
+    Participació de l'alumnat com a protagonista del seu procés
+    d'aprenentatge.
+  \end{itemize}
+\item
+  \textbf{Inclusió i gestió d'aula}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Promoció d'un clima positiu, respectuós i segur.
+  \item
+    Ús d'estratègies de gestió emocional, resolució de conflictes i
+    mediació educativa.
+  \end{itemize}
+\item
+  \textbf{Avaluació formativa i competencial}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Aplicació de rúbriques, escales descriptives i portafolis.
+  \item
+    Observació del progrés i ajust del procés d'ensenyament en temps
+    real.
+  \end{itemize}
+\item
+  \textbf{Orientació i acompanyament}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Integració del pla de tutoria i orientació dins de les activitats
+    del mòdul.
+  \item
+    Coordinació amb el departament d'orientació i serveis socials si
+    cal.
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{procediments-davaluaciuxf3-de-la-pruxe0ctica-docent}{%
+\subsection{Procediments d'avaluació de la pràctica
+docent}\label{procediments-davaluaciuxf3-de-la-pruxe0ctica-docent}}
+
+\begin{itemize}
+\item
+  \textbf{Autoavaluació docent}: cada professor realitzarà una reflexió
+  individual (almenys un cop per curs) sobre les seues fortaleses, àrees
+  de millora i necessitats de suport.
+\item
+  \textbf{Anàlisi col·lectiva}: l'equip docent realitzarà una reunió de
+  revisió trimestral per compartir bones pràctiques, revisar dificultats
+  i proposar millores.
+\item
+  \textbf{Enquestes de valoració de l'alumnat}: es passarà una enquesta
+  breu a final de cada trimestre o quadrimestre per recollir la seua
+  percepció sobre el clima d'aula, les activitats i el seu propi
+  aprenentatge.
+\item
+  \textbf{Valoració conjunta amb l'equip orientador}: especialment en
+  casos amb PPA, es farà una valoració específica de les adaptacions
+  aplicades i de l'impacte en la motivació i l'assistència de l'alumnat.
+\end{itemize}
+
+\hypertarget{revisiuxf3-del-projecte-curricular-del-cicle-formatiu-pccf}{%
+\subsection{Revisió del Projecte Curricular del Cicle Formatiu
+(PCCF)}\label{revisiuxf3-del-projecte-curricular-del-cicle-formatiu-pccf}}
+
+El \textbf{PCCF s'analitzarà anualment} al final del curs escolar en una
+sessió d'avaluació global. En aquest espai, es valorarà:
+
+\begin{itemize}
+\tightlist
+\item
+  La implementació real dels criteris i metodologies acordades.
+\item
+  L'adequació dels recursos, espais i materials.
+\item
+  L'impacte dels projectes transversals en l'assoliment de competències.
+\item
+  La coordinació entre mòduls i amb serveis externs.
+\end{itemize}
+
+El resultat d'aquesta revisió podrà comportar \textbf{modificacions
+concretes} per al següent curs, que quedaran recollides com a
+\emph{actualitzacions} del PCCF, sempre d'acord amb el principi de
+millora contínua i col·laborativa.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{clip-annexos-de-suport}{%
+\subsection{/{[}clip/{]} Annexos de
+suport}\label{clip-annexos-de-suport}}
+
+Per facilitar el procés de revisió i reflexió docent, es proposen els
+següents annexos:
+
+\begin{itemize}
+\tightlist
+\item
+  \href{../annexos/Annex-Autoavaluacio-Docent/}{/{[}nota/{]} Model
+  d'autoavaluació docent}
+\item
+  \href{../annexos/Annex-Enquesta-Alumnat/}{/{[}llista/{]} Enquesta de
+  valoració del mòdul (alumnat)}
+\end{itemize}
+
+Aquests materials es poden adaptar a cada mòdul o departament, i poden
+formar part de la documentació habitual de final de trimestre o de curs.
+
+\hypertarget{atenciuxf3-a-la-diversitat.-mesures-de-resposta-educativa-a-la-inclusiuxf3}{%
+\section{16. Atenció a la diversitat. Mesures de resposta educativa a la
+inclusió}\label{atenciuxf3-a-la-diversitat.-mesures-de-resposta-educativa-a-la-inclusiuxf3}}
+
+L/'atenció a les diferències individuals és un \textbf{precepte
+constitucional} (Constitució Espanyola, Art. 27.1) i un pilar de
+l/'educació inclusiva. En l/'àmbit de la Formació Professional Bàsica
+(FPB), aquest compromís es concreta mitjançant les \textbf{Mesures de
+Resposta Educativa per a la Inclusió (MREI)}, tal com estableixen la
+\textbf{LO 3/2022} i el \textbf{RD 659/2023}.
+
+Aquestes mesures tenen com a finalitat \textbf{eliminar les barreres}
+d/'accés, participació i aprenentatge, i assegurar que tot l'alumnat
+tinga oportunitats reals per assolir les competències del cicle.
+
+\hypertarget{principis-normatius}{%
+\subsection{Principis normatius}\label{principis-normatius}}
+
+D'acord amb el RD 659/2023, article 15, les mesures s'han d'ajustar a:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Normalització i inclusió educativa}
+\item
+  \textbf{Accessibilitat universal i disseny per a tots}
+\item
+  \textbf{Adaptació de condicions d'aprenentatge i avaluació}
+\end{itemize}
+
+\hypertarget{tipologia-de-mesures-mrei}{%
+\subsection{Tipologia de mesures
+(MREI)}\label{tipologia-de-mesures-mrei}}
+
+\hypertarget{adaptacions-metodoluxf2giques}{%
+\subsubsection{1. Adaptacions
+metodològiques}\label{adaptacions-metodoluxf2giques}}
+
+\begin{itemize}
+\tightlist
+\item
+  Ús de \textbf{metodologies actives i flexibles} (ABP, reptes, tallers
+  col·laboratius).
+\item
+  Disseny d'\textbf{activitats graduades} que permeten diferents nivells
+  d/'assoliment.
+\item
+  Atenció a la diversitat d'estils d'aprenentatge (visual, kinestèsic,
+  etc.).
+\end{itemize}
+
+\hypertarget{suport-personalitzat-i-tutoritzaciuxf3}{%
+\subsubsection{2. Suport personalitzat i
+tutorització}\label{suport-personalitzat-i-tutoritzaciuxf3}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Tutories individualitzades} per establir plans de seguiment o
+  PPA.
+\item
+  Dinàmiques de suport emocional, regulació i motivació.
+\item
+  Observació sistemàtica per identificar necessitats emergents.
+\end{itemize}
+
+\hypertarget{adaptacions-dorganitzaciuxf3-i-despais}{%
+\subsubsection{3. Adaptacions d'organització i
+d'espais}\label{adaptacions-dorganitzaciuxf3-i-despais}}
+
+\begin{itemize}
+\tightlist
+\item
+  Agrupaments flexibles i suport dins l'aula ordinària.
+\item
+  Ajustos en la distribució de temps, activitats i materials.
+\item
+  Coordinació amb el departament d'orientació i serveis externs.
+\end{itemize}
+
+\hypertarget{accessibilitat-i-recursos-adaptats}{%
+\subsubsection{4. Accessibilitat i recursos
+adaptats}\label{accessibilitat-i-recursos-adaptats}}
+
+\begin{itemize}
+\tightlist
+\item
+  Materials accessibles (ampliació de tipografia, contrast, lectura
+  fàcil/\ldots).
+\item
+  Ús de \textbf{tecnologies assistives} (lector de pantalla, subtítols,
+  teclats especials/\ldots).
+\item
+  Eliminació de barreres físiques, sensorials i digitals.
+\end{itemize}
+
+\hypertarget{avaluaciuxf3-inclusiva}{%
+\subsection{Avaluació inclusiva}\label{avaluaciuxf3-inclusiva}}
+
+\begin{itemize}
+\tightlist
+\item
+  Avaluació \textbf{personalitzada i formativa}, orientada al progrés.
+\item
+  Ús d'\textbf{instruments diversos i adaptats} (rúbriques, observació,
+  exposicions, autoavaluació).
+\item
+  Flexibilitat en les condicions (temps extra, format de proves,
+  presentacions orals/\ldots).
+\end{itemize}
+
+\hypertarget{revisiuxf3-i-seguiment}{%
+\subsection{Revisió i seguiment}\label{revisiuxf3-i-seguiment}}
+
+\begin{itemize}
+\tightlist
+\item
+  Les MREI seran acordades i revisades \textbf{col·lectivament} per
+  l'equip docent en coordinació amb el departament d'orientació.
+\item
+  Les mesures aplicades es revisaran \textbf{trimestralment}, i
+  s'ajustaran segons l'evolució de l'alumnat i les necessitats
+  detectades.
+\end{itemize}
+
+\hypertarget{referuxe8ncies-normatives-i-recursos}{%
+\subsection{Referències normatives i
+recursos}\label{referuxe8ncies-normatives-i-recursos}}
+
+\begin{itemize}
+\tightlist
+\item
+  LO 3/2022, d/'ordenació i integració de la Formació Professional
+\item
+  RD 659/2023, d'ordenació dels cicles de grau bàsic
+\item
+  GVA: \href{https://ceice.gva.es/va/web/inclusioeducativa}{Mesures
+  d'inclusió educativa}
+\item
+  GVA:
+  \href{https://ceice.gva.es/es/web/inclusioeducativa/identificacio-de-barreres}{Identificació
+  de barreres}
+\end{itemize}
+
+\hypertarget{comentari-final}{%
+\subsection{Comentari final}\label{comentari-final}}
+
+En el marc del Projecte Curricular de Cicle Formatiu, les MREI
+s'integren com a part fonamental del model pedagògic del centre. La seua
+aplicació en FPB esdevé imprescindible per garantir l'\textbf{equitat
+real} i la \textbf{justícia educativa}, superant una visió només
+compensatòria.
+
+\begin{quote}
+/{[}idea/{]} Les MREI no són excepcions, sinó respostes sistemàtiques i
+estructurades que reconeixen i abracen la diversitat.
+\end{quote}
+
+\hypertarget{criteris-per-a-la-planificaciuxf3-dactivitats-complementuxe0ries-i-extraescolars}{%
+\section{17. Criteris per a la planificació d/'activitats
+complementàries i
+extraescolars}\label{criteris-per-a-la-planificaciuxf3-dactivitats-complementuxe0ries-i-extraescolars}}
+
+Les \textbf{activitats complementàries i extraescolars} són eines
+pedagògiques que \textbf{enriqueixen i consoliden} el procés
+d'ensenyament-aprenentatge. Permeten a l'alumnat aplicar els
+coneixements adquirits en entorns reals, millorar la motivació i
+desenvolupar competències transversals.
+
+Aquestes activitats es programaran seguint els criteris acordats per
+l'equip docent i alineats amb els \textbf{objectius del currículum del
+cicle FPB d'Informàtica d'Oficina}.
+
+\hypertarget{criteris-generals-per-a-la-planificaciuxf3}{%
+\subsection{Criteris generals per a la
+planificació}\label{criteris-generals-per-a-la-planificaciuxf3}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Pertinència curricular}: han de reforçar els continguts i
+  sabers treballats als mòduls.
+\item
+  \textbf{Caràcter inclusiu}: totes les activitats han de ser
+  accessibles i promoure la participació de tot l'alumnat.
+\item
+  \textbf{Coherència amb la programació d/'aula}: han d'estar
+  relacionades amb els objectius i competències específiques dels
+  mòduls.
+\item
+  \textbf{Viabilitat organitzativa}: es valorarà la logística, horaris,
+  pressupost i recursos disponibles.
+\item
+  \textbf{Informació prèvia a l'alumnat i famílies}: es facilitarà una
+  comunicació clara sobre objectius, continguts, dates i requisits de
+  participació.
+\end{enumerate}
+
+\hypertarget{tipus-dactivitats}{%
+\subsection{Tipus d/'activitats}\label{tipus-dactivitats}}
+
+\hypertarget{activitats-complementuxe0ries}{%
+\subsubsection{Activitats
+complementàries}\label{activitats-complementuxe0ries}}
+
+Realitzades dins de l'horari lectiu, amb caràcter pedagògic i
+estretament vinculades al currículum.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Tallers tecnològics} (automatització, IA, impressió 3D\ldots)
+\item
+  \textbf{Jornada de contacte amb empreses del sector}
+\item
+  \textbf{Seminaris d'especialització} amb professionals TIC
+\item
+  \textbf{Visita a la Fossa 112 de Paterna} (memòria històrica i
+  tecnologia aplicada)
+\item
+  \textbf{Eixides de curta durada a l'entorn de la ciutat i muntanya}
+  (orientació, treball en equip, medi ambient)
+\item
+  \textbf{Hackatons i jams tecnològiques} dins del centre
+\end{itemize}
+
+\hypertarget{activitats-extraescolars}{%
+\subsubsection{Activitats
+extraescolars}\label{activitats-extraescolars}}
+
+Fora de l'horari lectiu, obertes a la participació voluntària i
+orientades a l'enriquiment acadèmic i personal.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Visita al Museu del videojoc d'Ibi}
+\item
+  \textbf{Visites a universitats o centres tecnològics}
+\item
+  \textbf{Competició Programame}
+\item
+  \textbf{Skills Comunitat Valenciana}
+\item
+  Participació en fires i concursos com:
+\item
+  \textbf{Experimenta} (UV)
+\item
+  \textbf{La Navaja Negra} (ciberseguretat)
+\item
+  \textbf{Buca IMSEF} (projectes internacionals)
+\item
+  \textbf{ISIF} (fira internacional d'innovació educativa)
+\end{itemize}
+
+\hypertarget{coordinaciuxf3-i-seguiment}{%
+\subsection{Coordinació i seguiment}\label{coordinaciuxf3-i-seguiment}}
+
+L'equip docent farà una planificació anual d'activitats, tenint en
+compte:
+
+\begin{itemize}
+\tightlist
+\item
+  Els \textbf{projectes interdisciplinars} en curs.
+\item
+  Les \textbf{necessitats formatives i motivacionals} de l'alumnat.
+\item
+  La valoració d'impacte de cursos anteriors.
+\end{itemize}
+
+Així mateix, es garantirà l'avaluació de cada activitat per mitjà de
+\textbf{rúbriques, qüestionaris de satisfacció o evidències
+documentals}, integrant-les com a part del desenvolupament competencial
+del cicle.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{clip-annexos-de-suport-1}{%
+\subsection{/{[}clip/{]} Annexos de
+suport}\label{clip-annexos-de-suport-1}}
+
+Els següents documents faciliten la planificació i valoració de les
+activitats complementàries i extraescolars:
+
+\begin{itemize}
+\tightlist
+\item
+  \href{../annexos/Annex-Planificacio-Activitat/}{/{[}calendari/{]}
+  Fitxa de planificació d'activitat}
+\item
+  \href{../annexos/Annex-Valoracio-Activitat/}{/{[}gràfic/{]} Fitxa de
+  valoració d'activitat}
+\end{itemize}
+
+Es recomana utilitzar aquestes plantilles per a totes les activitats
+organitzades dins del cicle FPB.
+
+\hypertarget{criteris-per-a-lorganitzaciuxf3-del-muxf2dul-professional-de-projecte}{%
+\section{18. Criteris per a l/'organització del mòdul professional de
+projecte}\label{criteris-per-a-lorganitzaciuxf3-del-muxf2dul-professional-de-projecte}}
+
+Aquest apartat \textbf{no és aplicable al cicle de Formació Professional
+Bàsica d/'Informàtica d/'Oficina}, ja que aquest \textbf{no inclou el
+mòdul professional de projecte} dins del seu currículum, segons el Reial
+decret 127/2014 i el Reial decret 356/2014.
+
+No obstant això, els \textbf{projectes interdisciplinaris} i activitats
+col·laboratives realitzades al llarg del cicle compleixen la funció
+d/'aplicació pràctica dels coneixements, d/'acord amb els principis
+metodològics de l/'FPB.
+
+\hypertarget{altres-aspectes-que-ha-de-contindre-el-pccf}{%
+\section{19. Altres aspectes que ha de contindre el
+PCCF}\label{altres-aspectes-que-ha-de-contindre-el-pccf}}
+
+Aquest apartat recull \textbf{acords interns, decisions pedagògiques i
+aspectes rellevants} consensuats per l'equip docent del cicle de
+\textbf{Formació Professional Bàsica d'Informàtica d'Oficina}.
+
+Tot i que no formen part d'un bloc normatiu específic, aquests aspectes
+complementen el projecte curricular i \textbf{contribueixen a la cohesió
+metodològica, pedagògica i organitzativa} del cicle.
+
+\hypertarget{acords-metodoluxf2gics}{%
+\subsection{1. Acords metodològics}\label{acords-metodoluxf2gics}}
+
+\begin{itemize}
+\tightlist
+\item
+  Ús generalitzat de metodologies actives: ABP, reptes, simulacions,
+  tallers/\ldots{}
+\item
+  Aposta per l'\textbf{aprenentatge vivencial i contextualitzat},
+  relacionat amb entorns reals.
+\item
+  Preferència per activitats intermodulars coordinades dins d'un mateix
+  projecte o situació d'aprenentatge.
+\end{itemize}
+
+\hypertarget{acords-davaluaciuxf3}{%
+\subsection{2. Acords d/'avaluació}\label{acords-davaluaciuxf3}}
+
+\begin{itemize}
+\tightlist
+\item
+  Ús compartit d'escales qualitatives, rúbriques i portafolis per a una
+  avaluació formativa.
+\item
+  Disseny conjunt d'instruments d'avaluació per projectes transversals.
+\item
+  Establiment de mínims consensuats per a l'avaluació contínua.
+\end{itemize}
+
+\hypertarget{acords-dinclusiuxf3-i-convivuxe8ncia}{%
+\subsection{3. Acords d'inclusió i
+convivència}\label{acords-dinclusiuxf3-i-convivuxe8ncia}}
+
+\begin{itemize}
+\tightlist
+\item
+  Protocol intern per a la detecció primerenca de dificultats
+  d'aprenentatge.
+\item
+  Coordinació mensual amb orientació per al seguiment de casos amb MREI
+  o PPA.
+\item
+  Espais de trobada amb alumnat per tractar qüestions de convivència,
+  benestar i clima d'aula.
+\end{itemize}
+
+\hypertarget{altres-acords-especuxedfics}{%
+\subsection{4. Altres acords
+específics}\label{altres-acords-especuxedfics}}
+
+\begin{itemize}
+\tightlist
+\item
+  Compromís de participació del cicle en activitats del centre (jornades
+  culturals, fires, etc.)
+\item
+  Creació d'una comissió de projectes per coordinar accions com JustHub
+  Garage o FP Skills.
+\end{itemize}
+
+\begin{quote}
+🗒️ \emph{Aquest apartat pot actualitzar-se cada curs escolar amb els
+nous acords establerts pel claustre docent o la comissió pedagògica del
+cicle.}
+\end{quote}
+
+\hypertarget{informe-del-departament-dinformuxe0tica-i-comunicacions-sobre-la-programaciuxf3-diduxe0ctica-en-fpb}{%
+\subsection{5. Informe del Departament d'Informàtica i Comunicacions
+sobre la programació didàctica en
+FPB}\label{informe-del-departament-dinformuxe0tica-i-comunicacions-sobre-la-programaciuxf3-diduxe0ctica-en-fpb}}
+
+En compliment de les \textbf{Instruccions d'inici de curs 2025-2026 de
+la GVA}, aquest Departament elaborarà la \textbf{programació didàctica
+única de cada mòdul professional} del cicle, amb caràcter de document
+marc per a tot el curs i per a tot l'alumnat, independentment del torn,
+la modalitat o el règim en què s'impartisca.
+
+No obstant això, i amb la finalitat de deixar constància en el
+\textbf{Projecte Curricular de Cicle Formatiu (PCCF)}, l'Equip del
+Departament d'Informàtica i Comunicacions \textbf{manifesta informe
+desfavorable} davant aquesta aplicació normativa, atés que:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{No s'alinea amb el canvi de paradigma educatiu} establit per
+  la \textbf{LOMLOE} i la \textbf{Llei Orgànica de Formació
+  Professional}, que impulsen un model competencial i
+  d'\textbf{avaluació formativa i contínua}.
+\item
+  \textbf{Genera incoherència interetapes}, ja que en Primària, ESO i
+  Batxillerat, mitjançant les Instruccions d'inici de curs, aquest canvi
+  s'ha traduït en l'ús de les \textbf{Situacions d'Aprenentatge (SA)}
+  com a instrument didàctic, mentre que en FP es manté un esquema basat
+  en \textbf{Unitats de Programació (UP)}.
+\item
+  \textbf{Redueix la capacitat de connexió entre Resultats
+  d'Aprenentatge, Criteris d'Avaluació i Sabers}, en no contemplar
+  clarament la seua planificació i concreció en activitats
+  contextualitzades.
+\item
+  \textbf{Allunya la FP de la seua finalitat última}, que és preparar
+  l'alumnat per a entorns reals i professionals mitjançant aprenentatges
+  aplicats, flexibles i basats en la resolució de reptes.
+\end{itemize}
+
+Per tant, \textbf{acatem les Instruccions vigents}, però el Departament
+d'Informàtica i Comunicacions considera que la decisió \textbf{no respon
+plenament a l'esperit de la legislació bàsica ni a l'orientació
+pedagògica de la resta d'etapes educatives}, i recomana que en futures
+adaptacions normatives es recupere la coherència global, incorporant
+instruments didàctics que permeten el desenvolupament real del model
+competencial (com les \textbf{Situacions d'Aprenentatge}).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{annex-diferuxe8ncies-entre-unitats-diduxe0ctiques-unitats-de-programaciuxf3-udup-i-situacions-daprenentatge-sa}{%
+\subsection{Annex: Diferències entre Unitats Didàctiques / Unitats de
+Programació (UD/UP) i Situacions d'Aprenentatge
+(SA)}\label{annex-diferuxe8ncies-entre-unitats-diduxe0ctiques-unitats-de-programaciuxf3-udup-i-situacions-daprenentatge-sa}}
+
+Les \textbf{Unitats Didàctiques (UD)} foren introduïdes amb la LOGSE i
+mantingudes amb la LOMCE com a model bàsic de planificació./ Actualment,
+les \textbf{Instruccions d'inici de curs de la GVA} exigeixen l'ús de
+\textbf{Unitats de Programació (UP)} com a instrument de la programació
+didàctica en FP.
+
+En canvi, la \textbf{LOMLOE} i la \textbf{Llei de FP} estableixen un nou
+paradigma educatiu basat en el desenvolupament competencial i
+l'avaluació formativa./ Aquest canvi, en altres etapes educatives
+(Primària, ESO i Batxillerat), s'ha concretat a través de les
+\textbf{Situacions d'Aprenentatge (SA)}, que actuen com a instrument
+didàctic central.
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+Aspecte & Unitats Didàctiques / Unitats de Programació (UD/UP) &
+Situacions d'Aprenentatge (SA) \\
+\midrule
+\endhead
+\textbf{Marc normatiu} & Introduïdes amb LOGSE i mantingudes amb LOMCE.
+En FP, les Instruccions d'inici de curs 25-26 de la GVA exigeixen UP. &
+La LOMLOE i la Llei de FP impulsen un model competencial i d'avaluació
+formativa que en altres etapes s'ha traduït en SA. \\
+\textbf{Estructura} & Seqüència tancada de continguts i activitats,
+orientada a objectius preestablerts. & Organització flexible i
+contextualitzada al voltant d'un repte o problema real. \\
+\textbf{Focus principal} & Objectius didàctics i criteris d'avaluació
+concrets, amb enfocament transmissiu. & Desenvolupament de competències
+específiques i clau a través de tasques significatives. \\
+\textbf{Metodologia} & Lineal, centrada en la transmissió i la repetició
+de continguts. & Activa, col·laborativa i basada en la resolució de
+problemes i la interdisciplinarietat. \\
+\textbf{Avaluació} & Generalment sumativa, centrada en proves i
+resultats individuals. & Formativa i contínua, vinculada al procés i a
+l'aplicació pràctica en contextos reals. \\
+\textbf{Finalitat educativa} & Adquisició ordenada de coneixements i
+habilitats concretes. & Preparació integral per a la vida personal,
+social i professional mitjançant contextos aplicats. \\
+\bottomrule
+\end{longtable}
+
+\hypertarget{les-programacions-diduxe0ctiques-dels-muxf2duls-io-els-projectes}{%
+\section{20. Les programacions didàctiques dels mòduls i/o els
+projectes}\label{les-programacions-diduxe0ctiques-dels-muxf2duls-io-els-projectes}}
+
+Les programacions didàctiques concreten com s'imparteixen els mòduls
+professionals i, si escau, els projectes del cicle. S'elaboren d'acord
+amb el PCCF i amb les directrius de la comissió de coordinació
+pedagògica del centre, i serveixen de base per a les programacions
+d'aula.
+
+Marc normatiu
+
+Tal com estableix l'article 9.2 del Decret 114/2025, de 29 de juliol,
+del Consell,/ les programacions didàctiques han d'incloure, com a mínim,
+els elements següents.
+
+\hypertarget{concepte-i-finalitat}{%
+\subsection{1. Concepte i finalitat}\label{concepte-i-finalitat}}
+
+La programació del mòdul ha de ser un document clar, concís i útil per a
+planificar l'activitat docent. Ha d'ajustar-se al que preveu el PCCF i
+donar resposta a: - La seqüència i organització dels resultats
+d'aprenentatge (RA) i dels criteris d'avaluació. - L'organització i
+temporització dels continguts, metodologies i recursos. - Les condicions
+d'impartició (presencial o semipresencial) i l'atenció a la diversitat.
+
+La programació és única per a cada mòdul del cicle; la seua concreció
+operativa es reflectirà en les programacions d'aula de cada grup.
+
+\hypertarget{contingut-muxednim-de-la-programaciuxf3-diduxe0ctica-del-muxf2dul}{%
+\subsection{2. Contingut mínim de la programació didàctica del
+mòdul}\label{contingut-muxednim-de-la-programaciuxf3-diduxe0ctica-del-muxf2dul}}
+
+\begin{itemize}
+\tightlist
+\item
+  Dades identificatives, marc normatiu i contextualització del mòdul.
+\item
+  Relació entre els estàndards de competència i els mòduls del cicle
+  formatiu.
+\item
+  Contribució dels RA a les competències generals del títol.
+\item
+  Esquema general i seqüenciació de les unitats de programació.
+\item
+  Metodologia del procés d'ensenyança-aprenentatge, incloent enfocaments
+  actius i treball per projectes.
+\item
+  Recursos (humans, materials i digitals).
+\item
+  Ús d'espais i equipaments.
+\item
+  Mesures d'atenció a la diversitat i suports personals.
+\item
+  Avaluació de l'aprenentatge: instruments, moments, pesos i
+  recuperació.
+\item
+  Activitats complementàries i extraescolars vinculades al mòdul.
+\item
+  Criteris i procediments per a l'avaluació del desenvolupament de la
+  programació i de la pràctica docent, així com els criteris de
+  qualificació.
+\item
+  Qualsevol altre apartat que l'equip educatiu considere rellevant dins
+  del PCCF.
+\end{itemize}
+
+Recomanacions de qualitat
+
+\begin{itemize}
+\tightlist
+\item
+  Defineix indicadors mesurables per avaluar l'avenç dels RA.
+\item
+  Assegura coherència entre activitats, instruments d'avaluació i pesos.
+\item
+  Preveu adaptacions metodològiques i d'avaluació per a necessitats
+  específiques.
+\item
+  Actualitza anualment la programació amb evidències
+\end{itemize}
+
+\end{document}
