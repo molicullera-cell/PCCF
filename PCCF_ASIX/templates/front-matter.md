@@ -1,10 +1,9 @@
 ---
-title: Projecte Curricular del Cicle Formatiu \newline Desenvolupament d'Aplicacions Multiplataforma
+title: Projecte Curricular del Cicle Formatiu \newline Administració de Sistemes Informàtics en Xarxa
 titlepage: true
 subtitle: PCCF DAM
 author:
-  - Autor 1
-  - Autor 2
+  - Departament 'd'Informàtica
 lang: ca
 toc: true
 toc-own-page: true
