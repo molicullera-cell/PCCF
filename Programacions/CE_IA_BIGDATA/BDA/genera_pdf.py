@@ -66,6 +66,7 @@ def generate_pdf(output_pdf="output.pdf", keep_html=False):
                 print(f"Processant fitxer markdown: {markdown_file}")
                 html_content = render_markdown_to_html(markdown_file, ods_path, xslt_path)
                 all_markdown_content += html_content  # Concatenem el resultat HTML
+                all_markdown_content += "\n"  # Salt de línia extra
             else:
                 print(f"Saltant element no vàlid: {markdown_file}")
 

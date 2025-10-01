@@ -1,187 +1,107 @@
-#!/usr/bin/env python3
 import os
 import subprocess
 import yaml
 import sys
-from pathlib import Path
-from my_plugins.add_tables.transformer import process_markdown
+from add_tables.transformer import process_markdown
 
-# ---------------------------------------------------------
-# Helpers per a YAML (ignorar constructors rars de MkDocs)
-# ---------------------------------------------------------
-def yaml_ignore(loader, node):
-    return str(node.value)
-
-yaml.SafeLoader.add_multi_constructor("!python/name:", lambda loader, suffix, node: yaml_ignore(loader, node))
-yaml.SafeLoader.add_constructor("tag:yaml.org,2002:python/name:material.extensions.emoji.twemoji", yaml_ignore)
-yaml.SafeLoader.add_constructor("tag:yaml.org,2002:python/name:material.extensions.emoji.to_svg", yaml_ignore)
-yaml.SafeLoader.add_constructor("tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format", yaml_ignore)
-
-# ---------------------------------------------------------
-# Llig el mkdocs.yml
-# ---------------------------------------------------------
 def load_nav():
-    with open("mkdocs.yml", "r", encoding="utf-8") as f:
-        config = yaml.load(f, Loader=yaml.SafeLoader)
-    return config.get("nav", [])
+    """Llegeix el fitxer mkdocs.yml i retorna l'ordre dels fitxers markdown"""
+    with open("mkdocs.yml", "r") as file:
+        config = yaml.safe_load(file)
+        ods_path = config['plugins'][1]['add_tables']['ods_path']
+    return ods_path, config.get("nav", [])
 
-# ---------------------------------------------------------
-def run_cmd(cmd, msg_error):
-    try:
-        subprocess.run(cmd, check=True, shell=True)
-    except subprocess.CalledProcessError as e:
-        print(f"⚠️ {msg_error} (codi retorn: {e.returncode})")
+def render_markdown_to_html(input_file, ods_path, xslt_path):
+    """Genera HTML a partir de markdown amb les taules transformades"""
+    with open(input_file, "r") as f:
+        markdown_content = f.read()
 
-# ---------------------------------------------------------
-# Inserir front-matter + preamble
-# ---------------------------------------------------------
-def write_frontmatter_and_preamble(outfile):
-    fm = Path("templates/front-matter.md")
-    if fm.exists():
-        outfile.write(fm.read_text(encoding="utf-8") + "\n\n")
+    # Processa les marques amb el plugin
+    return process_markdown(markdown_content, ods_path, xslt_path)
 
-    preamble = Path("preamble.md")
-    if preamble.exists():
-        outfile.write(preamble.read_text(encoding="utf-8") + "\n\n")
+def convert_markdown_to_html(input_file, output_file):
+    """Convierte el markdown a HTML utilitzant Pandoc i plantilla"""
+    cmd = [
+        "pandoc", "-s", "--template=templates/default.html", 
+        "-f", "markdown-smart+raw_html", 
+        "--toc", 
+        "-c", "templates/style-portrait.css", 
+        input_file, 
+        "-o", output_file
+    ]
+    subprocess.run(cmd, check=True)
 
-# ---------------------------------------------------------
-# Iterar el nav recursivament
-# ---------------------------------------------------------
-def iter_nav(nav):
+def generate_pdf_from_html(input_html, output_pdf):
+    """Genera el PDF amb WeasyPrint a partir del HTML"""
+    cmd = ["python3", "-m", "weasyprint", input_html, output_pdf]
+    subprocess.run(cmd, check=True)
+
+def generate_pdf(output_pdf="output.pdf", keep_html=False):
+    # Llegeix la configuració de `mkdocs.yml` i agafa els fitxers Markdown
+    ods_path, nav = load_nav()
+    #ods_path = "PCCF_DAM.ods"  # O especifica on tens el fitxer ODS
+    xslt_path = "ods2html.xslt"  # O especifica el camí correcte al fitxer XSLT
+
+    # Ruta al fitxer de front-matter
+    front_matter_file = "templates/front-matter.md"
+
+    # Crea un fitxer Markdown temporal al directori actual
+    temp_markdown = "generated_content.md"
+
+    # Llegeix i afegeix front-matter només una vegada
+    all_markdown_content = ""
+    if os.path.exists(front_matter_file):
+        with open(front_matter_file, "r") as f:
+            front_matter = f.read()
+        all_markdown_content += front_matter  # Afegim el front-matter al principi
+
+    # Processa cada fitxer markdown per generar les taules HTML
     for section in nav:
-        for title, value in section.items():
-            if isinstance(value, str):
-                yield title, value
-            elif isinstance(value, list):
-                yield from iter_nav(value)
+        for section_name, files in section.items():
+            # Si el valor és una cadena (un fitxer) en comptes de llista
+            markdown_file = f"docs/{files}"
 
-# ---------------------------------------------------------
-# Mode MD
-# ---------------------------------------------------------
-def mode_md(nav, output_pdf, keep_html):
-    ods_path = "PCCF_FPB.ods"     # 👉 adapta-ho si canvies el nom
-    xslt_path = "ods2html.xslt"
-    temp_md = "generated_content.md"
-
-    with open(temp_md, "w", encoding="utf-8") as f:
-        write_frontmatter_and_preamble(f)
-
-        for title, file in iter_nav(nav):
-            md_file = Path("docs") / file
-            if md_file.exists():
-                print(f"Processant fitxer markdown: {md_file}")
-                md_content = md_file.read_text(encoding="utf-8")
-                html_content = process_markdown(md_content, ods_path, xslt_path)
-                f.write(html_content + "\n\n")
+            # Comprovem que és un fitxer .md
+            if os.path.isfile(markdown_file) and markdown_file.endswith(".md"):
+                print(f"Processant fitxer markdown: {markdown_file}")
+                html_content = render_markdown_to_html(markdown_file, ods_path, xslt_path)
+                all_markdown_content += html_content  # Concatenem el resultat HTML
+                all_markdown_content += "\n"  # Salt de línia extra
             else:
-                print(f"⚠️ Fitxer no trobat: {md_file}")
+                print(f"Saltant element no vàlid: {markdown_file}")
 
-    tex_file = "combined_md.tex"
-    pandoc_cmd = (
-        f"pandoc {temp_md} --template eisvogel --pdf-engine=xelatex "
-        f"--resource-path=.:docs --citeproc --bibliography=bibliografia.bib "
-        f"--filter ./admonition_filter.py "
-        f"--filter ./underscore_filter.py "
-        f"-o {tex_file}"
-    )
-    run_cmd(pandoc_cmd, "Error generant TEX (mode md)")
+    # Guardem el Markdown concatenat amb el front-matter
+    with open(temp_markdown, "w") as f:
+        f.write(all_markdown_content)
 
-    for _ in range(3):
-        run_cmd(f"xelatex -interaction=nonstopmode {tex_file}", "Error en xelatex")
+    # Generar el HTML des del Markdown amb taules processades
+    temp_html = "generated_content.html"
+    convert_markdown_to_html(temp_markdown, temp_html)
 
-    pdf_output = Path(tex_file).with_suffix(".pdf")
-    if pdf_output.exists():
-        dest = Path(output_pdf)
-        if dest.exists():
-            dest.unlink()
-        pdf_output.rename(dest)
-        print(f"✅ PDF generat correctament: {output_pdf}")
-    else:
-        print("❌ Error: no s'ha generat el PDF")
+    # Genera el PDF a partir de l'HTML amb WeasyPrint
+    generate_pdf_from_html(temp_html, output_pdf)
 
+    print(f"PDF generat correctament: {output_pdf}")
+
+    # Eliminar fitxer HTML temporal si no es vol mantenir
     if not keep_html:
-        Path(temp_md).unlink(missing_ok=True)
-        Path(tex_file).unlink(missing_ok=True)
-
-# ---------------------------------------------------------
-# Mode HTML
-# ---------------------------------------------------------
-def mode_html(nav, output_pdf):
-    print("📁 Generant la web amb MkDocs...")
-    run_cmd("mkdocs build", "Error en MkDocs build")
-    print("✅ Web generada correctament.")
-
-    combined = "combined.md"
-    with open(combined, "w", encoding="utf-8") as outfile:
-        write_frontmatter_and_preamble(outfile)
-
-        for title, file in iter_nav(nav):
-            base = file.replace(".md", "").replace("docs/", "").replace("\\", "/")
-            html1 = Path("site") / base / "index.html"
-            html2 = Path("site") / f"{base}.html"
-            html_file = html1 if html1.exists() else html2
-
-            if not html_file.exists():
-                print(f"⚠️ No trobat HTML per {file}")
-                continue
-
-            safe_base = base.replace("/", "__")
-            filtered = f"filtered_{safe_base}.html"
-            converted = f"converted_{safe_base}.md"
-
-            run_cmd(f"python extract_main_content.py {html_file} {filtered}", "Error en extract_main_content.py")
-            run_cmd(f"pandoc --strip-comments --wrap=none {filtered} -o {converted}", "Error en pandoc")
-
-            if Path(converted).exists():
-                content = Path(converted).read_text(encoding="utf-8").replace("\\", "/")
-                outfile.write(content)
-                outfile.write("\n\n")
-
-    tex_file = "combined.tex"
-    pandoc_cmd = (
-        f"pandoc combined.md --template eisvogel --pdf-engine=xelatex "
-        f"--resource-path=.:docs --citeproc --bibliography=bibliografia.bib "
-        f"--filter ./table_filter.py "
-        f"--filter ./underscore_filter.py "
-        f"-o {tex_file}"
-    )
-    run_cmd(pandoc_cmd, "Error generant TEX")
-
-    for _ in range(3):
-        run_cmd(f"xelatex -interaction=nonstopmode {tex_file}", "Error en xelatex")
-
-    pdf_output = Path(tex_file).with_suffix(".pdf")
-    if pdf_output.exists():
-        dest = Path(output_pdf)
-        if dest.exists():
-            dest.unlink()
-        pdf_output.rename(dest)
-        print(f"✅ PDF generat correctament: {output_pdf}")
+        os.remove(temp_html)
+        print(f"Fitxer temporal {temp_html} eliminat.")
     else:
-        print("❌ Error: no s'ha generat el PDF")
+        print(f"Fitxer HTML temporal guardat: {temp_html}")
 
-    for tmp in Path(".").glob("filtered_*.html"):
-        tmp.unlink()
-    for tmp in Path(".").glob("converted_*.md"):
-        tmp.unlink()
+    # Eliminar fitxer Markdown temporal
+    if not keep_html:
+        os.remove(temp_markdown)
+        print(f"Fitxer temporal {temp_markdown} eliminat.")
 
-# ---------------------------------------------------------
 if __name__ == "__main__":
+    # Opcional: passar el nom del fitxer PDF de sortida i controlar si mantenir el fitxer HTML temporal
     output_pdf = "output.pdf"
     keep_html = "--keep-html" in sys.argv
-    mode = "md"
 
-    for arg in sys.argv[1:]:
-        if arg.startswith("--mode="):
-            mode = arg.split("=")[1]
-        elif not arg.startswith("--"):
-            output_pdf = arg
+    if len(sys.argv) > 1:
+        # Si s'ha passat el nom del fitxer PDF per la línia de comandes
+        output_pdf = sys.argv[1]
 
-    nav = load_nav()
-
-    if mode == "md":
-        mode_md(nav, output_pdf, keep_html)
-    elif mode == "html":
-        mode_html(nav, output_pdf)
-    else:
-        print("❌ Mode no reconegut. Usa --mode=md o --mode=html")
+    generate_pdf(output_pdf, keep_html)
